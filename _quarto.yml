@@ -36,6 +36,5 @@ format:
       dark: darkly
     toc: true
   ipynb: default
-  pdf: default
 
 hightlight-style: gruvbox
