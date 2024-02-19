@@ -87,7 +87,7 @@ df
 
 # read the data file, extract header lines and data lines 
 ```{python}
-%%time
+%time
 
 # row data file path
 # data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'
