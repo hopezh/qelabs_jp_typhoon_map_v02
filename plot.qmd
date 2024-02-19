@@ -28,18 +28,26 @@ df
 ```
 
 
-# filter data by year 
+# filter data by year range
 ```{python}
-year_range = [2023, 2023]
+year_range = [2022, 2023]
+
+df_filtered = df.filter(
+    pl.col('date_time')
+      .dt.year()
+      .is_between(year_range[0], year_range[1])
+)
+print('df filtered by year range:')
+df_filtered
 ```
 
 
 # create map 
 ```{python}
 fig = px.line_mapbox(
-    df,
-    # lat=df["d_d_latitude"],
-    # lon=df["d_e_longitude"],
+    df_filtered,
+    # lat=df_filtered["d_d_latitude"],
+    # lon=df_filtered["d_e_longitude"],
     lat="d_d_latitude",
     lon="d_e_longitude",
     color="h_b_int_num_id",
