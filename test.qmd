@@ -1,0 +1,116 @@
+---
+title: "test code"
+---
+
+
+# import modules
+
+```{python}
+import polars as pl
+print('polars version', pl.__version__)
+```
+
+
+# test, create an empty dataframe with a list of column names
+
+```{python}
+keys = ['a', 'b', 'c']
+col_names = dict.fromkeys(keys)
+df = pl.DataFrame(col_names)
+df
+```
+
+
+# create a pl df from schema & data
+
+```{python}
+df_schema = {
+    'a': pl.Int64,
+    'b': pl.String,
+    'c': pl.Float64,
+}
+
+# data = {
+#     'a': 12345,
+#     'b': 'abc',
+#     'c': 123.45
+# }
+
+data = {
+    'a': [],
+    'b': [],
+    'c': [],
+}
+
+df2 = pl.DataFrame(data, schema=df_schema)
+
+df2
+```
+
+# use `df.vstack` to stack 2 df
+```{python}
+
+dict_df3_data = {
+    'a': [6299, 54321],
+    'b': ['agb', 'bca'],
+    'c': [123.45, 43.213]
+}
+df3 = pl.DataFrame(dict_df3_data)
+
+df2 = df2.vstack(df3)
+df2
+```
+
+
+# convert str to yyyymmddhh
+
+
+```{python}
+df_date = pl.DataFrame({
+    'date_h_str': ['1987032516', '2021102309'],
+    'date_str': ['19780312', '20120103'],
+    'speed': [123, 345]
+}) 
+
+df_date
+```
+
+
+```{python}
+df_date = df_date.with_columns(
+    pl.col('date_str')
+      .str.strptime(pl.Date, format='%Y%m%d')
+      .alias('date')
+)
+
+# df_date = df_date.with_columns(
+#     pl.col('date_h_str')
+#       .str.strptime(pl.Datetime, format='%Y%m%d%h%m%s')
+#       .alias('date_hour')
+# )
+
+df_date
+```
+
+
+# create test df ---------------------------------------------------------------
+```python
+df_test = pl.DataFrame(
+    {
+        'd_lat': [35.0,   43.0,   53.0,   214.0,  215.0,  209.0],
+        'd_lon': [1596.0, 1591.0, 1587.0, 1095.0, 1098.0, 1097.0],
+        'd_idx': [2301,   2301,   2301,   2316,   2316,   2316]
+    }
+)
+print(df_test)
+```
+
+```python
+df_test = df_test.with_columns(
+    pl.col("d_lat").mul(0.1), 
+    pl.col("d_lon").mul(0.1)
+)
+print(df_test)
+```
+
+
