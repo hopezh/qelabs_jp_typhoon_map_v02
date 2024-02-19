@@ -241,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="column-screen">
 <section id="import-modules" class="level1">
 <h1>import modules</h1>
-<div id="a9bef343" class="cell" data-execution_count="1">
+<div id="e7d89d1e" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-df-schema-as-a-dict-col_name-pl.datatype" class="level1">
 <h1>create df schema as a dict <code>{"col_name", pl.DataType}</code></h1>
-<div id="38fa1f1d" class="cell" data-execution_count="2">
+<div id="f72f0c66" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_schema <span class="op">=</span> {</span>
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-an-empty-dataframe" class="level1">
 <h1>create an empty dataframe</h1>
-<div id="8377429c" class="cell" data-execution_count="3">
+<div id="601b1865" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>list_col_names <span class="op">=</span> <span class="bu">list</span>(df_schema.keys())</span>
@@ -331,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-29"><a href="#cb5-29"></a>df<span class="op">=</span> pl.DataFrame(dict_empty_data, df_schema)</span>
 <span id="cb5-30"><a href="#cb5-30"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -404,17 +404,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="read-the-data-file-extract-header-lines-and-data-lines" class="level1">
 <h1>read the data file, extract header lines and data lines</h1>
-<div id="5dadeca1" class="cell" data-execution_count="4">
+<div id="d4ae1a72" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%%</span>time</span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>time</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co"># row data file path</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'</span></span>
 <span id="cb6-5"><a href="#cb6-5"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2013-2023.txt'</span></span>
 <span id="cb6-6"><a href="#cb6-6"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2019-2023.txt'</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
 <span id="cb6-9"><a href="#cb6-9"></a></span>
 <span id="cb6-10"><a href="#cb6-10"></a><span class="co"># extracted header and data file paths</span></span>
 <span id="cb6-11"><a href="#cb6-11"></a>extracted_header_f_path <span class="op">=</span> <span class="st">'./data/processed/header.txt'</span></span>
@@ -452,13 +452,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>CPU times: total: 0 ns
-Wall time: 2.99 ms</code></pre>
+Wall time: 0 ns</code></pre>
 </div>
 </div>
 </section>
 <section id="func-to-vstack-each-data-record-to-df" class="level1">
 <h1>func to vstack each data record to df</h1>
-<div id="0d8717b2" class="cell" data-execution_count="5">
+<div id="51fe9f78" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> vstack_df(</span>
@@ -485,7 +485,7 @@ Wall time: 2.99 ms</code></pre>
 </section>
 <section id="read-header-and-data-files-to-create-dataframe" class="level1">
 <h1>read header and data files to create dataframe</h1>
-<div id="6866fe84" class="cell" data-execution_count="6">
+<div id="d8350505" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">with</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'r'</span>) <span class="im">as</span> f_h:</span>
@@ -592,24 +592,71 @@ Wall time: 2.99 ms</code></pre>
 <span id="cb9-102"><a href="#cb9-102"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>header: 0    ['66666', '2301', '014', '0003', '2301', '0', '6', 'SANVU', '20230704']
-header: 1    ['66666', '2302', '067', '0004', '2302', '0', '6', 'MAWAR', '20230830']
-header: 2    ['66666', '2303', '044', '0005', '2303', '1', '0', 'GUCHOL', '20230906']
-header: 3    ['66666', '2304', '023', '0006', '2304', '0', '6', 'TALIM', '20231025']
-header: 4    ['66666', '2305', '042', '0007', '2305', '0', '6', 'DOKSURI', '20231025']
-header: 5    ['66666', '2306', '106', '0008', '2306', '0', '6', 'KHANUN', '20231027']
-header: 6    ['66666', '2307', '061', '0009', '2307', '0', '6', 'LAN', '20231108']
-header: 7    ['66666', '2308', '042', '0010', '2308', '1', '0', 'DORA', '20231110']
-header: 8    ['66666', '2309', '051', '0011', '2309', '0', '6', 'SAOLA', '20231127']
-header: 9    ['66666', '2310', '028', '0012', '2310', '1', '0', 'DAMREY', '20231127']
-header: 10   ['66666', '2311', '040', '0013', '2311', '0', '6', 'HAIKUI', '20231127']
-header: 11   ['66666', '2312', '032', '0014', '2312', '0', '6', 'KIROGI', '20231128']
-header: 12   ['66666', '2313', '019', '0015', '2313', '0', '6', 'YUN-YEUNG', '20231129']
-header: 13   ['66666', '2314', '046', '0016', '2314', '0', '6', 'KOINU', '20240110']
-header: 14   ['66666', '2315', '039', '0017', '2315', '1', '0', 'BOLAVEN', '20240110']
-header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '20240111']</code></pre>
+<pre><code>header: 0    ['66666', '2101', '028', '0001', '2101', '0', '6', 'DUJUAN', '20210520']
+header: 1    ['66666', '2102', '073', '0002', '2102', '1', '0', 'SURIGAE', '20210715']
+header: 2    ['66666', '2103', '033', '0004', '2103', '0', '6', 'CHOI-WAN', '20210826']
+header: 3    ['66666', '2104', '011', '0005', '2104', '0', '6', 'KOGUMA', '20210826']
+header: 4    ['66666', '2105', '036', '0006', '2105', '0', '6', 'CHAMPI', '20210909']
+header: 5    ['66666', '2106', '081', '0009', '2106', '0', '6', 'IN-FA', '20211028']
+header: 6    ['66666', '2107', '033', '0010', '2107', '0', '6', 'CEMPAKA', '20211101']
+header: 7    ['66666', '2108', '037', '0011', '2108', '0', '6', 'NEPARTAK', '20211102']
+header: 8    ['66666', '2109', '056', '0014', '2109', '0', '6', 'LUPIT', '20211104']
+header: 9    ['66666', '2110', '032', '0016', '2110', '0', '6', 'MIRINAE', '20211110']
+header: 10   ['66666', '2111', '021', '0015', '2111', '0', '6', 'NIDA', '20211110']
+header: 11   ['66666', '2112', '055', '0018', '2112', '0', '6', 'OMAIS', '20211201']
+header: 12   ['66666', '2113', '034', '0020', '2113', '0', '6', 'CONSON', '20211214']
+header: 13   ['66666', '2114', '070', '0021', '2114', '0', '6', 'CHANTHU', '20211218']
+header: 14   ['66666', '2115', '017', '0022', '2115', '1', '0', 'DIANMU', '20211220']
+header: 15   ['66666', '2116', '057', '0023', '2116', '1', '0', 'MINDULLE', '20211225']
+header: 16   ['66666', '2117', '024', '0024', '2117', '0', '6', 'LIONROCK', '20220106']
+header: 17   ['66666', '2118', '031', '0025', '2118', '0', '6', 'KOMPASU', '20220106']
+header: 18   ['66666', '2119', '042', '0026', '2119', '1', '0', 'NAMTHEUN', '20220107']
+header: 19   ['66666', '2120', '039', '0027', '2120', '1', '0', 'MALOU', '20220119']
+header: 20   ['66666', '2121', '023', '0028', '2121', '0', '6', 'NYATOH', '20220204']
+header: 21   ['66666', '2122', '039', '0029', '2122', '0', '6', 'RAI', '20220204']
+header: 22   ['66666', '2201', '052', '0001', '2201', '1', '0', 'MALAKAS', '20220715']
+header: 23   ['66666', '2202', '014', '0002', '2202', '0', '6', 'MEGI', '20220716']
+header: 24   ['66666', '2203', '037', '0003', '2203', '0', '6', 'CHABA', '20221005']
+header: 25   ['66666', '2204', '043', '0004', '2204', '0', '6', 'AERE', '20221006']
+header: 26   ['66666', '2205', '024', '0006', '2205', '0', '6', 'SONGDA', '20221007']
+header: 27   ['66666', '2206', '014', '0007', '2206', '0', '6', 'TRASES', '20221101']
+header: 28   ['66666', '2207', '014', '0008', '2207', '0', '6', 'MULAN', '20221101']
+header: 29   ['66666', '2208', '035', '0009', '2208', '1', '0', 'MEARI', '20221116']
+header: 30   ['66666', '2209', '021', '0010', '2209', '0', '6', 'MA-ON', '20221116']
+header: 31   ['66666', '2210', '024', '0011', '2210', '1', '0', 'TOKAGE', '20221120']
+header: 32   ['66666', '2211', '069', '0013', '2211', '1', '0', 'HINNAMNOR', '20221124']
+header: 33   ['66666', '2212', '063', '0016', '2212', '0', '6', 'MUIFA', '20221124']
+header: 34   ['66666', '2213', '026', '0017', '2213', '1', '0', 'MERBOK', '20221125']
+header: 35   ['66666', '2214', '047', '0018', '2214', '0', '6', 'NANMADOL', '20221219']
+header: 36   ['66666', '2215', '028', '0019', '2215', '0', '6', 'TALAS', '20221223']
+header: 37   ['66666', '2216', '033', '0020', '2216', '0', '6', 'NORU', '20221226']
+header: 38   ['66666', '2217', '028', '0021', '2217', '1', '0', 'KULAP', '20230104']
+header: 39   ['66666', '2218', '032', '0022', '2218', '0', '6', 'ROKE', '20230104']
+header: 40   ['66666', '2219', '008', '0023', '2219', '0', '6', 'SONCA', '20230104']
+header: 41   ['66666', '2220', '024', '0025', '2220', '0', '6', 'NESAT', '20230104']
+header: 42   ['66666', '2221', '015', '0026', '2221', '1', '0', 'HAITANG', '20230112']
+header: 43   ['66666', '2222', '033', '0028', '2222', '0', '6', 'NALGAE', '20230112']
+header: 44   ['66666', '2223', '024', '0029', '2223', '0', '6', 'BANYAN', '20230117']
+header: 45   ['66666', '2224', '014', '0030', '2224', '0', '6', 'YAMANEKO', '20230119']
+header: 46   ['66666', '2225', '011', '0031', '2225', '0', '6', 'PAKHAR', '20230123']
+header: 47   ['66666', '2301', '014', '0003', '2301', '0', '6', 'SANVU', '20230704']
+header: 48   ['66666', '2302', '067', '0004', '2302', '0', '6', 'MAWAR', '20230830']
+header: 49   ['66666', '2303', '044', '0005', '2303', '1', '0', 'GUCHOL', '20230906']
+header: 50   ['66666', '2304', '023', '0006', '2304', '0', '6', 'TALIM', '20231025']
+header: 51   ['66666', '2305', '042', '0007', '2305', '0', '6', 'DOKSURI', '20231025']
+header: 52   ['66666', '2306', '106', '0008', '2306', '0', '6', 'KHANUN', '20231027']
+header: 53   ['66666', '2307', '061', '0009', '2307', '0', '6', 'LAN', '20231114']
+header: 54   ['66666', '2308', '042', '0010', '2308', '1', '0', 'DORA', '20231115']
+header: 55   ['66666', '2309', '051', '0011', '2309', '0', '6', 'SAOLA', '20231127']
+header: 56   ['66666', '2310', '028', '0012', '2310', '1', '0', 'DAMREY', '20231127']
+header: 57   ['66666', '2311', '040', '0013', '2311', '0', '6', 'HAIKUI', '20231127']
+header: 58   ['66666', '2312', '032', '0014', '2312', '0', '6', 'KIROGI', '20231128']
+header: 59   ['66666', '2313', '019', '0015', '2313', '0', '6', 'YUN-YEUNG', '20231129']
+header: 60   ['66666', '2314', '046', '0016', '2314', '0', '6', 'KOINU', '20240110']
+header: 61   ['66666', '2315', '039', '0017', '2315', '1', '0', 'BOLAVEN', '20240110']
+header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '20240111']</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -618,7 +665,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (667, 23)</small>
+<small>shape: (2_272, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -675,20 +722,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2301"</td>
-<td>"014"</td>
-<td>"0003"</td>
-<td>"2301"</td>
+<td>"2101"</td>
+<td>"028"</td>
+<td>"0001"</td>
+<td>"2101"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041900"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021606"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"035"</td>
-<td>"1596"</td>
-<td>"1008"</td>
+<td>"069"</td>
+<td>"1369"</td>
+<td>"1004"</td>
 <td>"000"</td>
 <td>""</td>
 <td>""</td>
@@ -700,20 +747,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>"66666"</td>
-<td>"2301"</td>
-<td>"014"</td>
-<td>"0003"</td>
-<td>"2301"</td>
+<td>"2101"</td>
+<td>"028"</td>
+<td>"0001"</td>
+<td>"2101"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041906"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021612"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"043"</td>
-<td>"1591"</td>
-<td>"1004"</td>
+<td>"069"</td>
+<td>"1362"</td>
+<td>"1006"</td>
 <td>"000"</td>
 <td>""</td>
 <td>""</td>
@@ -725,20 +772,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2301"</td>
-<td>"014"</td>
-<td>"0003"</td>
-<td>"2301"</td>
+<td>"2101"</td>
+<td>"028"</td>
+<td>"0001"</td>
+<td>"2101"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041912"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021618"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"053"</td>
-<td>"1587"</td>
-<td>"1008"</td>
+<td>"068"</td>
+<td>"1351"</td>
+<td>"1004"</td>
 <td>"000"</td>
 <td>""</td>
 <td>""</td>
@@ -857,7 +904,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="replace-empty-string-with-null" class="level1">
 <h1>replace empty string with ‘null’</h1>
-<div id="0d9e5a76" class="cell" data-execution_count="7">
+<div id="918fa465" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> df.select(</span>
@@ -873,7 +920,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb11-11"><a href="#cb11-11"></a>)</span>
 <span id="cb11-12"><a href="#cb11-12"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -882,7 +929,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (667, 23)</small>
+<small>shape: (2_272, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -939,20 +986,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2301"</td>
-<td>"014"</td>
-<td>"0003"</td>
-<td>"2301"</td>
+<td>"2101"</td>
+<td>"028"</td>
+<td>"0001"</td>
+<td>"2101"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041900"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021606"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"035"</td>
-<td>"1596"</td>
-<td>"1008"</td>
+<td>"069"</td>
+<td>"1369"</td>
+<td>"1004"</td>
 <td>"000"</td>
 <td>null</td>
 <td>null</td>
@@ -964,20 +1011,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>"66666"</td>
-<td>"2301"</td>
-<td>"014"</td>
-<td>"0003"</td>
-<td>"2301"</td>
+<td>"2101"</td>
+<td>"028"</td>
+<td>"0001"</td>
+<td>"2101"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041906"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021612"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"043"</td>
-<td>"1591"</td>
-<td>"1004"</td>
+<td>"069"</td>
+<td>"1362"</td>
+<td>"1006"</td>
 <td>"000"</td>
 <td>null</td>
 <td>null</td>
@@ -989,20 +1036,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2301"</td>
-<td>"014"</td>
-<td>"0003"</td>
-<td>"2301"</td>
+<td>"2101"</td>
+<td>"028"</td>
+<td>"0001"</td>
+<td>"2101"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041912"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021618"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"053"</td>
-<td>"1587"</td>
-<td>"1008"</td>
+<td>"068"</td>
+<td>"1351"</td>
+<td>"1004"</td>
 <td>"000"</td>
 <td>null</td>
 <td>null</td>
@@ -1121,7 +1168,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="cast-data-type-for-columns" class="level1">
 <h1>cast data type for columns</h1>
-<div id="36a835a6" class="cell" data-execution_count="8">
+<div id="4d2512b0" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1147,7 +1194,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb12-21"><a href="#cb12-21"></a>)</span>
 <span id="cb12-22"><a href="#cb12-22"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -1156,7 +1203,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (667, 23)</small>
+<small>shape: (2_272, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1213,20 +1260,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041900"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021606"</td>
 <td>2</td>
 <td>2</td>
-<td>35.0</td>
-<td>1596.0</td>
-<td>1008</td>
+<td>69.0</td>
+<td>1369.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1238,20 +1285,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041906"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021612"</td>
 <td>2</td>
 <td>2</td>
-<td>43.0</td>
-<td>1591.0</td>
-<td>1004</td>
+<td>69.0</td>
+<td>1362.0</td>
+<td>1006</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1263,20 +1310,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"23041912"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"21021618"</td>
 <td>2</td>
 <td>2</td>
-<td>53.0</td>
-<td>1587.0</td>
-<td>1008</td>
+<td>68.0</td>
+<td>1351.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1395,7 +1442,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="add-4-0-end-of-each-item-in-d_a_date_time-column" class="level1">
 <h1>add 4 <code>0</code> @ end of each item in <code>d_a_date_time</code> column</h1>
-<div id="11b3db9d" class="cell" data-execution_count="9">
+<div id="3f4f121c" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df <span class="op">=</span>  df.with_columns(</span>
@@ -1403,7 +1450,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb13-3"><a href="#cb13-3"></a>)</span>
 <span id="cb13-4"><a href="#cb13-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="56">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -1412,7 +1459,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (667, 23)</small>
+<small>shape: (2_272, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1469,20 +1516,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419000000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216060000"</td>
 <td>2</td>
 <td>2</td>
-<td>35.0</td>
-<td>1596.0</td>
-<td>1008</td>
+<td>69.0</td>
+<td>1369.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1494,20 +1541,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419060000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216120000"</td>
 <td>2</td>
 <td>2</td>
-<td>43.0</td>
-<td>1591.0</td>
-<td>1004</td>
+<td>69.0</td>
+<td>1362.0</td>
+<td>1006</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1519,20 +1566,20 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419120000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216180000"</td>
 <td>2</td>
 <td>2</td>
-<td>53.0</td>
-<td>1587.0</td>
-<td>1008</td>
+<td>68.0</td>
+<td>1351.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1651,7 +1698,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="add-datetime-column" class="level1">
 <h1>add datetime column</h1>
-<div id="0c18d320" class="cell" data-execution_count="10">
+<div id="18b36796" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1664,7 +1711,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb14-8"><a href="#cb14-8"></a>)</span>
 <span id="cb14-9"><a href="#cb14-9"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="57">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -1673,7 +1720,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (667, 24)</small>
+<small>shape: (2_272, 24)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1732,45 +1779,19 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419000000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216060000"</td>
 <td>2</td>
 <td>2</td>
-<td>35.0</td>
-<td>1596.0</td>
-<td>1008</td>
-<td>0</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>2023-04-19 00:00:00</td>
-</tr>
-<tr class="even">
-<td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
-<td>0</td>
-<td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419060000"</td>
-<td>2</td>
-<td>2</td>
-<td>43.0</td>
-<td>1591.0</td>
+<td>69.0</td>
+<td>1369.0</td>
 <td>1004</td>
 <td>0</td>
 <td>null</td>
@@ -1780,24 +1801,50 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2023-04-19 06:00:00</td>
+<td>2021-02-16 06:00:00</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
+<td>0</td>
+<td>6</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216120000"</td>
+<td>2</td>
+<td>2</td>
+<td>69.0</td>
+<td>1362.0</td>
+<td>1006</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2021-02-16 12:00:00</td>
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419120000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216180000"</td>
 <td>2</td>
 <td>2</td>
-<td>53.0</td>
-<td>1587.0</td>
-<td>1008</td>
+<td>68.0</td>
+<td>1351.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1806,7 +1853,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2023-04-19 12:00:00</td>
+<td>2021-02-16 18:00:00</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -1921,7 +1968,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="adjust-lat-and-lon-value" class="level1">
 <h1>adjust lat and lon value</h1>
-<div id="77ec1f75" class="cell" data-execution_count="11">
+<div id="ab65c28d" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1930,7 +1977,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb15-4"><a href="#cb15-4"></a>)</span>
 <span id="cb15-5"><a href="#cb15-5"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <div>
 <div><style>
 .dataframe > thead > tr,
@@ -1939,7 +1986,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (667, 24)</small>
+<small>shape: (2_272, 24)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1998,45 +2045,19 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419000000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216060000"</td>
 <td>2</td>
 <td>2</td>
-<td>3.5</td>
-<td>159.6</td>
-<td>1008</td>
-<td>0</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>2023-04-19 00:00:00</td>
-</tr>
-<tr class="even">
-<td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
-<td>0</td>
-<td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419060000"</td>
-<td>2</td>
-<td>2</td>
-<td>4.3</td>
-<td>159.1</td>
+<td>6.9</td>
+<td>136.9</td>
 <td>1004</td>
 <td>0</td>
 <td>null</td>
@@ -2046,24 +2067,50 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2023-04-19 06:00:00</td>
+<td>2021-02-16 06:00:00</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
+<td>0</td>
+<td>6</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216120000"</td>
+<td>2</td>
+<td>2</td>
+<td>6.9</td>
+<td>136.2</td>
+<td>1006</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2021-02-16 12:00:00</td>
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2301</td>
-<td>14</td>
-<td>3</td>
-<td>2301</td>
+<td>2101</td>
+<td>28</td>
+<td>1</td>
+<td>2101</td>
 <td>0</td>
 <td>6</td>
-<td>"SANVU"</td>
-<td>"20230704"</td>
-<td>"230419120000"</td>
+<td>"DUJUAN"</td>
+<td>"20210520"</td>
+<td>"210216180000"</td>
 <td>2</td>
 <td>2</td>
-<td>5.3</td>
-<td>158.7</td>
-<td>1008</td>
+<td>6.8</td>
+<td>135.1</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -2072,7 +2119,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2023-04-19 12:00:00</td>
+<td>2021-02-16 18:00:00</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -2187,7 +2234,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="check-result" class="level1">
 <h1>check result</h1>
-<div id="330fe56c" class="cell" data-execution_count="12">
+<div id="f518adaf" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># df.describe()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2196,7 +2243,7 @@ header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="write-df-as-parquet" class="level1">
 <h1>write df as parquet</h1>
-<div id="7a090924" class="cell" data-execution_count="13">
+<div id="0e2874fd" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df.parquet"</span></span>
@@ -2921,14 +2968,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb20-93"><a href="#cb20-93"></a></span>
 <span id="cb20-94"><a href="#cb20-94"></a><span class="fu"># read the data file, extract header lines and data lines </span></span>
 <span id="cb20-97"><a href="#cb20-97"></a><span class="in">```{python}</span></span>
-<span id="cb20-98"><a href="#cb20-98"></a><span class="op">%%</span>time</span>
+<span id="cb20-98"><a href="#cb20-98"></a><span class="op">%</span>time</span>
 <span id="cb20-99"><a href="#cb20-99"></a></span>
 <span id="cb20-100"><a href="#cb20-100"></a><span class="co"># row data file path</span></span>
 <span id="cb20-101"><a href="#cb20-101"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'</span></span>
 <span id="cb20-102"><a href="#cb20-102"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2013-2023.txt'</span></span>
 <span id="cb20-103"><a href="#cb20-103"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2019-2023.txt'</span></span>
-<span id="cb20-104"><a href="#cb20-104"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
-<span id="cb20-105"><a href="#cb20-105"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
+<span id="cb20-104"><a href="#cb20-104"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
+<span id="cb20-105"><a href="#cb20-105"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
 <span id="cb20-106"><a href="#cb20-106"></a></span>
 <span id="cb20-107"><a href="#cb20-107"></a><span class="co"># extracted header and data file paths</span></span>
 <span id="cb20-108"><a href="#cb20-108"></a>extracted_header_f_path <span class="op">=</span> <span class="st">'./data/processed/header.txt'</span></span>
