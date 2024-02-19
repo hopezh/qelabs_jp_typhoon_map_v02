@@ -2,6 +2,5 @@
 title: "Qelabs_jp_typhoon_map_v02"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+- Tidy up Japan's typhoon data from 1951 to 2023.
+- Create interactive map.
