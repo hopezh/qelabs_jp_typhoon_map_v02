@@ -202,8 +202,7 @@ with open(extracted_header_f_path, 'r') as f_h:
         print('header:', header_cnt, '\t', headedr_items)
 
         # read data file by the start and end line numbers
-        # f_data = open('./data/data.txt', 'r')        
-        f_data = './data/data.txt'
+        f_data = './data/processed/data.txt'
 
         with open(f_data, 'r') as f_data:
             for idx, d_line in enumerate(f_data):

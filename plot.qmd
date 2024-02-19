@@ -8,7 +8,7 @@ Create map for Japan Typhoon data from 1951 to 2023.
 
 
 # import modules 
-```python
+```{python}
 import polars as pl
 pl.Config.set_tbl_rows(7)   # limit num of lines for table preview
 import plotly.express as px
@@ -18,7 +18,7 @@ print('polars:', pl.__version__)
 
 
 # read df parquet 
-```python
+```{python}
 %%time
 
 df_parquet_f_path = "./data/processed/df.parquet"
@@ -35,7 +35,7 @@ year_range = [2023, 2023]
 
 
 # create map 
-```python
+```{python}
 fig = px.line_mapbox(
     df,
     # lat=df["d_d_latitude"],
