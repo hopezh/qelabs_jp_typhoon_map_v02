@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="column-screen">
 <section id="import-modules" class="level1">
 <h1>import modules</h1>
-<div id="e7d89d1e" class="cell" data-execution_count="1">
+<div id="302bf66b" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-df-schema-as-a-dict-col_name-pl.datatype" class="level1">
 <h1>create df schema as a dict <code>{"col_name", pl.DataType}</code></h1>
-<div id="f72f0c66" class="cell" data-execution_count="2">
+<div id="43f336ca" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_schema <span class="op">=</span> {</span>
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-an-empty-dataframe" class="level1">
 <h1>create an empty dataframe</h1>
-<div id="601b1865" class="cell" data-execution_count="3">
+<div id="d455ee4c" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>list_col_names <span class="op">=</span> <span class="bu">list</span>(df_schema.keys())</span>
@@ -331,8 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-29"><a href="#cb5-29"></a>df<span class="op">=</span> pl.DataFrame(dict_empty_data, df_schema)</span>
 <span id="cb5-30"><a href="#cb5-30"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="50">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -400,11 +399,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="read-the-data-file-extract-header-lines-and-data-lines" class="level1">
 <h1>read the data file, extract header lines and data lines</h1>
-<div id="d4ae1a72" class="cell" data-execution_count="4">
+<div id="4ad80bd6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>time</span>
@@ -451,14 +449,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-42"><a href="#cb6-42"></a>f_data.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: total: 0 ns
-Wall time: 0 ns</code></pre>
+<pre><code>CPU times: user 1 µs, sys: 0 ns, total: 1 µs
+Wall time: 3.81 µs</code></pre>
 </div>
 </div>
 </section>
 <section id="func-to-vstack-each-data-record-to-df" class="level1">
 <h1>func to vstack each data record to df</h1>
-<div id="51fe9f78" class="cell" data-execution_count="5">
+<div id="1f03f13a" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> vstack_df(</span>
@@ -485,7 +483,7 @@ Wall time: 0 ns</code></pre>
 </section>
 <section id="read-header-and-data-files-to-create-dataframe" class="level1">
 <h1>read header and data files to create dataframe</h1>
-<div id="d8350505" class="cell" data-execution_count="6">
+<div id="c39788c8" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">with</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'r'</span>) <span class="im">as</span> f_h:</span>
@@ -656,8 +654,7 @@ header: 60   ['66666', '2314', '046', '0016', '2314', '0', '6', 'KOINU', '202401
 header: 61   ['66666', '2315', '039', '0017', '2315', '1', '0', 'BOLAVEN', '20240110']
 header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '20240111']</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="53">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -900,11 +897,10 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="replace-empty-string-with-null" class="level1">
 <h1>replace empty string with ‘null’</h1>
-<div id="918fa465" class="cell" data-execution_count="7">
+<div id="1d573971" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> df.select(</span>
@@ -920,8 +916,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb11-11"><a href="#cb11-11"></a>)</span>
 <span id="cb11-12"><a href="#cb11-12"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="54">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1164,11 +1159,10 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="cast-data-type-for-columns" class="level1">
 <h1>cast data type for columns</h1>
-<div id="4d2512b0" class="cell" data-execution_count="8">
+<div id="f9a848c2" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1194,8 +1188,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb12-21"><a href="#cb12-21"></a>)</span>
 <span id="cb12-22"><a href="#cb12-22"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="55">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1438,11 +1431,10 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="add-4-0-end-of-each-item-in-d_a_date_time-column" class="level1">
 <h1>add 4 <code>0</code> @ end of each item in <code>d_a_date_time</code> column</h1>
-<div id="3f4f121c" class="cell" data-execution_count="9">
+<div id="c6e3a5c2" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df <span class="op">=</span>  df.with_columns(</span>
@@ -1450,8 +1442,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb13-3"><a href="#cb13-3"></a>)</span>
 <span id="cb13-4"><a href="#cb13-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="56">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1694,11 +1685,10 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="add-datetime-column" class="level1">
 <h1>add datetime column</h1>
-<div id="18b36796" class="cell" data-execution_count="10">
+<div id="99748b1d" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1711,8 +1701,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb14-8"><a href="#cb14-8"></a>)</span>
 <span id="cb14-9"><a href="#cb14-9"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="57">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1964,11 +1953,10 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="adjust-lat-and-lon-value" class="level1">
 <h1>adjust lat and lon value</h1>
-<div id="ab65c28d" class="cell" data-execution_count="11">
+<div id="65c6a275" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1977,8 +1965,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb15-4"><a href="#cb15-4"></a>)</span>
 <span id="cb15-5"><a href="#cb15-5"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="58">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -2230,11 +2217,10 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
-</div>
 </section>
 <section id="check-result" class="level1">
 <h1>check result</h1>
-<div id="f518adaf" class="cell" data-execution_count="12">
+<div id="8fbd62b0" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># df.describe()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2243,7 +2229,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="write-df-as-parquet" class="level1">
 <h1>write df as parquet</h1>
-<div id="0e2874fd" class="cell" data-execution_count="13">
+<div id="23461c5c" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df.parquet"</span></span>
