@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Jp_typhoon_data_tidy - Qelabs_jp_typhoon_map_v02</title>
+<title>Jp_typhoon_data_tidy - create map</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,7 +125,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -144,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Qelabs_jp_typhoon_map_v02</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyup.html">Production</a></li><li class="breadcrumb-item"><a href="./plot.html">create map</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -165,8 +165,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Production</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Production</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tidyup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tidy-up Japan Typhoon Data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./plot.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">create map</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -192,13 +211,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="index.ipynb" download="index.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="plot.ipynb" download="plot.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li><li><a href="plot.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./tidyup.html">Production</a></li><li class="breadcrumb-item"><a href="./plot.html">create map</a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Qelabs_jp_typhoon_map_v02</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">create map</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -215,10 +234,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<ul>
-<li>Tidy up Japan’s typhoon data from 1951 to 2023.</li>
-<li>Create interactive map.</li>
-</ul>
+<p>Create map for Japan Typhoon data from 1951 to 2023.</p>
+<div class="column-screen">
+<section id="import-modules" class="level1">
+<h1>import modules</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb1-2"><a href="#cb1-2"></a>pl.Config.set_tbl_rows(<span class="dv">7</span>)   <span class="co"># limit num of lines for table preview</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="bu">print</span>(<span class="st">'polars:'</span>, pl.__version__)</span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co"># print('plotly:', px.__version__)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="read-df-parquet" class="level1">
+<h1>read df parquet</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">%%</span>time</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/df.parquet"</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="filter-data-by-year" class="level1">
+<h1>filter data by year</h1>
+</section>
+<section id="create-map" class="level1">
+<h1>create map</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig <span class="op">=</span> px.line_mapbox(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    df,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="co"># lat=df["d_d_latitude"],</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>    <span class="co"># lon=df["d_e_longitude"],</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    lat<span class="op">=</span><span class="st">"d_d_latitude"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>    lon<span class="op">=</span><span class="st">"d_e_longitude"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    color<span class="op">=</span><span class="st">"h_b_int_num_id"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    zoom<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="co"># animation_frame="h_b_int_num_id"</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>)</span>
+<span id="cb3-12"><a href="#cb3-12"></a></span>
+<span id="cb3-13"><a href="#cb3-13"></a>fig.update_layout(</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    mapbox_style<span class="op">=</span><span class="st">"carto-darkmatter"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a>    mapbox_center_lat<span class="op">=</span><span class="dv">36</span>,</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb3-19"><a href="#cb3-19"></a>)</span>
+<span id="cb3-20"><a href="#cb3-20"></a></span>
+<span id="cb3-21"><a href="#cb3-21"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</div>
 
 
 <!-- -->
@@ -807,12 +869,64 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Qelabs_jp_typhoon_map_v02"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="co">---</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="ss">- </span>Tidy up Japan's typhoon data from 1951 to 2023.</span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="ss">- </span>Create interactive map.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="an">title:</span><span class="co"> "create map"</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">---</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>Create map for Japan Typhoon data from 1951 to 2023.</span>
+<span id="cb4-6"><a href="#cb4-6"></a></span>
+<span id="cb4-7"><a href="#cb4-7"></a>::: {.column-screen}</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="fu"># import modules </span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="in">```python</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb4-13"><a href="#cb4-13"></a>pl.Config.set_tbl_rows(<span class="dv">7</span>)   <span class="co"># limit num of lines for table preview</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="bu">print</span>(<span class="st">'polars:'</span>, pl.__version__)</span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="co"># print('plotly:', px.__version__)</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="in">```</span></span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a></span>
+<span id="cb4-21"><a href="#cb4-21"></a><span class="fu"># read df parquet </span></span>
+<span id="cb4-22"><a href="#cb4-22"></a><span class="in">```python</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a><span class="op">%%</span>time</span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/df.parquet"</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
+<span id="cb4-27"><a href="#cb4-27"></a>df</span>
+<span id="cb4-28"><a href="#cb4-28"></a><span class="in">```</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a></span>
+<span id="cb4-30"><a href="#cb4-30"></a><span class="fu"># filter data by year </span></span>
+<span id="cb4-31"><a href="#cb4-31"></a></span>
+<span id="cb4-32"><a href="#cb4-32"></a></span>
+<span id="cb4-33"><a href="#cb4-33"></a><span class="fu"># create map </span></span>
+<span id="cb4-34"><a href="#cb4-34"></a><span class="in">```python</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>fig <span class="op">=</span> px.line_mapbox(</span>
+<span id="cb4-36"><a href="#cb4-36"></a>    df,</span>
+<span id="cb4-37"><a href="#cb4-37"></a>    <span class="co"># lat=df["d_d_latitude"],</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>    <span class="co"># lon=df["d_e_longitude"],</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>    lat<span class="op">=</span><span class="st">"d_d_latitude"</span>,</span>
+<span id="cb4-40"><a href="#cb4-40"></a>    lon<span class="op">=</span><span class="st">"d_e_longitude"</span>,</span>
+<span id="cb4-41"><a href="#cb4-41"></a>    color<span class="op">=</span><span class="st">"h_b_int_num_id"</span>,</span>
+<span id="cb4-42"><a href="#cb4-42"></a>    zoom<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb4-43"><a href="#cb4-43"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb4-44"><a href="#cb4-44"></a>    <span class="co"># animation_frame="h_b_int_num_id"</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>)</span>
+<span id="cb4-46"><a href="#cb4-46"></a></span>
+<span id="cb4-47"><a href="#cb4-47"></a>fig.update_layout(</span>
+<span id="cb4-48"><a href="#cb4-48"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>    mapbox_style<span class="op">=</span><span class="st">"carto-darkmatter"</span>,</span>
+<span id="cb4-50"><a href="#cb4-50"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>    mapbox_center_lat<span class="op">=</span><span class="dv">36</span>,</span>
+<span id="cb4-52"><a href="#cb4-52"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb4-53"><a href="#cb4-53"></a>)</span>
+<span id="cb4-54"><a href="#cb4-54"></a></span>
+<span id="cb4-55"><a href="#cb4-55"></a>fig.show()</span>
+<span id="cb4-56"><a href="#cb4-56"></a><span class="in">```</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a></span>
+<span id="cb4-58"><a href="#cb4-58"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 
