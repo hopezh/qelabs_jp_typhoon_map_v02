@@ -19,7 +19,7 @@ print('polars:', pl.__version__)
 
 # read df parquet 
 ```{python}
-%%time
+%time
 
 df_parquet_f_path = "./data/processed/df.parquet"
 df = pl.read_parquet(df_parquet_f_path)
