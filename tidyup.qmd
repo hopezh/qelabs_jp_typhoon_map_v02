@@ -7,7 +7,7 @@ Tidy up Japan Typhoon data from 1951 to 2023.
 ::: {.column-screen}
 
 # import modules 
-```{python}
+```python
 import os
 from typing import List
 
@@ -18,7 +18,7 @@ print('polars version', pl.__version__)
 
 
 # create df schema as a dict `{"col_name", pl.DataType}` 
-```{python}
+```python
 df_schema = {
     'h_a_indicator'               : pl.String,
     'h_b_int_num_id'              : pl.String,
@@ -51,7 +51,7 @@ print(df_schema)
 
 
 # create an empty dataframe 
-```{python}
+```python
 list_col_names = list(df_schema.keys())
 
 dict_empty_data = {
@@ -86,16 +86,21 @@ df
 
 
 # read the data file, extract header lines and data lines 
-```{python}
+```python
 %time
 
 # row data file path
-# data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_1951-2023.txt'
 # raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2013-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2014-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2015-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2016-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2017-2023.txt'
 # raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2018-2023.txt'
 # raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2019-2023.txt'
 # raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'
 raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2013.txt' # !!! error
 
 # extracted header and data file paths
 extracted_header_f_path = './data/processed/header.txt'
@@ -134,7 +139,7 @@ f_data.close()
 
 
 # func to vstack each data record to df 
-```{python}
+```python
 def vstack_df(
     _col_names: List[str], 
     _record_items: List[str], 
@@ -158,7 +163,7 @@ def vstack_df(
 
 
 # read header and data files to create dataframe 
-```{python}
+```python
 with open(extracted_header_f_path, 'r') as f_h:
     h_lines = f_h.readlines()
 
@@ -264,7 +269,7 @@ df
 ```
 
 # replace empty string with 'null' 
-```{python}
+```python
 df = df.select(
     # pl.when(pl.col(pl.Utf8).str.lengths()==0) # lengths() deprecated
     #   .then(None)
@@ -281,7 +286,7 @@ df
 
 
 # cast data type for columns 
-```{python}
+```python
 df = df.with_columns(
     pl.col('h_a_indicator').cast(pl.Int32),
     pl.col('h_b_int_num_id').cast(pl.Int16),
@@ -308,7 +313,7 @@ df
 
 
 # add 4 `0` @ end of each item in `d_a_date_time` column 
-```{python}
+```python
 df =  df.with_columns(
     pl.col('d_a_date_time').str.pad_end(12, "0")
 )
@@ -317,7 +322,7 @@ df
 
 
 # add datetime column 
-```{python}
+```python
 df = df.with_columns(
     # pl.col('h_i_date_last_rev')
     #   .str.strptime(pl.Date, format="%Y%m%d")
@@ -331,7 +336,7 @@ df
 
 
 # add 'year' column
-```{python}
+```python
 df = df.with_columns(
     pl.col('date_time')
       .dt.year()
@@ -341,7 +346,7 @@ df
 ```
 
 # scale lat and lon value
-```{python}
+```python
 df = df.with_columns(
     pl.col("d_d_latitude").mul(0.1), 
     pl.col("d_e_longitude").mul(0.1)
@@ -351,13 +356,13 @@ df
 
 
 # check result 
-```{python}
+```python
 # df.describe()
 ```
 
 
 # write df as parquet 
-```{python}
+```python
 df_parquet_f_path = "./data/processed/df.parquet"
 
 # remove parquet file, if it exists

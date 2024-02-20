@@ -1,6 +1,74 @@
 ---
-title: "Qelabs_jp_typhoon_map_v02"
+title: "Map of Typhoons around Japan 2014-2023"
 ---
 
 - Tidy up Japan's typhoon data from 1951 to 2023.
 - Create interactive map.
+
+::: {.column-screen}
+
+```{python}
+# import modules ---------------------------------------------------------------
+import polars as pl
+pl.Config.set_tbl_rows(7)   # limit num of lines for table preview
+import plotly.express as px
+# print('polars:', pl.__version__)
+
+# read df parquet --------------------------------------------------------------
+df_parquet_f_path = "./data/processed/df_2014-2023.parquet"
+# df_parquet_f_path = "./data/processed/df_2015-2023.parquet"
+# df_parquet_f_path = "./data/processed/df_2016-2023.parquet"
+# df_parquet_f_path = "./data/processed/df_2017-2023.parquet"
+# df_parquet_f_path = "./data/processed/df_2018-2023.parquet"
+df = pl.read_parquet(df_parquet_f_path)
+# print('read df as parquet')
+# df
+
+# filter data by year range ----------------------------------------------------
+year_range = [2014, 2023]
+
+df_filtered = df.filter(
+    pl.col('date_time')
+      .dt.year()
+      .is_between(year_range[0], year_range[1])
+)
+# print('df filtered by year range:', year_range)
+# df_filtered
+
+# create map -------------------------------------------------------------------
+fig = px.line_mapbox(
+    df_filtered,
+    # lat=df_filtered["d_d_latitude"],
+    # lon=df_filtered["d_e_longitude"],
+    lat="d_d_latitude",
+    lon="d_e_longitude",
+    color="h_b_int_num_id",
+    zoom=3,
+    height=1300,
+    # animation_frame="h_b_int_num_id",
+    animation_frame="year",
+    # hover_name='h_b_int_num_id',
+    # hover_name=['h_h_storm_name'],
+)
+
+fig.update_layout(
+    # mapbox_style="open-street-map",
+    mapbox_style="carto-darkmatter",
+    # mapbox_zoom=4,
+    mapbox_center_lat=36.2048,
+    mapbox_center_lon=138.2529,
+    margin={"r":0,"t":0,"l":0,"b":0},
+    showlegend=False,
+    # legend=dict(
+    #     xanchor="right",
+    #     yanchor="top",
+    #     x=0.07,
+    #     y=0.99,
+    # ),
+)
+
+fig.show()
+```
+
+
+:::
