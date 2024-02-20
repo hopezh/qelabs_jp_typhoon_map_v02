@@ -51,7 +51,7 @@ fig_typhoon = px.line_mapbox(
     # animation_frame="h_b_int_num_id",
     animation_frame="year",
     # hover_name='h_b_int_num_id',
-    # hover_name=['h_h_storm_name'],
+    hover_name='h_h_storm_name',
 )
 
 fig_typhoon.update_layout(
