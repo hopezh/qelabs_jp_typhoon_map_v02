@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -241,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="column-screen">
 <section id="import-modules" class="level1">
 <h1>import modules</h1>
-<div id="302bf66b" class="cell" data-execution_count="1">
+<div id="7239ccb1" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> os</span>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-df-schema-as-a-dict-col_name-pl.datatype" class="level1">
 <h1>create df schema as a dict <code>{"col_name", pl.DataType}</code></h1>
-<div id="43f336ca" class="cell" data-execution_count="2">
+<div id="e4249b50" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df_schema <span class="op">=</span> {</span>
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-an-empty-dataframe" class="level1">
 <h1>create an empty dataframe</h1>
-<div id="d455ee4c" class="cell" data-execution_count="3">
+<div id="e3f73ec9" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>list_col_names <span class="op">=</span> <span class="bu">list</span>(df_schema.keys())</span>
@@ -332,6 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-30"><a href="#cb5-30"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="3">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -399,64 +400,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="read-the-data-file-extract-header-lines-and-data-lines" class="level1">
 <h1>read the data file, extract header lines and data lines</h1>
-<div id="4ad80bd6" class="cell" data-execution_count="4">
+<div id="893a1f55" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="op">%</span>time</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a><span class="co"># row data file path</span></span>
 <span id="cb6-4"><a href="#cb6-4"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2013-2023.txt'</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2019-2023.txt'</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># extracted header and data file paths</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>extracted_header_f_path <span class="op">=</span> <span class="st">'./data/processed/header.txt'</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a>extracted_data_f_path <span class="op">=</span> <span class="st">'./data/processed/data.txt'</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co"># remove header and data files, if they exists</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="cf">if</span> os.path.exists(extracted_header_f_path):</span>
-<span id="cb6-16"><a href="#cb6-16"></a>    os.remove(extracted_header_f_path)</span>
-<span id="cb6-17"><a href="#cb6-17"></a></span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="cf">if</span> os.path.exists(extracted_data_f_path):</span>
-<span id="cb6-19"><a href="#cb6-19"></a>    os.remove(extracted_data_f_path)</span>
-<span id="cb6-20"><a href="#cb6-20"></a></span>
-<span id="cb6-21"><a href="#cb6-21"></a><span class="co"># open header and data file to write</span></span>
-<span id="cb6-22"><a href="#cb6-22"></a>f_header <span class="op">=</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'w'</span>)</span>
-<span id="cb6-23"><a href="#cb6-23"></a>f_data <span class="op">=</span> <span class="bu">open</span>(extracted_data_f_path, <span class="st">'w'</span>)</span>
-<span id="cb6-24"><a href="#cb6-24"></a></span>
-<span id="cb6-25"><a href="#cb6-25"></a><span class="co"># extract header lines and data lines into different files</span></span>
-<span id="cb6-26"><a href="#cb6-26"></a><span class="cf">with</span> <span class="bu">open</span>(raw_data_file_path) <span class="im">as</span> f:</span>
-<span id="cb6-27"><a href="#cb6-27"></a>    <span class="co"># read all the lines</span></span>
-<span id="cb6-28"><a href="#cb6-28"></a>    lines <span class="op">=</span> f.readlines()</span>
-<span id="cb6-29"><a href="#cb6-29"></a></span>
-<span id="cb6-30"><a href="#cb6-30"></a>    <span class="co"># read each line</span></span>
-<span id="cb6-31"><a href="#cb6-31"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
-<span id="cb6-32"><a href="#cb6-32"></a>        <span class="co"># check if a line is a header/data by the length of its 1st split</span></span>
-<span id="cb6-33"><a href="#cb6-33"></a>        <span class="cf">if</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb6-34"><a href="#cb6-34"></a>            <span class="co"># add header to f_header</span></span>
-<span id="cb6-35"><a href="#cb6-35"></a>            f_header.write(line)</span>
-<span id="cb6-36"><a href="#cb6-36"></a></span>
-<span id="cb6-37"><a href="#cb6-37"></a>        <span class="cf">elif</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">8</span>:</span>
-<span id="cb6-38"><a href="#cb6-38"></a>            <span class="co"># add data line to f_data</span></span>
-<span id="cb6-39"><a href="#cb6-39"></a>            f_data.write(line)</span>
-<span id="cb6-40"><a href="#cb6-40"></a></span>
-<span id="cb6-41"><a href="#cb6-41"></a>f_header.close()</span>
-<span id="cb6-42"><a href="#cb6-42"></a>f_data.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2013-2023.txt'</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2018-2023.txt'</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2019-2023.txt'</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co"># extracted header and data file paths</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a>extracted_header_f_path <span class="op">=</span> <span class="st">'./data/processed/header.txt'</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>extracted_data_f_path <span class="op">=</span> <span class="st">'./data/processed/data.txt'</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co"># remove header and data files, if they exists</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="cf">if</span> os.path.exists(extracted_header_f_path):</span>
+<span id="cb6-17"><a href="#cb6-17"></a>    os.remove(extracted_header_f_path)</span>
+<span id="cb6-18"><a href="#cb6-18"></a></span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="cf">if</span> os.path.exists(extracted_data_f_path):</span>
+<span id="cb6-20"><a href="#cb6-20"></a>    os.remove(extracted_data_f_path)</span>
+<span id="cb6-21"><a href="#cb6-21"></a></span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="co"># open header and data file to write</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>f_header <span class="op">=</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'w'</span>)</span>
+<span id="cb6-24"><a href="#cb6-24"></a>f_data <span class="op">=</span> <span class="bu">open</span>(extracted_data_f_path, <span class="st">'w'</span>)</span>
+<span id="cb6-25"><a href="#cb6-25"></a></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="co"># extract header lines and data lines into different files</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a><span class="cf">with</span> <span class="bu">open</span>(raw_data_file_path) <span class="im">as</span> f:</span>
+<span id="cb6-28"><a href="#cb6-28"></a>    <span class="co"># read all the lines</span></span>
+<span id="cb6-29"><a href="#cb6-29"></a>    lines <span class="op">=</span> f.readlines()</span>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a>    <span class="co"># read each line</span></span>
+<span id="cb6-32"><a href="#cb6-32"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb6-33"><a href="#cb6-33"></a>        <span class="co"># check if a line is a header/data by the length of its 1st split</span></span>
+<span id="cb6-34"><a href="#cb6-34"></a>        <span class="cf">if</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb6-35"><a href="#cb6-35"></a>            <span class="co"># add header to f_header</span></span>
+<span id="cb6-36"><a href="#cb6-36"></a>            f_header.write(line)</span>
+<span id="cb6-37"><a href="#cb6-37"></a></span>
+<span id="cb6-38"><a href="#cb6-38"></a>        <span class="cf">elif</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">8</span>:</span>
+<span id="cb6-39"><a href="#cb6-39"></a>            <span class="co"># add data line to f_data</span></span>
+<span id="cb6-40"><a href="#cb6-40"></a>            f_data.write(line)</span>
+<span id="cb6-41"><a href="#cb6-41"></a></span>
+<span id="cb6-42"><a href="#cb6-42"></a>f_header.close()</span>
+<span id="cb6-43"><a href="#cb6-43"></a>f_data.close()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>CPU times: user 1 µs, sys: 0 ns, total: 1 µs
-Wall time: 3.81 µs</code></pre>
+<pre><code>CPU times: total: 0 ns
+Wall time: 0 ns</code></pre>
 </div>
 </div>
 </section>
 <section id="func-to-vstack-each-data-record-to-df" class="level1">
 <h1>func to vstack each data record to df</h1>
-<div id="1f03f13a" class="cell" data-execution_count="5">
+<div id="e6c51991" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">def</span> vstack_df(</span>
@@ -483,7 +486,7 @@ Wall time: 3.81 µs</code></pre>
 </section>
 <section id="read-header-and-data-files-to-create-dataframe" class="level1">
 <h1>read header and data files to create dataframe</h1>
-<div id="c39788c8" class="cell" data-execution_count="6">
+<div id="5f78e4fa" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="cf">with</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'r'</span>) <span class="im">as</span> f_h:</span>
@@ -590,71 +593,25 @@ Wall time: 3.81 µs</code></pre>
 <span id="cb9-102"><a href="#cb9-102"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>header: 0    ['66666', '2101', '028', '0001', '2101', '0', '6', 'DUJUAN', '20210520']
-header: 1    ['66666', '2102', '073', '0002', '2102', '1', '0', 'SURIGAE', '20210715']
-header: 2    ['66666', '2103', '033', '0004', '2103', '0', '6', 'CHOI-WAN', '20210826']
-header: 3    ['66666', '2104', '011', '0005', '2104', '0', '6', 'KOGUMA', '20210826']
-header: 4    ['66666', '2105', '036', '0006', '2105', '0', '6', 'CHAMPI', '20210909']
-header: 5    ['66666', '2106', '081', '0009', '2106', '0', '6', 'IN-FA', '20211028']
-header: 6    ['66666', '2107', '033', '0010', '2107', '0', '6', 'CEMPAKA', '20211101']
-header: 7    ['66666', '2108', '037', '0011', '2108', '0', '6', 'NEPARTAK', '20211102']
-header: 8    ['66666', '2109', '056', '0014', '2109', '0', '6', 'LUPIT', '20211104']
-header: 9    ['66666', '2110', '032', '0016', '2110', '0', '6', 'MIRINAE', '20211110']
-header: 10   ['66666', '2111', '021', '0015', '2111', '0', '6', 'NIDA', '20211110']
-header: 11   ['66666', '2112', '055', '0018', '2112', '0', '6', 'OMAIS', '20211201']
-header: 12   ['66666', '2113', '034', '0020', '2113', '0', '6', 'CONSON', '20211214']
-header: 13   ['66666', '2114', '070', '0021', '2114', '0', '6', 'CHANTHU', '20211218']
-header: 14   ['66666', '2115', '017', '0022', '2115', '1', '0', 'DIANMU', '20211220']
-header: 15   ['66666', '2116', '057', '0023', '2116', '1', '0', 'MINDULLE', '20211225']
-header: 16   ['66666', '2117', '024', '0024', '2117', '0', '6', 'LIONROCK', '20220106']
-header: 17   ['66666', '2118', '031', '0025', '2118', '0', '6', 'KOMPASU', '20220106']
-header: 18   ['66666', '2119', '042', '0026', '2119', '1', '0', 'NAMTHEUN', '20220107']
-header: 19   ['66666', '2120', '039', '0027', '2120', '1', '0', 'MALOU', '20220119']
-header: 20   ['66666', '2121', '023', '0028', '2121', '0', '6', 'NYATOH', '20220204']
-header: 21   ['66666', '2122', '039', '0029', '2122', '0', '6', 'RAI', '20220204']
-header: 22   ['66666', '2201', '052', '0001', '2201', '1', '0', 'MALAKAS', '20220715']
-header: 23   ['66666', '2202', '014', '0002', '2202', '0', '6', 'MEGI', '20220716']
-header: 24   ['66666', '2203', '037', '0003', '2203', '0', '6', 'CHABA', '20221005']
-header: 25   ['66666', '2204', '043', '0004', '2204', '0', '6', 'AERE', '20221006']
-header: 26   ['66666', '2205', '024', '0006', '2205', '0', '6', 'SONGDA', '20221007']
-header: 27   ['66666', '2206', '014', '0007', '2206', '0', '6', 'TRASES', '20221101']
-header: 28   ['66666', '2207', '014', '0008', '2207', '0', '6', 'MULAN', '20221101']
-header: 29   ['66666', '2208', '035', '0009', '2208', '1', '0', 'MEARI', '20221116']
-header: 30   ['66666', '2209', '021', '0010', '2209', '0', '6', 'MA-ON', '20221116']
-header: 31   ['66666', '2210', '024', '0011', '2210', '1', '0', 'TOKAGE', '20221120']
-header: 32   ['66666', '2211', '069', '0013', '2211', '1', '0', 'HINNAMNOR', '20221124']
-header: 33   ['66666', '2212', '063', '0016', '2212', '0', '6', 'MUIFA', '20221124']
-header: 34   ['66666', '2213', '026', '0017', '2213', '1', '0', 'MERBOK', '20221125']
-header: 35   ['66666', '2214', '047', '0018', '2214', '0', '6', 'NANMADOL', '20221219']
-header: 36   ['66666', '2215', '028', '0019', '2215', '0', '6', 'TALAS', '20221223']
-header: 37   ['66666', '2216', '033', '0020', '2216', '0', '6', 'NORU', '20221226']
-header: 38   ['66666', '2217', '028', '0021', '2217', '1', '0', 'KULAP', '20230104']
-header: 39   ['66666', '2218', '032', '0022', '2218', '0', '6', 'ROKE', '20230104']
-header: 40   ['66666', '2219', '008', '0023', '2219', '0', '6', 'SONCA', '20230104']
-header: 41   ['66666', '2220', '024', '0025', '2220', '0', '6', 'NESAT', '20230104']
-header: 42   ['66666', '2221', '015', '0026', '2221', '1', '0', 'HAITANG', '20230112']
-header: 43   ['66666', '2222', '033', '0028', '2222', '0', '6', 'NALGAE', '20230112']
-header: 44   ['66666', '2223', '024', '0029', '2223', '0', '6', 'BANYAN', '20230117']
-header: 45   ['66666', '2224', '014', '0030', '2224', '0', '6', 'YAMANEKO', '20230119']
-header: 46   ['66666', '2225', '011', '0031', '2225', '0', '6', 'PAKHAR', '20230123']
-header: 47   ['66666', '2301', '014', '0003', '2301', '0', '6', 'SANVU', '20230704']
-header: 48   ['66666', '2302', '067', '0004', '2302', '0', '6', 'MAWAR', '20230830']
-header: 49   ['66666', '2303', '044', '0005', '2303', '1', '0', 'GUCHOL', '20230906']
-header: 50   ['66666', '2304', '023', '0006', '2304', '0', '6', 'TALIM', '20231025']
-header: 51   ['66666', '2305', '042', '0007', '2305', '0', '6', 'DOKSURI', '20231025']
-header: 52   ['66666', '2306', '106', '0008', '2306', '0', '6', 'KHANUN', '20231027']
-header: 53   ['66666', '2307', '061', '0009', '2307', '0', '6', 'LAN', '20231114']
-header: 54   ['66666', '2308', '042', '0010', '2308', '1', '0', 'DORA', '20231115']
-header: 55   ['66666', '2309', '051', '0011', '2309', '0', '6', 'SAOLA', '20231127']
-header: 56   ['66666', '2310', '028', '0012', '2310', '1', '0', 'DAMREY', '20231127']
-header: 57   ['66666', '2311', '040', '0013', '2311', '0', '6', 'HAIKUI', '20231127']
-header: 58   ['66666', '2312', '032', '0014', '2312', '0', '6', 'KIROGI', '20231128']
-header: 59   ['66666', '2313', '019', '0015', '2313', '0', '6', 'YUN-YEUNG', '20231129']
-header: 60   ['66666', '2314', '046', '0016', '2314', '0', '6', 'KOINU', '20240110']
-header: 61   ['66666', '2315', '039', '0017', '2315', '1', '0', 'BOLAVEN', '20240110']
-header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '20240111']</code></pre>
+<pre><code>header: 0    ['66666', '2301', '014', '0003', '2301', '0', '6', 'SANVU', '20230704']
+header: 1    ['66666', '2302', '067', '0004', '2302', '0', '6', 'MAWAR', '20230830']
+header: 2    ['66666', '2303', '044', '0005', '2303', '1', '0', 'GUCHOL', '20230906']
+header: 3    ['66666', '2304', '023', '0006', '2304', '0', '6', 'TALIM', '20231025']
+header: 4    ['66666', '2305', '042', '0007', '2305', '0', '6', 'DOKSURI', '20231025']
+header: 5    ['66666', '2306', '106', '0008', '2306', '0', '6', 'KHANUN', '20231027']
+header: 6    ['66666', '2307', '061', '0009', '2307', '0', '6', 'LAN', '20231108']
+header: 7    ['66666', '2308', '042', '0010', '2308', '1', '0', 'DORA', '20231110']
+header: 8    ['66666', '2309', '051', '0011', '2309', '0', '6', 'SAOLA', '20231127']
+header: 9    ['66666', '2310', '028', '0012', '2310', '1', '0', 'DAMREY', '20231127']
+header: 10   ['66666', '2311', '040', '0013', '2311', '0', '6', 'HAIKUI', '20231127']
+header: 11   ['66666', '2312', '032', '0014', '2312', '0', '6', 'KIROGI', '20231128']
+header: 12   ['66666', '2313', '019', '0015', '2313', '0', '6', 'YUN-YEUNG', '20231129']
+header: 13   ['66666', '2314', '046', '0016', '2314', '0', '6', 'KOINU', '20240110']
+header: 14   ['66666', '2315', '039', '0017', '2315', '1', '0', 'BOLAVEN', '20240110']
+header: 15   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '20240111']</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="6">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -662,7 +619,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (2_272, 23)</small>
+<small>shape: (667, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -719,20 +676,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2101"</td>
-<td>"028"</td>
-<td>"0001"</td>
-<td>"2101"</td>
+<td>"2301"</td>
+<td>"014"</td>
+<td>"0003"</td>
+<td>"2301"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021606"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041900"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"069"</td>
-<td>"1369"</td>
-<td>"1004"</td>
+<td>"035"</td>
+<td>"1596"</td>
+<td>"1008"</td>
 <td>"000"</td>
 <td>""</td>
 <td>""</td>
@@ -744,20 +701,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>"66666"</td>
-<td>"2101"</td>
-<td>"028"</td>
-<td>"0001"</td>
-<td>"2101"</td>
+<td>"2301"</td>
+<td>"014"</td>
+<td>"0003"</td>
+<td>"2301"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021612"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041906"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"069"</td>
-<td>"1362"</td>
-<td>"1006"</td>
+<td>"043"</td>
+<td>"1591"</td>
+<td>"1004"</td>
 <td>"000"</td>
 <td>""</td>
 <td>""</td>
@@ -769,20 +726,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2101"</td>
-<td>"028"</td>
-<td>"0001"</td>
-<td>"2101"</td>
+<td>"2301"</td>
+<td>"014"</td>
+<td>"0003"</td>
+<td>"2301"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021618"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041912"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"068"</td>
-<td>"1351"</td>
-<td>"1004"</td>
+<td>"053"</td>
+<td>"1587"</td>
+<td>"1008"</td>
 <td>"000"</td>
 <td>""</td>
 <td>""</td>
@@ -897,10 +854,11 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="replace-empty-string-with-null" class="level1">
 <h1>replace empty string with ‘null’</h1>
-<div id="1d573971" class="cell" data-execution_count="7">
+<div id="0f40812e" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="op">=</span> df.select(</span>
@@ -917,6 +875,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb11-12"><a href="#cb11-12"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -924,7 +883,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (2_272, 23)</small>
+<small>shape: (667, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -981,20 +940,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2101"</td>
-<td>"028"</td>
-<td>"0001"</td>
-<td>"2101"</td>
+<td>"2301"</td>
+<td>"014"</td>
+<td>"0003"</td>
+<td>"2301"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021606"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041900"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"069"</td>
-<td>"1369"</td>
-<td>"1004"</td>
+<td>"035"</td>
+<td>"1596"</td>
+<td>"1008"</td>
 <td>"000"</td>
 <td>null</td>
 <td>null</td>
@@ -1006,20 +965,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>"66666"</td>
-<td>"2101"</td>
-<td>"028"</td>
-<td>"0001"</td>
-<td>"2101"</td>
+<td>"2301"</td>
+<td>"014"</td>
+<td>"0003"</td>
+<td>"2301"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021612"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041906"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"069"</td>
-<td>"1362"</td>
-<td>"1006"</td>
+<td>"043"</td>
+<td>"1591"</td>
+<td>"1004"</td>
 <td>"000"</td>
 <td>null</td>
 <td>null</td>
@@ -1031,20 +990,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>"66666"</td>
-<td>"2101"</td>
-<td>"028"</td>
-<td>"0001"</td>
-<td>"2101"</td>
+<td>"2301"</td>
+<td>"014"</td>
+<td>"0003"</td>
+<td>"2301"</td>
 <td>"0"</td>
 <td>"6"</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021618"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041912"</td>
 <td>"002"</td>
 <td>"2"</td>
-<td>"068"</td>
-<td>"1351"</td>
-<td>"1004"</td>
+<td>"053"</td>
+<td>"1587"</td>
+<td>"1008"</td>
 <td>"000"</td>
 <td>null</td>
 <td>null</td>
@@ -1159,10 +1118,11 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="cast-data-type-for-columns" class="level1">
 <h1>cast data type for columns</h1>
-<div id="f9a848c2" class="cell" data-execution_count="8">
+<div id="4b7a6400" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1189,6 +1149,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb12-22"><a href="#cb12-22"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1196,7 +1157,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (2_272, 23)</small>
+<small>shape: (667, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1253,20 +1214,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021606"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041900"</td>
 <td>2</td>
 <td>2</td>
-<td>69.0</td>
-<td>1369.0</td>
-<td>1004</td>
+<td>35.0</td>
+<td>1596.0</td>
+<td>1008</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1278,20 +1239,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021612"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041906"</td>
 <td>2</td>
 <td>2</td>
-<td>69.0</td>
-<td>1362.0</td>
-<td>1006</td>
+<td>43.0</td>
+<td>1591.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1303,20 +1264,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"21021618"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"23041912"</td>
 <td>2</td>
 <td>2</td>
-<td>68.0</td>
-<td>1351.0</td>
-<td>1004</td>
+<td>53.0</td>
+<td>1587.0</td>
+<td>1008</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1431,10 +1392,11 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="add-4-0-end-of-each-item-in-d_a_date_time-column" class="level1">
 <h1>add 4 <code>0</code> @ end of each item in <code>d_a_date_time</code> column</h1>
-<div id="c6e3a5c2" class="cell" data-execution_count="9">
+<div id="bdbe93e6" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df <span class="op">=</span>  df.with_columns(</span>
@@ -1443,6 +1405,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb13-4"><a href="#cb13-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="9">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1450,7 +1413,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (2_272, 23)</small>
+<small>shape: (667, 23)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1507,20 +1470,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216060000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419000000"</td>
 <td>2</td>
 <td>2</td>
-<td>69.0</td>
-<td>1369.0</td>
-<td>1004</td>
+<td>35.0</td>
+<td>1596.0</td>
+<td>1008</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1532,20 +1495,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="even">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216120000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419060000"</td>
 <td>2</td>
 <td>2</td>
-<td>69.0</td>
-<td>1362.0</td>
-<td>1006</td>
+<td>43.0</td>
+<td>1591.0</td>
+<td>1004</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1557,20 +1520,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216180000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419120000"</td>
 <td>2</td>
 <td>2</td>
-<td>68.0</td>
-<td>1351.0</td>
-<td>1004</td>
+<td>53.0</td>
+<td>1587.0</td>
+<td>1008</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1685,10 +1648,11 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="add-datetime-column" class="level1">
 <h1>add datetime column</h1>
-<div id="99748b1d" class="cell" data-execution_count="10">
+<div id="ec8d095f" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df <span class="op">=</span> df.with_columns(</span>
@@ -1702,6 +1666,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <span id="cb14-9"><a href="#cb14-9"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="10">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1709,7 +1674,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (2_272, 24)</small>
+<small>shape: (667, 24)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -1768,20 +1733,20 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216060000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419000000"</td>
 <td>2</td>
 <td>2</td>
-<td>69.0</td>
-<td>1369.0</td>
-<td>1004</td>
+<td>35.0</td>
+<td>1596.0</td>
+<td>1008</td>
 <td>0</td>
 <td>null</td>
 <td>null</td>
@@ -1790,49 +1755,23 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2021-02-16 06:00:00</td>
+<td>2023-04-19 00:00:00</td>
 </tr>
 <tr class="even">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216120000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419060000"</td>
 <td>2</td>
 <td>2</td>
-<td>69.0</td>
-<td>1362.0</td>
-<td>1006</td>
-<td>0</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>2021-02-16 12:00:00</td>
-</tr>
-<tr class="odd">
-<td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
-<td>0</td>
-<td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216180000"</td>
-<td>2</td>
-<td>2</td>
-<td>68.0</td>
-<td>1351.0</td>
+<td>43.0</td>
+<td>1591.0</td>
 <td>1004</td>
 <td>0</td>
 <td>null</td>
@@ -1842,7 +1781,33 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2021-02-16 18:00:00</td>
+<td>2023-04-19 06:00:00</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419120000"</td>
+<td>2</td>
+<td>2</td>
+<td>53.0</td>
+<td>1587.0</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 12:00:00</td>
 </tr>
 <tr class="even">
 <td>…</td>
@@ -1953,19 +1918,22 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </div>
 </div>
 </div>
+</div>
 </section>
-<section id="adjust-lat-and-lon-value" class="level1">
-<h1>adjust lat and lon value</h1>
-<div id="65c6a275" class="cell" data-execution_count="11">
+<section id="add-year-column" class="level1">
+<h1>add ‘year’ column</h1>
+<div id="d8859283" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df <span class="op">=</span> df.with_columns(</span>
-<span id="cb15-2"><a href="#cb15-2"></a>    pl.col(<span class="st">"d_d_latitude"</span>).mul(<span class="fl">0.1</span>), </span>
-<span id="cb15-3"><a href="#cb15-3"></a>    pl.col(<span class="st">"d_e_longitude"</span>).mul(<span class="fl">0.1</span>)</span>
-<span id="cb15-4"><a href="#cb15-4"></a>)</span>
-<span id="cb15-5"><a href="#cb15-5"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-2"><a href="#cb15-2"></a>    pl.col(<span class="st">'date_time'</span>)</span>
+<span id="cb15-3"><a href="#cb15-3"></a>      .dt.year()</span>
+<span id="cb15-4"><a href="#cb15-4"></a>      .alias(<span class="st">'year'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>)</span>
+<span id="cb15-6"><a href="#cb15-6"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -1973,7 +1941,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (2_272, 24)</small>
+<small>shape: (667, 25)</small>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
@@ -2001,6 +1969,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <th data-quarto-table-cell-role="th">d_m_shortest_r_30kt_wind_nm</th>
 <th data-quarto-table-cell-role="th">d_p_landfall_or_passage</th>
 <th data-quarto-table-cell-role="th">date_time</th>
+<th data-quarto-table-cell-role="th">year</th>
 </tr>
 <tr class="odd">
 <th>i32</th>
@@ -2027,24 +1996,52 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <th>i16</th>
 <th>str</th>
 <th>datetime[μs]</th>
+<th>i32</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216060000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419000000"</td>
 <td>2</td>
 <td>2</td>
-<td>6.9</td>
-<td>136.9</td>
+<td>35.0</td>
+<td>1596.0</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419060000"</td>
+<td>2</td>
+<td>2</td>
+<td>43.0</td>
+<td>1591.0</td>
 <td>1004</td>
 <td>0</td>
 <td>null</td>
@@ -2054,49 +2051,272 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2021-02-16 06:00:00</td>
-</tr>
-<tr class="even">
-<td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
-<td>0</td>
-<td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216120000"</td>
-<td>2</td>
-<td>2</td>
-<td>6.9</td>
-<td>136.2</td>
-<td>1006</td>
-<td>0</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>null</td>
-<td>2021-02-16 12:00:00</td>
+<td>2023-04-19 06:00:00</td>
+<td>2023</td>
 </tr>
 <tr class="odd">
 <td>66666</td>
-<td>2101</td>
-<td>28</td>
-<td>1</td>
-<td>2101</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
 <td>0</td>
 <td>6</td>
-<td>"DUJUAN"</td>
-<td>"20210520"</td>
-<td>"210216180000"</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419120000"</td>
 <td>2</td>
 <td>2</td>
-<td>6.8</td>
-<td>135.1</td>
+<td>53.0</td>
+<td>1587.0</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 12:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2316</td>
+<td>13</td>
+<td>18</td>
+<td>2316</td>
+<td>0</td>
+<td>6</td>
+<td>"SANBA"</td>
+<td>"20240111"</td>
+<td>"231019180000"</td>
+<td>2</td>
+<td>3</td>
+<td>214.0</td>
+<td>1095.0</td>
+<td>1002</td>
+<td>35</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>9</td>
+<td>150</td>
+<td>150</td>
+<td>null</td>
+<td>2023-10-19 18:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2316</td>
+<td>13</td>
+<td>18</td>
+<td>2316</td>
+<td>0</td>
+<td>6</td>
+<td>"SANBA"</td>
+<td>"20240111"</td>
+<td>"231020000000"</td>
+<td>2</td>
+<td>2</td>
+<td>214.0</td>
+<td>1098.0</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-10-20 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2316</td>
+<td>13</td>
+<td>18</td>
+<td>2316</td>
+<td>0</td>
+<td>6</td>
+<td>"SANBA"</td>
+<td>"20240111"</td>
+<td>"231020060000"</td>
+<td>2</td>
+<td>2</td>
+<td>209.0</td>
+<td>1097.0</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-10-20 06:00:00</td>
+<td>2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="scale-lat-and-lon-value" class="level1">
+<h1>scale lat and lon value</h1>
+<div id="12a353b0" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    pl.col(<span class="st">"d_d_latitude"</span>).mul(<span class="fl">0.1</span>), </span>
+<span id="cb16-3"><a href="#cb16-3"></a>    pl.col(<span class="st">"d_e_longitude"</span>).mul(<span class="fl">0.1</span>)</span>
+<span id="cb16-4"><a href="#cb16-4"></a>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div>
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (667, 25)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">h_a_indicator</th>
+<th data-quarto-table-cell-role="th">h_b_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_c_num_data</th>
+<th data-quarto-table-cell-role="th">h_d_tropical_cyclone_num_id</th>
+<th data-quarto-table-cell-role="th">h_e_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_f_flag_last_data_line</th>
+<th data-quarto-table-cell-role="th">h_g_diff_hour</th>
+<th data-quarto-table-cell-role="th">h_h_storm_name</th>
+<th data-quarto-table-cell-role="th">h_i_date_last_rev</th>
+<th data-quarto-table-cell-role="th">d_a_date_time</th>
+<th data-quarto-table-cell-role="th">d_b_indicator</th>
+<th data-quarto-table-cell-role="th">d_c_grade</th>
+<th data-quarto-table-cell-role="th">d_d_latitude</th>
+<th data-quarto-table-cell-role="th">d_e_longitude</th>
+<th data-quarto-table-cell-role="th">d_f_central_pressure_dPa</th>
+<th data-quarto-table-cell-role="th">d_g_max_wind_speed_kt</th>
+<th data-quarto-table-cell-role="th">d_h_dir_longest_r_50kt_wind</th>
+<th data-quarto-table-cell-role="th">d_i_longest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_j_shortest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_k_dir_longest_r_30kt_wind</th>
+<th data-quarto-table-cell-role="th">d_l_longest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_m_shortest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_p_landfall_or_passage</th>
+<th data-quarto-table-cell-role="th">date_time</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+<tr class="odd">
+<th>i32</th>
+<th>i16</th>
+<th>i16</th>
+<th>i8</th>
+<th>i16</th>
+<th>i8</th>
+<th>i8</th>
+<th>str</th>
+<th>str</th>
+<th>str</th>
+<th>i8</th>
+<th>i8</th>
+<th>f64</th>
+<th>f64</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>str</th>
+<th>datetime[μs]</th>
+<th>i32</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419000000"</td>
+<td>2</td>
+<td>2</td>
+<td>3.5</td>
+<td>159.6</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419060000"</td>
+<td>2</td>
+<td>2</td>
+<td>4.3</td>
+<td>159.1</td>
 <td>1004</td>
 <td>0</td>
 <td>null</td>
@@ -2106,9 +2326,38 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>null</td>
-<td>2021-02-16 18:00:00</td>
+<td>2023-04-19 06:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419120000"</td>
+<td>2</td>
+<td>2</td>
+<td>5.3</td>
+<td>158.7</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 12:00:00</td>
+<td>2023</td>
 </tr>
 <tr class="even">
+<td>…</td>
 <td>…</td>
 <td>…</td>
 <td>…</td>
@@ -2159,6 +2408,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>150</td>
 <td>null</td>
 <td>2023-10-19 18:00:00</td>
+<td>2023</td>
 </tr>
 <tr class="even">
 <td>66666</td>
@@ -2185,6 +2435,7 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>2023-10-20 00:00:00</td>
+<td>2023</td>
 </tr>
 <tr class="odd">
 <td>66666</td>
@@ -2211,35 +2462,37 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 <td>null</td>
 <td>null</td>
 <td>2023-10-20 06:00:00</td>
+<td>2023</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
+</div>
 </section>
 <section id="check-result" class="level1">
 <h1>check result</h1>
-<div id="8fbd62b0" class="cell" data-execution_count="12">
+<div id="da21a297" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># df.describe()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># df.describe()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
 <section id="write-df-as-parquet" class="level1">
 <h1>write df as parquet</h1>
-<div id="23461c5c" class="cell" data-execution_count="13">
+<div id="e26f2623" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df.parquet"</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="co"># remove parquet file, if it exists</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="cf">if</span> os.path.exists(df_parquet_f_path):</span>
-<span id="cb17-5"><a href="#cb17-5"></a>    os.remove(df_parquet_f_path)</span>
-<span id="cb17-6"><a href="#cb17-6"></a></span>
-<span id="cb17-7"><a href="#cb17-7"></a>df.write_parquet(df_parquet_f_path)</span>
-<span id="cb17-8"><a href="#cb17-8"></a><span class="bu">print</span>(<span class="st">'df written as parquet file'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df.parquet"</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="co"># remove parquet file, if it exists</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="cf">if</span> os.path.exists(df_parquet_f_path):</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    os.remove(df_parquet_f_path)</span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a>df.write_parquet(df_parquet_f_path)</span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="bu">print</span>(<span class="st">'df written as parquet file'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>df written as parquet file</code></pre>
@@ -2248,33 +2501,33 @@ header: 62   ['66666', '2316', '013', '0018', '2316', '0', '6', 'SANBA', '202401
 </section>
 <section id="create-map" class="level1">
 <h1>create map</h1>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb19-2"><a href="#cb19-2"></a></span>
-<span id="cb19-3"><a href="#cb19-3"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
-<span id="cb19-4"><a href="#cb19-4"></a><span class="bu">print</span>(<span class="st">'read df as parquet'</span>)</span>
-<span id="cb19-5"><a href="#cb19-5"></a></span>
-<span id="cb19-6"><a href="#cb19-6"></a>fig <span class="op">=</span> px.line_mapbox(</span>
-<span id="cb19-7"><a href="#cb19-7"></a>    df,</span>
-<span id="cb19-8"><a href="#cb19-8"></a>    <span class="co"># lat=df["d_d_latitude"],</span></span>
-<span id="cb19-9"><a href="#cb19-9"></a>    <span class="co"># lon=df["d_e_longitude"],</span></span>
-<span id="cb19-10"><a href="#cb19-10"></a>    <span class="co"># color=df["h_b_int_num_id"],</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>    lat<span class="op">=</span><span class="st">"d_d_latitude"</span>,</span>
-<span id="cb19-12"><a href="#cb19-12"></a>    lon<span class="op">=</span><span class="st">"d_e_longitude"</span>,</span>
-<span id="cb19-13"><a href="#cb19-13"></a>    color<span class="op">=</span><span class="st">"h_b_int_num_id"</span>,</span>
-<span id="cb19-14"><a href="#cb19-14"></a>    zoom<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb19-15"><a href="#cb19-15"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb19-16"><a href="#cb19-16"></a>    <span class="co"># animation_frame="h_b_int_num_id"</span></span>
-<span id="cb19-17"><a href="#cb19-17"></a>)</span>
-<span id="cb19-18"><a href="#cb19-18"></a></span>
-<span id="cb19-19"><a href="#cb19-19"></a>fig.update_layout(</span>
-<span id="cb19-20"><a href="#cb19-20"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
-<span id="cb19-21"><a href="#cb19-21"></a>    mapbox_style<span class="op">=</span><span class="st">"carto-darkmatter"</span>,</span>
-<span id="cb19-22"><a href="#cb19-22"></a>    <span class="co"># mapbox_zoom=4,</span></span>
-<span id="cb19-23"><a href="#cb19-23"></a>    mapbox_center_lat<span class="op">=</span><span class="dv">36</span>,</span>
-<span id="cb19-24"><a href="#cb19-24"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
-<span id="cb19-25"><a href="#cb19-25"></a>)</span>
-<span id="cb19-26"><a href="#cb19-26"></a></span>
-<span id="cb19-27"><a href="#cb19-27"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb20-2"><a href="#cb20-2"></a></span>
+<span id="cb20-3"><a href="#cb20-3"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="bu">print</span>(<span class="st">'read df as parquet'</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a></span>
+<span id="cb20-6"><a href="#cb20-6"></a>fig <span class="op">=</span> px.line_mapbox(</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    df,</span>
+<span id="cb20-8"><a href="#cb20-8"></a>    <span class="co"># lat=df["d_d_latitude"],</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="co"># lon=df["d_e_longitude"],</span></span>
+<span id="cb20-10"><a href="#cb20-10"></a>    <span class="co"># color=df["h_b_int_num_id"],</span></span>
+<span id="cb20-11"><a href="#cb20-11"></a>    lat<span class="op">=</span><span class="st">"d_d_latitude"</span>,</span>
+<span id="cb20-12"><a href="#cb20-12"></a>    lon<span class="op">=</span><span class="st">"d_e_longitude"</span>,</span>
+<span id="cb20-13"><a href="#cb20-13"></a>    color<span class="op">=</span><span class="st">"h_b_int_num_id"</span>,</span>
+<span id="cb20-14"><a href="#cb20-14"></a>    zoom<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb20-15"><a href="#cb20-15"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb20-16"><a href="#cb20-16"></a>    <span class="co"># animation_frame="h_b_int_num_id"</span></span>
+<span id="cb20-17"><a href="#cb20-17"></a>)</span>
+<span id="cb20-18"><a href="#cb20-18"></a></span>
+<span id="cb20-19"><a href="#cb20-19"></a>fig.update_layout(</span>
+<span id="cb20-20"><a href="#cb20-20"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb20-21"><a href="#cb20-21"></a>    mapbox_style<span class="op">=</span><span class="st">"carto-darkmatter"</span>,</span>
+<span id="cb20-22"><a href="#cb20-22"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb20-23"><a href="#cb20-23"></a>    mapbox_center_lat<span class="op">=</span><span class="dv">36</span>,</span>
+<span id="cb20-24"><a href="#cb20-24"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb20-25"><a href="#cb20-25"></a>)</span>
+<span id="cb20-26"><a href="#cb20-26"></a></span>
+<span id="cb20-27"><a href="#cb20-27"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </div>
 
@@ -2865,398 +3118,409 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1"></a><span class="co">---</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="an">title:</span><span class="co"> "Tidy-up Japan Typhoon Data"</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a><span class="co">---</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a></span>
-<span id="cb20-5"><a href="#cb20-5"></a>Tidy up Japan Typhoon data from 1951 to 2023.</span>
-<span id="cb20-6"><a href="#cb20-6"></a></span>
-<span id="cb20-7"><a href="#cb20-7"></a>::: {.column-screen}</span>
-<span id="cb20-8"><a href="#cb20-8"></a></span>
-<span id="cb20-9"><a href="#cb20-9"></a><span class="fu"># import modules </span></span>
-<span id="cb20-12"><a href="#cb20-12"></a><span class="in">```{python}</span></span>
-<span id="cb20-13"><a href="#cb20-13"></a><span class="im">import</span> os</span>
-<span id="cb20-14"><a href="#cb20-14"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
-<span id="cb20-15"><a href="#cb20-15"></a></span>
-<span id="cb20-16"><a href="#cb20-16"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb20-17"><a href="#cb20-17"></a>pl.Config.set_tbl_rows(<span class="dv">7</span>)   <span class="co"># limit num of lines for table preview</span></span>
-<span id="cb20-18"><a href="#cb20-18"></a><span class="bu">print</span>(<span class="st">'polars version'</span>, pl.__version__)</span>
-<span id="cb20-19"><a href="#cb20-19"></a><span class="in">```</span></span>
-<span id="cb20-20"><a href="#cb20-20"></a></span>
-<span id="cb20-21"><a href="#cb20-21"></a></span>
-<span id="cb20-22"><a href="#cb20-22"></a><span class="fu"># create df schema as a dict `{"col_name", pl.DataType}` </span></span>
-<span id="cb20-25"><a href="#cb20-25"></a><span class="in">```{python}</span></span>
-<span id="cb20-26"><a href="#cb20-26"></a>df_schema <span class="op">=</span> {</span>
-<span id="cb20-27"><a href="#cb20-27"></a>    <span class="st">'h_a_indicator'</span>               : pl.String,</span>
-<span id="cb20-28"><a href="#cb20-28"></a>    <span class="st">'h_b_int_num_id'</span>              : pl.String,</span>
-<span id="cb20-29"><a href="#cb20-29"></a>    <span class="st">'h_c_num_data'</span>                : pl.String,</span>
-<span id="cb20-30"><a href="#cb20-30"></a>    <span class="st">'h_d_tropical_cyclone_num_id'</span> : pl.String,</span>
-<span id="cb20-31"><a href="#cb20-31"></a>    <span class="st">'h_e_int_num_id'</span>              : pl.String,</span>
-<span id="cb20-32"><a href="#cb20-32"></a>    <span class="st">'h_f_flag_last_data_line'</span>     : pl.String,</span>
-<span id="cb20-33"><a href="#cb20-33"></a>    <span class="st">'h_g_diff_hour'</span>               : pl.String,</span>
-<span id="cb20-34"><a href="#cb20-34"></a>    <span class="st">'h_h_storm_name'</span>              : pl.String,</span>
-<span id="cb20-35"><a href="#cb20-35"></a>    <span class="st">'h_i_date_last_rev'</span>           : pl.String,</span>
-<span id="cb20-36"><a href="#cb20-36"></a>    <span class="st">'d_a_date_time'</span>               : pl.String,</span>
-<span id="cb20-37"><a href="#cb20-37"></a>    <span class="st">'d_b_indicator'</span>               : pl.String,</span>
-<span id="cb20-38"><a href="#cb20-38"></a>    <span class="st">'d_c_grade'</span>                   : pl.String,</span>
-<span id="cb20-39"><a href="#cb20-39"></a>    <span class="st">'d_d_latitude'</span>                : pl.String,</span>
-<span id="cb20-40"><a href="#cb20-40"></a>    <span class="st">'d_e_longitude'</span>               : pl.String,</span>
-<span id="cb20-41"><a href="#cb20-41"></a>    <span class="st">'d_f_central_pressure_dPa'</span>    : pl.String,</span>
-<span id="cb20-42"><a href="#cb20-42"></a>    <span class="st">'d_g_max_wind_speed_kt'</span>       : pl.String,</span>
-<span id="cb20-43"><a href="#cb20-43"></a>    <span class="st">'d_h_dir_longest_r_50kt_wind'</span> : pl.String,</span>
-<span id="cb20-44"><a href="#cb20-44"></a>    <span class="st">'d_i_longest_r_50kt_wind_nm'</span>  : pl.String,</span>
-<span id="cb20-45"><a href="#cb20-45"></a>    <span class="st">'d_j_shortest_r_50kt_wind_nm'</span> : pl.String,</span>
-<span id="cb20-46"><a href="#cb20-46"></a>    <span class="st">'d_k_dir_longest_r_30kt_wind'</span> : pl.String,</span>
-<span id="cb20-47"><a href="#cb20-47"></a>    <span class="st">'d_l_longest_r_30kt_wind_nm'</span>  : pl.String,</span>
-<span id="cb20-48"><a href="#cb20-48"></a>    <span class="st">'d_m_shortest_r_30kt_wind_nm'</span> : pl.String,</span>
-<span id="cb20-49"><a href="#cb20-49"></a>    <span class="st">'d_p_landfall_or_passage'</span>     : pl.String,</span>
-<span id="cb20-50"><a href="#cb20-50"></a>}</span>
-<span id="cb20-51"><a href="#cb20-51"></a></span>
-<span id="cb20-52"><a href="#cb20-52"></a><span class="co"># print('type of df_schema:', type(df_schema))</span></span>
-<span id="cb20-53"><a href="#cb20-53"></a><span class="bu">print</span>(df_schema)</span>
-<span id="cb20-54"><a href="#cb20-54"></a><span class="in">```</span></span>
-<span id="cb20-55"><a href="#cb20-55"></a></span>
-<span id="cb20-56"><a href="#cb20-56"></a></span>
-<span id="cb20-57"><a href="#cb20-57"></a><span class="fu"># create an empty dataframe </span></span>
-<span id="cb20-60"><a href="#cb20-60"></a><span class="in">```{python}</span></span>
-<span id="cb20-61"><a href="#cb20-61"></a>list_col_names <span class="op">=</span> <span class="bu">list</span>(df_schema.keys())</span>
-<span id="cb20-62"><a href="#cb20-62"></a></span>
-<span id="cb20-63"><a href="#cb20-63"></a>dict_empty_data <span class="op">=</span> {</span>
-<span id="cb20-64"><a href="#cb20-64"></a>    <span class="st">'h_a_indicator'</span>               : [],</span>
-<span id="cb20-65"><a href="#cb20-65"></a>    <span class="st">'h_b_int_num_id'</span>              : [],</span>
-<span id="cb20-66"><a href="#cb20-66"></a>    <span class="st">'h_c_num_data'</span>                : [],</span>
-<span id="cb20-67"><a href="#cb20-67"></a>    <span class="st">'h_d_tropical_cyclone_num_id'</span> : [],</span>
-<span id="cb20-68"><a href="#cb20-68"></a>    <span class="st">'h_e_int_num_id'</span>              : [],</span>
-<span id="cb20-69"><a href="#cb20-69"></a>    <span class="st">'h_f_flag_last_data_line'</span>     : [],</span>
-<span id="cb20-70"><a href="#cb20-70"></a>    <span class="st">'h_g_diff_hour'</span>               : [],</span>
-<span id="cb20-71"><a href="#cb20-71"></a>    <span class="st">'h_h_storm_name'</span>              : [],</span>
-<span id="cb20-72"><a href="#cb20-72"></a>    <span class="st">'h_i_date_last_rev'</span>           : [],</span>
-<span id="cb20-73"><a href="#cb20-73"></a>    <span class="st">'d_a_date_time'</span>               : [],</span>
-<span id="cb20-74"><a href="#cb20-74"></a>    <span class="st">'d_b_indicator'</span>               : [],</span>
-<span id="cb20-75"><a href="#cb20-75"></a>    <span class="st">'d_c_grade'</span>                   : [],</span>
-<span id="cb20-76"><a href="#cb20-76"></a>    <span class="st">'d_d_latitude'</span>                : [],</span>
-<span id="cb20-77"><a href="#cb20-77"></a>    <span class="st">'d_e_longitude'</span>               : [],</span>
-<span id="cb20-78"><a href="#cb20-78"></a>    <span class="st">'d_f_central_pressure_dPa'</span>    : [],</span>
-<span id="cb20-79"><a href="#cb20-79"></a>    <span class="st">'d_g_max_wind_speed_kt'</span>       : [],</span>
-<span id="cb20-80"><a href="#cb20-80"></a>    <span class="st">'d_h_dir_longest_r_50kt_wind'</span> : [],</span>
-<span id="cb20-81"><a href="#cb20-81"></a>    <span class="st">'d_i_longest_r_50kt_wind_nm'</span>  : [],</span>
-<span id="cb20-82"><a href="#cb20-82"></a>    <span class="st">'d_j_shortest_r_50kt_wind_nm'</span> : [],</span>
-<span id="cb20-83"><a href="#cb20-83"></a>    <span class="st">'d_k_dir_longest_r_30kt_wind'</span> : [],</span>
-<span id="cb20-84"><a href="#cb20-84"></a>    <span class="st">'d_l_longest_r_30kt_wind_nm'</span>  : [],</span>
-<span id="cb20-85"><a href="#cb20-85"></a>    <span class="st">'d_m_shortest_r_30kt_wind_nm'</span> : [],</span>
-<span id="cb20-86"><a href="#cb20-86"></a>    <span class="st">'d_p_landfall_or_passage'</span>     : [],</span>
-<span id="cb20-87"><a href="#cb20-87"></a>}</span>
-<span id="cb20-88"><a href="#cb20-88"></a></span>
-<span id="cb20-89"><a href="#cb20-89"></a>df<span class="op">=</span> pl.DataFrame(dict_empty_data, df_schema)</span>
-<span id="cb20-90"><a href="#cb20-90"></a>df</span>
-<span id="cb20-91"><a href="#cb20-91"></a><span class="in">```</span></span>
-<span id="cb20-92"><a href="#cb20-92"></a></span>
-<span id="cb20-93"><a href="#cb20-93"></a></span>
-<span id="cb20-94"><a href="#cb20-94"></a><span class="fu"># read the data file, extract header lines and data lines </span></span>
-<span id="cb20-97"><a href="#cb20-97"></a><span class="in">```{python}</span></span>
-<span id="cb20-98"><a href="#cb20-98"></a><span class="op">%</span>time</span>
-<span id="cb20-99"><a href="#cb20-99"></a></span>
-<span id="cb20-100"><a href="#cb20-100"></a><span class="co"># row data file path</span></span>
-<span id="cb20-101"><a href="#cb20-101"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'</span></span>
-<span id="cb20-102"><a href="#cb20-102"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2013-2023.txt'</span></span>
-<span id="cb20-103"><a href="#cb20-103"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_2019-2023.txt'</span></span>
-<span id="cb20-104"><a href="#cb20-104"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
-<span id="cb20-105"><a href="#cb20-105"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
-<span id="cb20-106"><a href="#cb20-106"></a></span>
-<span id="cb20-107"><a href="#cb20-107"></a><span class="co"># extracted header and data file paths</span></span>
-<span id="cb20-108"><a href="#cb20-108"></a>extracted_header_f_path <span class="op">=</span> <span class="st">'./data/processed/header.txt'</span></span>
-<span id="cb20-109"><a href="#cb20-109"></a>extracted_data_f_path <span class="op">=</span> <span class="st">'./data/processed/data.txt'</span></span>
-<span id="cb20-110"><a href="#cb20-110"></a></span>
-<span id="cb20-111"><a href="#cb20-111"></a><span class="co"># remove header and data files, if they exists</span></span>
-<span id="cb20-112"><a href="#cb20-112"></a><span class="cf">if</span> os.path.exists(extracted_header_f_path):</span>
-<span id="cb20-113"><a href="#cb20-113"></a>    os.remove(extracted_header_f_path)</span>
-<span id="cb20-114"><a href="#cb20-114"></a></span>
-<span id="cb20-115"><a href="#cb20-115"></a><span class="cf">if</span> os.path.exists(extracted_data_f_path):</span>
-<span id="cb20-116"><a href="#cb20-116"></a>    os.remove(extracted_data_f_path)</span>
-<span id="cb20-117"><a href="#cb20-117"></a></span>
-<span id="cb20-118"><a href="#cb20-118"></a><span class="co"># open header and data file to write</span></span>
-<span id="cb20-119"><a href="#cb20-119"></a>f_header <span class="op">=</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'w'</span>)</span>
-<span id="cb20-120"><a href="#cb20-120"></a>f_data <span class="op">=</span> <span class="bu">open</span>(extracted_data_f_path, <span class="st">'w'</span>)</span>
-<span id="cb20-121"><a href="#cb20-121"></a></span>
-<span id="cb20-122"><a href="#cb20-122"></a><span class="co"># extract header lines and data lines into different files</span></span>
-<span id="cb20-123"><a href="#cb20-123"></a><span class="cf">with</span> <span class="bu">open</span>(raw_data_file_path) <span class="im">as</span> f:</span>
-<span id="cb20-124"><a href="#cb20-124"></a>    <span class="co"># read all the lines</span></span>
-<span id="cb20-125"><a href="#cb20-125"></a>    lines <span class="op">=</span> f.readlines()</span>
-<span id="cb20-126"><a href="#cb20-126"></a></span>
-<span id="cb20-127"><a href="#cb20-127"></a>    <span class="co"># read each line</span></span>
-<span id="cb20-128"><a href="#cb20-128"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
-<span id="cb20-129"><a href="#cb20-129"></a>        <span class="co"># check if a line is a header/data by the length of its 1st split</span></span>
-<span id="cb20-130"><a href="#cb20-130"></a>        <span class="cf">if</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">5</span>:</span>
-<span id="cb20-131"><a href="#cb20-131"></a>            <span class="co"># add header to f_header</span></span>
-<span id="cb20-132"><a href="#cb20-132"></a>            f_header.write(line)</span>
-<span id="cb20-133"><a href="#cb20-133"></a></span>
-<span id="cb20-134"><a href="#cb20-134"></a>        <span class="cf">elif</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">8</span>:</span>
-<span id="cb20-135"><a href="#cb20-135"></a>            <span class="co"># add data line to f_data</span></span>
-<span id="cb20-136"><a href="#cb20-136"></a>            f_data.write(line)</span>
-<span id="cb20-137"><a href="#cb20-137"></a></span>
-<span id="cb20-138"><a href="#cb20-138"></a>f_header.close()</span>
-<span id="cb20-139"><a href="#cb20-139"></a>f_data.close()</span>
-<span id="cb20-140"><a href="#cb20-140"></a><span class="in">```</span></span>
-<span id="cb20-141"><a href="#cb20-141"></a></span>
-<span id="cb20-142"><a href="#cb20-142"></a></span>
-<span id="cb20-143"><a href="#cb20-143"></a><span class="fu"># func to vstack each data record to df </span></span>
-<span id="cb20-146"><a href="#cb20-146"></a><span class="in">```{python}</span></span>
-<span id="cb20-147"><a href="#cb20-147"></a><span class="kw">def</span> vstack_df(</span>
-<span id="cb20-148"><a href="#cb20-148"></a>    _col_names: List[<span class="bu">str</span>], </span>
-<span id="cb20-149"><a href="#cb20-149"></a>    _record_items: List[<span class="bu">str</span>], </span>
-<span id="cb20-150"><a href="#cb20-150"></a>    _df: pl.DataFrame,</span>
-<span id="cb20-151"><a href="#cb20-151"></a>) <span class="op">-&gt;</span> pl.DataFrame:</span>
-<span id="cb20-152"><a href="#cb20-152"></a></span>
-<span id="cb20-153"><a href="#cb20-153"></a>    <span class="co"># create a dict from list of col names and a list of data items</span></span>
-<span id="cb20-154"><a href="#cb20-154"></a>    dict_record <span class="op">=</span> <span class="bu">dict</span>(</span>
-<span id="cb20-155"><a href="#cb20-155"></a>        <span class="bu">zip</span>(</span>
-<span id="cb20-156"><a href="#cb20-156"></a>            _col_names, </span>
-<span id="cb20-157"><a href="#cb20-157"></a>            _record_items,</span>
-<span id="cb20-158"><a href="#cb20-158"></a>        )</span>
-<span id="cb20-159"><a href="#cb20-159"></a>    )</span>
-<span id="cb20-160"><a href="#cb20-160"></a></span>
-<span id="cb20-161"><a href="#cb20-161"></a>    df_to_stack <span class="op">=</span> pl.DataFrame(dict_record)</span>
-<span id="cb20-162"><a href="#cb20-162"></a></span>
-<span id="cb20-163"><a href="#cb20-163"></a>    _df <span class="op">=</span> _df.vstack(df_to_stack)</span>
-<span id="cb20-164"><a href="#cb20-164"></a></span>
-<span id="cb20-165"><a href="#cb20-165"></a>    <span class="cf">return</span> _df</span>
-<span id="cb20-166"><a href="#cb20-166"></a><span class="in">```</span></span>
-<span id="cb20-167"><a href="#cb20-167"></a></span>
-<span id="cb20-168"><a href="#cb20-168"></a></span>
-<span id="cb20-169"><a href="#cb20-169"></a><span class="fu"># read header and data files to create dataframe </span></span>
-<span id="cb20-172"><a href="#cb20-172"></a><span class="in">```{python}</span></span>
-<span id="cb20-173"><a href="#cb20-173"></a><span class="cf">with</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'r'</span>) <span class="im">as</span> f_h:</span>
-<span id="cb20-174"><a href="#cb20-174"></a>    h_lines <span class="op">=</span> f_h.readlines()</span>
-<span id="cb20-175"><a href="#cb20-175"></a></span>
-<span id="cb20-176"><a href="#cb20-176"></a>    header_cnt <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb20-177"><a href="#cb20-177"></a></span>
-<span id="cb20-178"><a href="#cb20-178"></a>    f_data_line_num_start <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb20-179"><a href="#cb20-179"></a>    f_data_line_num_end <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
-<span id="cb20-180"><a href="#cb20-180"></a></span>
-<span id="cb20-181"><a href="#cb20-181"></a>    <span class="cf">for</span> h_line <span class="kw">in</span> h_lines:</span>
-<span id="cb20-182"><a href="#cb20-182"></a>        <span class="co"># create an empty list to store header and data for each record</span></span>
-<span id="cb20-183"><a href="#cb20-183"></a>        headedr_items <span class="op">=</span> []</span>
-<span id="cb20-184"><a href="#cb20-184"></a></span>
-<span id="cb20-185"><a href="#cb20-185"></a>        <span class="co"># get info from header col by col</span></span>
-<span id="cb20-186"><a href="#cb20-186"></a>        h_a <span class="op">=</span> h_line[<span class="dv">0</span>:<span class="dv">5</span>]</span>
-<span id="cb20-187"><a href="#cb20-187"></a>        h_b <span class="op">=</span> h_line[<span class="dv">6</span>:<span class="dv">10</span>]</span>
-<span id="cb20-188"><a href="#cb20-188"></a>        h_c <span class="op">=</span> h_line[<span class="dv">12</span>:<span class="dv">15</span>]</span>
-<span id="cb20-189"><a href="#cb20-189"></a>        h_d <span class="op">=</span> h_line[<span class="dv">16</span>:<span class="dv">20</span>]</span>
-<span id="cb20-190"><a href="#cb20-190"></a>        h_e <span class="op">=</span> h_line[<span class="dv">21</span>:<span class="dv">25</span>]</span>
-<span id="cb20-191"><a href="#cb20-191"></a>        h_f <span class="op">=</span> h_line[<span class="dv">26</span>]</span>
-<span id="cb20-192"><a href="#cb20-192"></a>        h_g <span class="op">=</span> h_line[<span class="dv">28</span>]</span>
-<span id="cb20-193"><a href="#cb20-193"></a>        h_h <span class="op">=</span> h_line[<span class="dv">30</span>:<span class="dv">50</span>].strip()</span>
-<span id="cb20-194"><a href="#cb20-194"></a>        h_i <span class="op">=</span> h_line[<span class="dv">64</span>:<span class="dv">72</span>]</span>
-<span id="cb20-195"><a href="#cb20-195"></a></span>
-<span id="cb20-196"><a href="#cb20-196"></a>        <span class="co"># calc obsolute start and end line num in f_data to read</span></span>
-<span id="cb20-197"><a href="#cb20-197"></a>        <span class="co"># ...new start_line_num = previous end_line_num +1</span></span>
-<span id="cb20-198"><a href="#cb20-198"></a>        f_data_line_num_start <span class="op">=</span> f_data_line_num_end <span class="op">+</span> <span class="dv">1</span> </span>
-<span id="cb20-199"><a href="#cb20-199"></a>        <span class="co"># ...new end_line_num = new start_line_num + num_data_lines of the current data chunk</span></span>
-<span id="cb20-200"><a href="#cb20-200"></a>        f_data_line_num_end <span class="op">=</span> f_data_line_num_start <span class="op">+</span> <span class="bu">int</span>(h_c) <span class="op">-</span> <span class="dv">1</span> </span>
-<span id="cb20-201"><a href="#cb20-201"></a></span>
-<span id="cb20-202"><a href="#cb20-202"></a>        headedr_items.extend([ </span>
-<span id="cb20-203"><a href="#cb20-203"></a>            h_a, </span>
-<span id="cb20-204"><a href="#cb20-204"></a>            h_b,</span>
-<span id="cb20-205"><a href="#cb20-205"></a>            h_c,</span>
-<span id="cb20-206"><a href="#cb20-206"></a>            h_d,</span>
-<span id="cb20-207"><a href="#cb20-207"></a>            h_e,</span>
-<span id="cb20-208"><a href="#cb20-208"></a>            h_f,</span>
-<span id="cb20-209"><a href="#cb20-209"></a>            h_g,</span>
-<span id="cb20-210"><a href="#cb20-210"></a>            h_h,</span>
-<span id="cb20-211"><a href="#cb20-211"></a>            h_i</span>
-<span id="cb20-212"><a href="#cb20-212"></a>        ])</span>
-<span id="cb20-213"><a href="#cb20-213"></a></span>
-<span id="cb20-214"><a href="#cb20-214"></a>        <span class="bu">print</span>(<span class="st">'header:'</span>, header_cnt, <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>, headedr_items)</span>
-<span id="cb20-215"><a href="#cb20-215"></a></span>
-<span id="cb20-216"><a href="#cb20-216"></a>        <span class="co"># read data file by the start and end line numbers</span></span>
-<span id="cb20-217"><a href="#cb20-217"></a>        f_data <span class="op">=</span> <span class="st">'./data/processed/data.txt'</span></span>
-<span id="cb20-218"><a href="#cb20-218"></a></span>
-<span id="cb20-219"><a href="#cb20-219"></a>        <span class="cf">with</span> <span class="bu">open</span>(f_data, <span class="st">'r'</span>) <span class="im">as</span> f_data:</span>
-<span id="cb20-220"><a href="#cb20-220"></a>            <span class="cf">for</span> idx, d_line <span class="kw">in</span> <span class="bu">enumerate</span>(f_data):</span>
-<span id="cb20-221"><a href="#cb20-221"></a>                record_items <span class="op">=</span> []</span>
-<span id="cb20-222"><a href="#cb20-222"></a></span>
-<span id="cb20-223"><a href="#cb20-223"></a>                <span class="cf">if</span> f_data_line_num_start <span class="op">&lt;=</span> idx <span class="op">&lt;=</span> f_data_line_num_end:</span>
-<span id="cb20-224"><a href="#cb20-224"></a>                    data_items <span class="op">=</span> []</span>
-<span id="cb20-225"><a href="#cb20-225"></a></span>
-<span id="cb20-226"><a href="#cb20-226"></a>                    d_a <span class="op">=</span> d_line[<span class="dv">0</span>:<span class="dv">8</span>].strip()</span>
-<span id="cb20-227"><a href="#cb20-227"></a>                    d_b <span class="op">=</span> d_line[<span class="dv">9</span>:<span class="dv">12</span>].strip()</span>
-<span id="cb20-228"><a href="#cb20-228"></a>                    d_c <span class="op">=</span> d_line[<span class="dv">13</span>:<span class="dv">14</span>].strip()</span>
-<span id="cb20-229"><a href="#cb20-229"></a>                    d_d <span class="op">=</span> d_line[<span class="dv">15</span>:<span class="dv">18</span>].strip()</span>
-<span id="cb20-230"><a href="#cb20-230"></a>                    d_e <span class="op">=</span> d_line[<span class="dv">19</span>:<span class="dv">23</span>].strip()</span>
-<span id="cb20-231"><a href="#cb20-231"></a>                    d_f <span class="op">=</span> d_line[<span class="dv">24</span>:<span class="dv">28</span>].strip()</span>
-<span id="cb20-232"><a href="#cb20-232"></a>                    d_g <span class="op">=</span> d_line[<span class="dv">33</span>:<span class="dv">36</span>].strip()</span>
-<span id="cb20-233"><a href="#cb20-233"></a>                    d_h <span class="op">=</span> d_line[<span class="dv">41</span>].strip()</span>
-<span id="cb20-234"><a href="#cb20-234"></a>                    d_i <span class="op">=</span> d_line[<span class="dv">42</span>:<span class="dv">46</span>].strip()</span>
-<span id="cb20-235"><a href="#cb20-235"></a>                    d_j <span class="op">=</span> d_line[<span class="dv">47</span>:<span class="dv">51</span>].strip()</span>
-<span id="cb20-236"><a href="#cb20-236"></a>                    d_k <span class="op">=</span> d_line[<span class="dv">52</span>].strip()</span>
-<span id="cb20-237"><a href="#cb20-237"></a>                    d_l <span class="op">=</span> d_line[<span class="dv">53</span>:<span class="dv">57</span>].strip()</span>
-<span id="cb20-238"><a href="#cb20-238"></a>                    d_m <span class="op">=</span> d_line[<span class="dv">58</span>:<span class="dv">62</span>].strip()</span>
-<span id="cb20-239"><a href="#cb20-239"></a>                    d_p <span class="op">=</span> d_line[<span class="dv">71</span>].strip()</span>
-<span id="cb20-240"><a href="#cb20-240"></a></span>
-<span id="cb20-241"><a href="#cb20-241"></a>                    data_items.extend([</span>
-<span id="cb20-242"><a href="#cb20-242"></a>                        d_a,</span>
-<span id="cb20-243"><a href="#cb20-243"></a>                        d_b,</span>
-<span id="cb20-244"><a href="#cb20-244"></a>                        d_c,</span>
-<span id="cb20-245"><a href="#cb20-245"></a>                        d_d,</span>
-<span id="cb20-246"><a href="#cb20-246"></a>                        d_e,</span>
-<span id="cb20-247"><a href="#cb20-247"></a>                        d_f,</span>
-<span id="cb20-248"><a href="#cb20-248"></a>                        d_g,</span>
-<span id="cb20-249"><a href="#cb20-249"></a>                        d_h,</span>
-<span id="cb20-250"><a href="#cb20-250"></a>                        d_i,</span>
-<span id="cb20-251"><a href="#cb20-251"></a>                        d_j,</span>
-<span id="cb20-252"><a href="#cb20-252"></a>                        d_k,</span>
-<span id="cb20-253"><a href="#cb20-253"></a>                        d_l,</span>
-<span id="cb20-254"><a href="#cb20-254"></a>                        d_m,</span>
-<span id="cb20-255"><a href="#cb20-255"></a>                        d_p</span>
-<span id="cb20-256"><a href="#cb20-256"></a>                    ])</span>
-<span id="cb20-257"><a href="#cb20-257"></a></span>
-<span id="cb20-258"><a href="#cb20-258"></a>                    <span class="co"># join the lists of header and data items</span></span>
-<span id="cb20-259"><a href="#cb20-259"></a>                    record_items <span class="op">=</span> headedr_items <span class="op">+</span> data_items</span>
-<span id="cb20-260"><a href="#cb20-260"></a></span>
-<span id="cb20-261"><a href="#cb20-261"></a>                    <span class="co"># stack the df created from the current record to df</span></span>
-<span id="cb20-262"><a href="#cb20-262"></a>                    <span class="co"># option 1:</span></span>
-<span id="cb20-263"><a href="#cb20-263"></a>                    <span class="co"># dict_record = dict(zip(list_col_names, record_items))</span></span>
-<span id="cb20-264"><a href="#cb20-264"></a>                    <span class="co"># df_to_stack = pl.DataFrame(dict_record)</span></span>
-<span id="cb20-265"><a href="#cb20-265"></a>                    <span class="co"># df = df.vstack(df_to_stack)</span></span>
-<span id="cb20-266"><a href="#cb20-266"></a>                    <span class="co"># option 2:</span></span>
-<span id="cb20-267"><a href="#cb20-267"></a>                    df <span class="op">=</span> vstack_df(list_col_names, record_items, df)</span>
-<span id="cb20-268"><a href="#cb20-268"></a></span>
-<span id="cb20-269"><a href="#cb20-269"></a>                    <span class="co"># # cherry-print a data line for verification</span></span>
-<span id="cb20-270"><a href="#cb20-270"></a>                    <span class="co"># if idx == 337:</span></span>
-<span id="cb20-271"><a href="#cb20-271"></a>                    <span class="co">#     print(record_items)</span></span>
-<span id="cb20-272"><a href="#cb20-272"></a></span>
-<span id="cb20-273"><a href="#cb20-273"></a>        header_cnt <span class="op">+=</span> <span class="dv">1</span></span>
-<span id="cb20-274"><a href="#cb20-274"></a>df</span>
-<span id="cb20-275"><a href="#cb20-275"></a><span class="in">```</span></span>
-<span id="cb20-276"><a href="#cb20-276"></a></span>
-<span id="cb20-277"><a href="#cb20-277"></a><span class="fu"># replace empty string with 'null' </span></span>
-<span id="cb20-280"><a href="#cb20-280"></a><span class="in">```{python}</span></span>
-<span id="cb20-281"><a href="#cb20-281"></a>df <span class="op">=</span> df.select(</span>
-<span id="cb20-282"><a href="#cb20-282"></a>    <span class="co"># pl.when(pl.col(pl.Utf8).str.lengths()==0) # lengths() deprecated</span></span>
-<span id="cb20-283"><a href="#cb20-283"></a>    <span class="co">#   .then(None)</span></span>
-<span id="cb20-284"><a href="#cb20-284"></a>    <span class="co">#   .otherwise(pl.col(pl.Utf8))             # pl.Utf8 replaced by pl.String</span></span>
-<span id="cb20-285"><a href="#cb20-285"></a>    <span class="co">#   .keep_name()                            # .keep_name() deprecated</span></span>
-<span id="cb20-286"><a href="#cb20-286"></a></span>
-<span id="cb20-287"><a href="#cb20-287"></a>    pl.when(pl.col(pl.Utf8).<span class="bu">str</span>.len_bytes()<span class="op">==</span><span class="dv">0</span>)</span>
-<span id="cb20-288"><a href="#cb20-288"></a>      .then(<span class="va">None</span>)</span>
-<span id="cb20-289"><a href="#cb20-289"></a>      .otherwise(pl.col(pl.String))</span>
-<span id="cb20-290"><a href="#cb20-290"></a>      .name.keep()</span>
-<span id="cb20-291"><a href="#cb20-291"></a>)</span>
-<span id="cb20-292"><a href="#cb20-292"></a>df</span>
-<span id="cb20-293"><a href="#cb20-293"></a><span class="in">```</span></span>
-<span id="cb20-294"><a href="#cb20-294"></a></span>
-<span id="cb20-295"><a href="#cb20-295"></a></span>
-<span id="cb20-296"><a href="#cb20-296"></a><span class="fu"># cast data type for columns </span></span>
-<span id="cb20-299"><a href="#cb20-299"></a><span class="in">```{python}</span></span>
-<span id="cb20-300"><a href="#cb20-300"></a>df <span class="op">=</span> df.with_columns(</span>
-<span id="cb20-301"><a href="#cb20-301"></a>    pl.col(<span class="st">'h_a_indicator'</span>).cast(pl.Int32),</span>
-<span id="cb20-302"><a href="#cb20-302"></a>    pl.col(<span class="st">'h_b_int_num_id'</span>).cast(pl.Int16),</span>
-<span id="cb20-303"><a href="#cb20-303"></a>    pl.col(<span class="st">'h_c_num_data'</span>).cast(pl.Int16),</span>
-<span id="cb20-304"><a href="#cb20-304"></a>    pl.col(<span class="st">'h_d_tropical_cyclone_num_id'</span>).cast(pl.Int8),</span>
-<span id="cb20-305"><a href="#cb20-305"></a>    pl.col(<span class="st">'h_e_int_num_id'</span>).cast(pl.Int16),</span>
-<span id="cb20-306"><a href="#cb20-306"></a>    pl.col(<span class="st">'h_f_flag_last_data_line'</span>).cast(pl.Int8),</span>
-<span id="cb20-307"><a href="#cb20-307"></a>    pl.col(<span class="st">'h_g_diff_hour'</span>).cast(pl.Int8),</span>
-<span id="cb20-308"><a href="#cb20-308"></a>    pl.col(<span class="st">'d_b_indicator'</span>).cast(pl.Int8),</span>
-<span id="cb20-309"><a href="#cb20-309"></a>    pl.col(<span class="st">'d_c_grade'</span>).cast(pl.Int8),</span>
-<span id="cb20-310"><a href="#cb20-310"></a>    pl.col(<span class="st">'d_d_latitude'</span>).cast(pl.Float64),</span>
-<span id="cb20-311"><a href="#cb20-311"></a>    pl.col(<span class="st">'d_e_longitude'</span>).cast(pl.Float64),</span>
-<span id="cb20-312"><a href="#cb20-312"></a>    pl.col(<span class="st">'d_f_central_pressure_dPa'</span>).cast(pl.Int16),</span>
-<span id="cb20-313"><a href="#cb20-313"></a>    pl.col(<span class="st">'d_g_max_wind_speed_kt'</span>).cast(pl.Int16),</span>
-<span id="cb20-314"><a href="#cb20-314"></a>    pl.col(<span class="st">'d_h_dir_longest_r_50kt_wind'</span>).cast(pl.Int16),</span>
-<span id="cb20-315"><a href="#cb20-315"></a>    pl.col(<span class="st">'d_i_longest_r_50kt_wind_nm'</span>).cast(pl.Int16),</span>
-<span id="cb20-316"><a href="#cb20-316"></a>    pl.col(<span class="st">'d_j_shortest_r_50kt_wind_nm'</span>).cast(pl.Int16),</span>
-<span id="cb20-317"><a href="#cb20-317"></a>    pl.col(<span class="st">'d_k_dir_longest_r_30kt_wind'</span>).cast(pl.Int16),</span>
-<span id="cb20-318"><a href="#cb20-318"></a>    pl.col(<span class="st">'d_l_longest_r_30kt_wind_nm'</span>).cast(pl.Int16),</span>
-<span id="cb20-319"><a href="#cb20-319"></a>    pl.col(<span class="st">'d_m_shortest_r_30kt_wind_nm'</span>).cast(pl.Int16),</span>
-<span id="cb20-320"><a href="#cb20-320"></a>)</span>
-<span id="cb20-321"><a href="#cb20-321"></a>df</span>
-<span id="cb20-322"><a href="#cb20-322"></a><span class="in">```</span></span>
-<span id="cb20-323"><a href="#cb20-323"></a></span>
-<span id="cb20-324"><a href="#cb20-324"></a></span>
-<span id="cb20-325"><a href="#cb20-325"></a><span class="fu"># add 4 `0` @ end of each item in `d_a_date_time` column </span></span>
-<span id="cb20-328"><a href="#cb20-328"></a><span class="in">```{python}</span></span>
-<span id="cb20-329"><a href="#cb20-329"></a>df <span class="op">=</span>  df.with_columns(</span>
-<span id="cb20-330"><a href="#cb20-330"></a>    pl.col(<span class="st">'d_a_date_time'</span>).<span class="bu">str</span>.pad_end(<span class="dv">12</span>, <span class="st">"0"</span>)</span>
-<span id="cb20-331"><a href="#cb20-331"></a>)</span>
-<span id="cb20-332"><a href="#cb20-332"></a>df</span>
-<span id="cb20-333"><a href="#cb20-333"></a><span class="in">```</span></span>
-<span id="cb20-334"><a href="#cb20-334"></a></span>
-<span id="cb20-335"><a href="#cb20-335"></a></span>
-<span id="cb20-336"><a href="#cb20-336"></a><span class="fu"># add datetime column </span></span>
-<span id="cb20-339"><a href="#cb20-339"></a><span class="in">```{python}</span></span>
-<span id="cb20-340"><a href="#cb20-340"></a>df <span class="op">=</span> df.with_columns(</span>
-<span id="cb20-341"><a href="#cb20-341"></a>    <span class="co"># pl.col('h_i_date_last_rev')</span></span>
-<span id="cb20-342"><a href="#cb20-342"></a>    <span class="co">#   .str.strptime(pl.Date, format="%Y%m%d")</span></span>
-<span id="cb20-343"><a href="#cb20-343"></a>    <span class="co">#   .alias('date_last_rev'),</span></span>
-<span id="cb20-344"><a href="#cb20-344"></a>    pl.col(<span class="st">'d_a_date_time'</span>)</span>
-<span id="cb20-345"><a href="#cb20-345"></a>      .<span class="bu">str</span>.strptime(pl.Datetime, <span class="bu">format</span><span class="op">=</span><span class="st">"%y%m</span><span class="sc">%d</span><span class="st">%H%M%S"</span>)</span>
-<span id="cb20-346"><a href="#cb20-346"></a>      .alias(<span class="st">'date_time'</span>),</span>
-<span id="cb20-347"><a href="#cb20-347"></a>)</span>
-<span id="cb20-348"><a href="#cb20-348"></a>df</span>
-<span id="cb20-349"><a href="#cb20-349"></a><span class="in">```</span></span>
-<span id="cb20-350"><a href="#cb20-350"></a></span>
-<span id="cb20-351"><a href="#cb20-351"></a></span>
-<span id="cb20-352"><a href="#cb20-352"></a><span class="fu"># adjust lat and lon value</span></span>
-<span id="cb20-355"><a href="#cb20-355"></a><span class="in">```{python}</span></span>
-<span id="cb20-356"><a href="#cb20-356"></a>df <span class="op">=</span> df.with_columns(</span>
-<span id="cb20-357"><a href="#cb20-357"></a>    pl.col(<span class="st">"d_d_latitude"</span>).mul(<span class="fl">0.1</span>), </span>
-<span id="cb20-358"><a href="#cb20-358"></a>    pl.col(<span class="st">"d_e_longitude"</span>).mul(<span class="fl">0.1</span>)</span>
-<span id="cb20-359"><a href="#cb20-359"></a>)</span>
-<span id="cb20-360"><a href="#cb20-360"></a>df</span>
-<span id="cb20-361"><a href="#cb20-361"></a><span class="in">```</span></span>
-<span id="cb20-362"><a href="#cb20-362"></a></span>
-<span id="cb20-363"><a href="#cb20-363"></a></span>
-<span id="cb20-364"><a href="#cb20-364"></a><span class="fu"># check result </span></span>
-<span id="cb20-367"><a href="#cb20-367"></a><span class="in">```{python}</span></span>
-<span id="cb20-368"><a href="#cb20-368"></a><span class="co"># df.describe()</span></span>
-<span id="cb20-369"><a href="#cb20-369"></a><span class="in">```</span></span>
-<span id="cb20-370"><a href="#cb20-370"></a></span>
-<span id="cb20-371"><a href="#cb20-371"></a></span>
-<span id="cb20-372"><a href="#cb20-372"></a><span class="fu"># write df as parquet </span></span>
-<span id="cb20-375"><a href="#cb20-375"></a><span class="in">```{python}</span></span>
-<span id="cb20-376"><a href="#cb20-376"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df.parquet"</span></span>
-<span id="cb20-377"><a href="#cb20-377"></a></span>
-<span id="cb20-378"><a href="#cb20-378"></a><span class="co"># remove parquet file, if it exists</span></span>
-<span id="cb20-379"><a href="#cb20-379"></a><span class="cf">if</span> os.path.exists(df_parquet_f_path):</span>
-<span id="cb20-380"><a href="#cb20-380"></a>    os.remove(df_parquet_f_path)</span>
-<span id="cb20-381"><a href="#cb20-381"></a></span>
-<span id="cb20-382"><a href="#cb20-382"></a>df.write_parquet(df_parquet_f_path)</span>
-<span id="cb20-383"><a href="#cb20-383"></a><span class="bu">print</span>(<span class="st">'df written as parquet file'</span>)</span>
-<span id="cb20-384"><a href="#cb20-384"></a><span class="in">```</span></span>
-<span id="cb20-385"><a href="#cb20-385"></a></span>
-<span id="cb20-386"><a href="#cb20-386"></a></span>
-<span id="cb20-387"><a href="#cb20-387"></a><span class="fu"># create map </span></span>
-<span id="cb20-388"><a href="#cb20-388"></a><span class="in">```python</span></span>
-<span id="cb20-389"><a href="#cb20-389"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb20-390"><a href="#cb20-390"></a></span>
-<span id="cb20-391"><a href="#cb20-391"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
-<span id="cb20-392"><a href="#cb20-392"></a><span class="bu">print</span>(<span class="st">'read df as parquet'</span>)</span>
-<span id="cb20-393"><a href="#cb20-393"></a></span>
-<span id="cb20-394"><a href="#cb20-394"></a>fig <span class="op">=</span> px.line_mapbox(</span>
-<span id="cb20-395"><a href="#cb20-395"></a>    df,</span>
-<span id="cb20-396"><a href="#cb20-396"></a>    <span class="co"># lat=df["d_d_latitude"],</span></span>
-<span id="cb20-397"><a href="#cb20-397"></a>    <span class="co"># lon=df["d_e_longitude"],</span></span>
-<span id="cb20-398"><a href="#cb20-398"></a>    <span class="co"># color=df["h_b_int_num_id"],</span></span>
-<span id="cb20-399"><a href="#cb20-399"></a>    lat<span class="op">=</span><span class="st">"d_d_latitude"</span>,</span>
-<span id="cb20-400"><a href="#cb20-400"></a>    lon<span class="op">=</span><span class="st">"d_e_longitude"</span>,</span>
-<span id="cb20-401"><a href="#cb20-401"></a>    color<span class="op">=</span><span class="st">"h_b_int_num_id"</span>,</span>
-<span id="cb20-402"><a href="#cb20-402"></a>    zoom<span class="op">=</span><span class="dv">3</span>,</span>
-<span id="cb20-403"><a href="#cb20-403"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
-<span id="cb20-404"><a href="#cb20-404"></a>    <span class="co"># animation_frame="h_b_int_num_id"</span></span>
-<span id="cb20-405"><a href="#cb20-405"></a>)</span>
-<span id="cb20-406"><a href="#cb20-406"></a></span>
-<span id="cb20-407"><a href="#cb20-407"></a>fig.update_layout(</span>
-<span id="cb20-408"><a href="#cb20-408"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
-<span id="cb20-409"><a href="#cb20-409"></a>    mapbox_style<span class="op">=</span><span class="st">"carto-darkmatter"</span>,</span>
-<span id="cb20-410"><a href="#cb20-410"></a>    <span class="co"># mapbox_zoom=4,</span></span>
-<span id="cb20-411"><a href="#cb20-411"></a>    mapbox_center_lat<span class="op">=</span><span class="dv">36</span>,</span>
-<span id="cb20-412"><a href="#cb20-412"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
-<span id="cb20-413"><a href="#cb20-413"></a>)</span>
-<span id="cb20-414"><a href="#cb20-414"></a></span>
-<span id="cb20-415"><a href="#cb20-415"></a>fig.show()</span>
-<span id="cb20-416"><a href="#cb20-416"></a><span class="in">```</span></span>
-<span id="cb20-417"><a href="#cb20-417"></a></span>
-<span id="cb20-418"><a href="#cb20-418"></a>:::</span>
+<div class="sourceCode" id="cb21" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1"></a><span class="co">---</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="an">title:</span><span class="co"> "Tidy-up Japan Typhoon Data"</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="co">---</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a>Tidy up Japan Typhoon data from 1951 to 2023.</span>
+<span id="cb21-6"><a href="#cb21-6"></a></span>
+<span id="cb21-7"><a href="#cb21-7"></a>::: {.column-screen}</span>
+<span id="cb21-8"><a href="#cb21-8"></a></span>
+<span id="cb21-9"><a href="#cb21-9"></a><span class="fu"># import modules </span></span>
+<span id="cb21-12"><a href="#cb21-12"></a><span class="in">```{python}</span></span>
+<span id="cb21-13"><a href="#cb21-13"></a><span class="im">import</span> os</span>
+<span id="cb21-14"><a href="#cb21-14"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
+<span id="cb21-15"><a href="#cb21-15"></a></span>
+<span id="cb21-16"><a href="#cb21-16"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb21-17"><a href="#cb21-17"></a>pl.Config.set_tbl_rows(<span class="dv">7</span>)   <span class="co"># limit num of lines for table preview</span></span>
+<span id="cb21-18"><a href="#cb21-18"></a><span class="bu">print</span>(<span class="st">'polars version'</span>, pl.__version__)</span>
+<span id="cb21-19"><a href="#cb21-19"></a><span class="in">```</span></span>
+<span id="cb21-20"><a href="#cb21-20"></a></span>
+<span id="cb21-21"><a href="#cb21-21"></a></span>
+<span id="cb21-22"><a href="#cb21-22"></a><span class="fu"># create df schema as a dict `{"col_name", pl.DataType}` </span></span>
+<span id="cb21-25"><a href="#cb21-25"></a><span class="in">```{python}</span></span>
+<span id="cb21-26"><a href="#cb21-26"></a>df_schema <span class="op">=</span> {</span>
+<span id="cb21-27"><a href="#cb21-27"></a>    <span class="st">'h_a_indicator'</span>               : pl.String,</span>
+<span id="cb21-28"><a href="#cb21-28"></a>    <span class="st">'h_b_int_num_id'</span>              : pl.String,</span>
+<span id="cb21-29"><a href="#cb21-29"></a>    <span class="st">'h_c_num_data'</span>                : pl.String,</span>
+<span id="cb21-30"><a href="#cb21-30"></a>    <span class="st">'h_d_tropical_cyclone_num_id'</span> : pl.String,</span>
+<span id="cb21-31"><a href="#cb21-31"></a>    <span class="st">'h_e_int_num_id'</span>              : pl.String,</span>
+<span id="cb21-32"><a href="#cb21-32"></a>    <span class="st">'h_f_flag_last_data_line'</span>     : pl.String,</span>
+<span id="cb21-33"><a href="#cb21-33"></a>    <span class="st">'h_g_diff_hour'</span>               : pl.String,</span>
+<span id="cb21-34"><a href="#cb21-34"></a>    <span class="st">'h_h_storm_name'</span>              : pl.String,</span>
+<span id="cb21-35"><a href="#cb21-35"></a>    <span class="st">'h_i_date_last_rev'</span>           : pl.String,</span>
+<span id="cb21-36"><a href="#cb21-36"></a>    <span class="st">'d_a_date_time'</span>               : pl.String,</span>
+<span id="cb21-37"><a href="#cb21-37"></a>    <span class="st">'d_b_indicator'</span>               : pl.String,</span>
+<span id="cb21-38"><a href="#cb21-38"></a>    <span class="st">'d_c_grade'</span>                   : pl.String,</span>
+<span id="cb21-39"><a href="#cb21-39"></a>    <span class="st">'d_d_latitude'</span>                : pl.String,</span>
+<span id="cb21-40"><a href="#cb21-40"></a>    <span class="st">'d_e_longitude'</span>               : pl.String,</span>
+<span id="cb21-41"><a href="#cb21-41"></a>    <span class="st">'d_f_central_pressure_dPa'</span>    : pl.String,</span>
+<span id="cb21-42"><a href="#cb21-42"></a>    <span class="st">'d_g_max_wind_speed_kt'</span>       : pl.String,</span>
+<span id="cb21-43"><a href="#cb21-43"></a>    <span class="st">'d_h_dir_longest_r_50kt_wind'</span> : pl.String,</span>
+<span id="cb21-44"><a href="#cb21-44"></a>    <span class="st">'d_i_longest_r_50kt_wind_nm'</span>  : pl.String,</span>
+<span id="cb21-45"><a href="#cb21-45"></a>    <span class="st">'d_j_shortest_r_50kt_wind_nm'</span> : pl.String,</span>
+<span id="cb21-46"><a href="#cb21-46"></a>    <span class="st">'d_k_dir_longest_r_30kt_wind'</span> : pl.String,</span>
+<span id="cb21-47"><a href="#cb21-47"></a>    <span class="st">'d_l_longest_r_30kt_wind_nm'</span>  : pl.String,</span>
+<span id="cb21-48"><a href="#cb21-48"></a>    <span class="st">'d_m_shortest_r_30kt_wind_nm'</span> : pl.String,</span>
+<span id="cb21-49"><a href="#cb21-49"></a>    <span class="st">'d_p_landfall_or_passage'</span>     : pl.String,</span>
+<span id="cb21-50"><a href="#cb21-50"></a>}</span>
+<span id="cb21-51"><a href="#cb21-51"></a></span>
+<span id="cb21-52"><a href="#cb21-52"></a><span class="co"># print('type of df_schema:', type(df_schema))</span></span>
+<span id="cb21-53"><a href="#cb21-53"></a><span class="bu">print</span>(df_schema)</span>
+<span id="cb21-54"><a href="#cb21-54"></a><span class="in">```</span></span>
+<span id="cb21-55"><a href="#cb21-55"></a></span>
+<span id="cb21-56"><a href="#cb21-56"></a></span>
+<span id="cb21-57"><a href="#cb21-57"></a><span class="fu"># create an empty dataframe </span></span>
+<span id="cb21-60"><a href="#cb21-60"></a><span class="in">```{python}</span></span>
+<span id="cb21-61"><a href="#cb21-61"></a>list_col_names <span class="op">=</span> <span class="bu">list</span>(df_schema.keys())</span>
+<span id="cb21-62"><a href="#cb21-62"></a></span>
+<span id="cb21-63"><a href="#cb21-63"></a>dict_empty_data <span class="op">=</span> {</span>
+<span id="cb21-64"><a href="#cb21-64"></a>    <span class="st">'h_a_indicator'</span>               : [],</span>
+<span id="cb21-65"><a href="#cb21-65"></a>    <span class="st">'h_b_int_num_id'</span>              : [],</span>
+<span id="cb21-66"><a href="#cb21-66"></a>    <span class="st">'h_c_num_data'</span>                : [],</span>
+<span id="cb21-67"><a href="#cb21-67"></a>    <span class="st">'h_d_tropical_cyclone_num_id'</span> : [],</span>
+<span id="cb21-68"><a href="#cb21-68"></a>    <span class="st">'h_e_int_num_id'</span>              : [],</span>
+<span id="cb21-69"><a href="#cb21-69"></a>    <span class="st">'h_f_flag_last_data_line'</span>     : [],</span>
+<span id="cb21-70"><a href="#cb21-70"></a>    <span class="st">'h_g_diff_hour'</span>               : [],</span>
+<span id="cb21-71"><a href="#cb21-71"></a>    <span class="st">'h_h_storm_name'</span>              : [],</span>
+<span id="cb21-72"><a href="#cb21-72"></a>    <span class="st">'h_i_date_last_rev'</span>           : [],</span>
+<span id="cb21-73"><a href="#cb21-73"></a>    <span class="st">'d_a_date_time'</span>               : [],</span>
+<span id="cb21-74"><a href="#cb21-74"></a>    <span class="st">'d_b_indicator'</span>               : [],</span>
+<span id="cb21-75"><a href="#cb21-75"></a>    <span class="st">'d_c_grade'</span>                   : [],</span>
+<span id="cb21-76"><a href="#cb21-76"></a>    <span class="st">'d_d_latitude'</span>                : [],</span>
+<span id="cb21-77"><a href="#cb21-77"></a>    <span class="st">'d_e_longitude'</span>               : [],</span>
+<span id="cb21-78"><a href="#cb21-78"></a>    <span class="st">'d_f_central_pressure_dPa'</span>    : [],</span>
+<span id="cb21-79"><a href="#cb21-79"></a>    <span class="st">'d_g_max_wind_speed_kt'</span>       : [],</span>
+<span id="cb21-80"><a href="#cb21-80"></a>    <span class="st">'d_h_dir_longest_r_50kt_wind'</span> : [],</span>
+<span id="cb21-81"><a href="#cb21-81"></a>    <span class="st">'d_i_longest_r_50kt_wind_nm'</span>  : [],</span>
+<span id="cb21-82"><a href="#cb21-82"></a>    <span class="st">'d_j_shortest_r_50kt_wind_nm'</span> : [],</span>
+<span id="cb21-83"><a href="#cb21-83"></a>    <span class="st">'d_k_dir_longest_r_30kt_wind'</span> : [],</span>
+<span id="cb21-84"><a href="#cb21-84"></a>    <span class="st">'d_l_longest_r_30kt_wind_nm'</span>  : [],</span>
+<span id="cb21-85"><a href="#cb21-85"></a>    <span class="st">'d_m_shortest_r_30kt_wind_nm'</span> : [],</span>
+<span id="cb21-86"><a href="#cb21-86"></a>    <span class="st">'d_p_landfall_or_passage'</span>     : [],</span>
+<span id="cb21-87"><a href="#cb21-87"></a>}</span>
+<span id="cb21-88"><a href="#cb21-88"></a></span>
+<span id="cb21-89"><a href="#cb21-89"></a>df<span class="op">=</span> pl.DataFrame(dict_empty_data, df_schema)</span>
+<span id="cb21-90"><a href="#cb21-90"></a>df</span>
+<span id="cb21-91"><a href="#cb21-91"></a><span class="in">```</span></span>
+<span id="cb21-92"><a href="#cb21-92"></a></span>
+<span id="cb21-93"><a href="#cb21-93"></a></span>
+<span id="cb21-94"><a href="#cb21-94"></a><span class="fu"># read the data file, extract header lines and data lines </span></span>
+<span id="cb21-97"><a href="#cb21-97"></a><span class="in">```{python}</span></span>
+<span id="cb21-98"><a href="#cb21-98"></a><span class="op">%</span>time</span>
+<span id="cb21-99"><a href="#cb21-99"></a></span>
+<span id="cb21-100"><a href="#cb21-100"></a><span class="co"># row data file path</span></span>
+<span id="cb21-101"><a href="#cb21-101"></a><span class="co"># data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'</span></span>
+<span id="cb21-102"><a href="#cb21-102"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2013-2023.txt'</span></span>
+<span id="cb21-103"><a href="#cb21-103"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2018-2023.txt'</span></span>
+<span id="cb21-104"><a href="#cb21-104"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2019-2023.txt'</span></span>
+<span id="cb21-105"><a href="#cb21-105"></a><span class="co"># raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'</span></span>
+<span id="cb21-106"><a href="#cb21-106"></a>raw_data_file_path <span class="op">=</span> <span class="st">'./data/original/RSMC_Tokyo_Typhoon_2023.txt'</span></span>
+<span id="cb21-107"><a href="#cb21-107"></a></span>
+<span id="cb21-108"><a href="#cb21-108"></a><span class="co"># extracted header and data file paths</span></span>
+<span id="cb21-109"><a href="#cb21-109"></a>extracted_header_f_path <span class="op">=</span> <span class="st">'./data/processed/header.txt'</span></span>
+<span id="cb21-110"><a href="#cb21-110"></a>extracted_data_f_path <span class="op">=</span> <span class="st">'./data/processed/data.txt'</span></span>
+<span id="cb21-111"><a href="#cb21-111"></a></span>
+<span id="cb21-112"><a href="#cb21-112"></a><span class="co"># remove header and data files, if they exists</span></span>
+<span id="cb21-113"><a href="#cb21-113"></a><span class="cf">if</span> os.path.exists(extracted_header_f_path):</span>
+<span id="cb21-114"><a href="#cb21-114"></a>    os.remove(extracted_header_f_path)</span>
+<span id="cb21-115"><a href="#cb21-115"></a></span>
+<span id="cb21-116"><a href="#cb21-116"></a><span class="cf">if</span> os.path.exists(extracted_data_f_path):</span>
+<span id="cb21-117"><a href="#cb21-117"></a>    os.remove(extracted_data_f_path)</span>
+<span id="cb21-118"><a href="#cb21-118"></a></span>
+<span id="cb21-119"><a href="#cb21-119"></a><span class="co"># open header and data file to write</span></span>
+<span id="cb21-120"><a href="#cb21-120"></a>f_header <span class="op">=</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'w'</span>)</span>
+<span id="cb21-121"><a href="#cb21-121"></a>f_data <span class="op">=</span> <span class="bu">open</span>(extracted_data_f_path, <span class="st">'w'</span>)</span>
+<span id="cb21-122"><a href="#cb21-122"></a></span>
+<span id="cb21-123"><a href="#cb21-123"></a><span class="co"># extract header lines and data lines into different files</span></span>
+<span id="cb21-124"><a href="#cb21-124"></a><span class="cf">with</span> <span class="bu">open</span>(raw_data_file_path) <span class="im">as</span> f:</span>
+<span id="cb21-125"><a href="#cb21-125"></a>    <span class="co"># read all the lines</span></span>
+<span id="cb21-126"><a href="#cb21-126"></a>    lines <span class="op">=</span> f.readlines()</span>
+<span id="cb21-127"><a href="#cb21-127"></a></span>
+<span id="cb21-128"><a href="#cb21-128"></a>    <span class="co"># read each line</span></span>
+<span id="cb21-129"><a href="#cb21-129"></a>    <span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb21-130"><a href="#cb21-130"></a>        <span class="co"># check if a line is a header/data by the length of its 1st split</span></span>
+<span id="cb21-131"><a href="#cb21-131"></a>        <span class="cf">if</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb21-132"><a href="#cb21-132"></a>            <span class="co"># add header to f_header</span></span>
+<span id="cb21-133"><a href="#cb21-133"></a>            f_header.write(line)</span>
+<span id="cb21-134"><a href="#cb21-134"></a></span>
+<span id="cb21-135"><a href="#cb21-135"></a>        <span class="cf">elif</span> <span class="bu">len</span>(line.split()[<span class="dv">0</span>]) <span class="op">==</span> <span class="dv">8</span>:</span>
+<span id="cb21-136"><a href="#cb21-136"></a>            <span class="co"># add data line to f_data</span></span>
+<span id="cb21-137"><a href="#cb21-137"></a>            f_data.write(line)</span>
+<span id="cb21-138"><a href="#cb21-138"></a></span>
+<span id="cb21-139"><a href="#cb21-139"></a>f_header.close()</span>
+<span id="cb21-140"><a href="#cb21-140"></a>f_data.close()</span>
+<span id="cb21-141"><a href="#cb21-141"></a><span class="in">```</span></span>
+<span id="cb21-142"><a href="#cb21-142"></a></span>
+<span id="cb21-143"><a href="#cb21-143"></a></span>
+<span id="cb21-144"><a href="#cb21-144"></a><span class="fu"># func to vstack each data record to df </span></span>
+<span id="cb21-147"><a href="#cb21-147"></a><span class="in">```{python}</span></span>
+<span id="cb21-148"><a href="#cb21-148"></a><span class="kw">def</span> vstack_df(</span>
+<span id="cb21-149"><a href="#cb21-149"></a>    _col_names: List[<span class="bu">str</span>], </span>
+<span id="cb21-150"><a href="#cb21-150"></a>    _record_items: List[<span class="bu">str</span>], </span>
+<span id="cb21-151"><a href="#cb21-151"></a>    _df: pl.DataFrame,</span>
+<span id="cb21-152"><a href="#cb21-152"></a>) <span class="op">-&gt;</span> pl.DataFrame:</span>
+<span id="cb21-153"><a href="#cb21-153"></a></span>
+<span id="cb21-154"><a href="#cb21-154"></a>    <span class="co"># create a dict from list of col names and a list of data items</span></span>
+<span id="cb21-155"><a href="#cb21-155"></a>    dict_record <span class="op">=</span> <span class="bu">dict</span>(</span>
+<span id="cb21-156"><a href="#cb21-156"></a>        <span class="bu">zip</span>(</span>
+<span id="cb21-157"><a href="#cb21-157"></a>            _col_names, </span>
+<span id="cb21-158"><a href="#cb21-158"></a>            _record_items,</span>
+<span id="cb21-159"><a href="#cb21-159"></a>        )</span>
+<span id="cb21-160"><a href="#cb21-160"></a>    )</span>
+<span id="cb21-161"><a href="#cb21-161"></a></span>
+<span id="cb21-162"><a href="#cb21-162"></a>    df_to_stack <span class="op">=</span> pl.DataFrame(dict_record)</span>
+<span id="cb21-163"><a href="#cb21-163"></a></span>
+<span id="cb21-164"><a href="#cb21-164"></a>    _df <span class="op">=</span> _df.vstack(df_to_stack)</span>
+<span id="cb21-165"><a href="#cb21-165"></a></span>
+<span id="cb21-166"><a href="#cb21-166"></a>    <span class="cf">return</span> _df</span>
+<span id="cb21-167"><a href="#cb21-167"></a><span class="in">```</span></span>
+<span id="cb21-168"><a href="#cb21-168"></a></span>
+<span id="cb21-169"><a href="#cb21-169"></a></span>
+<span id="cb21-170"><a href="#cb21-170"></a><span class="fu"># read header and data files to create dataframe </span></span>
+<span id="cb21-173"><a href="#cb21-173"></a><span class="in">```{python}</span></span>
+<span id="cb21-174"><a href="#cb21-174"></a><span class="cf">with</span> <span class="bu">open</span>(extracted_header_f_path, <span class="st">'r'</span>) <span class="im">as</span> f_h:</span>
+<span id="cb21-175"><a href="#cb21-175"></a>    h_lines <span class="op">=</span> f_h.readlines()</span>
+<span id="cb21-176"><a href="#cb21-176"></a></span>
+<span id="cb21-177"><a href="#cb21-177"></a>    header_cnt <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-178"><a href="#cb21-178"></a></span>
+<span id="cb21-179"><a href="#cb21-179"></a>    f_data_line_num_start <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-180"><a href="#cb21-180"></a>    f_data_line_num_end <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb21-181"><a href="#cb21-181"></a></span>
+<span id="cb21-182"><a href="#cb21-182"></a>    <span class="cf">for</span> h_line <span class="kw">in</span> h_lines:</span>
+<span id="cb21-183"><a href="#cb21-183"></a>        <span class="co"># create an empty list to store header and data for each record</span></span>
+<span id="cb21-184"><a href="#cb21-184"></a>        headedr_items <span class="op">=</span> []</span>
+<span id="cb21-185"><a href="#cb21-185"></a></span>
+<span id="cb21-186"><a href="#cb21-186"></a>        <span class="co"># get info from header col by col</span></span>
+<span id="cb21-187"><a href="#cb21-187"></a>        h_a <span class="op">=</span> h_line[<span class="dv">0</span>:<span class="dv">5</span>]</span>
+<span id="cb21-188"><a href="#cb21-188"></a>        h_b <span class="op">=</span> h_line[<span class="dv">6</span>:<span class="dv">10</span>]</span>
+<span id="cb21-189"><a href="#cb21-189"></a>        h_c <span class="op">=</span> h_line[<span class="dv">12</span>:<span class="dv">15</span>]</span>
+<span id="cb21-190"><a href="#cb21-190"></a>        h_d <span class="op">=</span> h_line[<span class="dv">16</span>:<span class="dv">20</span>]</span>
+<span id="cb21-191"><a href="#cb21-191"></a>        h_e <span class="op">=</span> h_line[<span class="dv">21</span>:<span class="dv">25</span>]</span>
+<span id="cb21-192"><a href="#cb21-192"></a>        h_f <span class="op">=</span> h_line[<span class="dv">26</span>]</span>
+<span id="cb21-193"><a href="#cb21-193"></a>        h_g <span class="op">=</span> h_line[<span class="dv">28</span>]</span>
+<span id="cb21-194"><a href="#cb21-194"></a>        h_h <span class="op">=</span> h_line[<span class="dv">30</span>:<span class="dv">50</span>].strip()</span>
+<span id="cb21-195"><a href="#cb21-195"></a>        h_i <span class="op">=</span> h_line[<span class="dv">64</span>:<span class="dv">72</span>]</span>
+<span id="cb21-196"><a href="#cb21-196"></a></span>
+<span id="cb21-197"><a href="#cb21-197"></a>        <span class="co"># calc obsolute start and end line num in f_data to read</span></span>
+<span id="cb21-198"><a href="#cb21-198"></a>        <span class="co"># ...new start_line_num = previous end_line_num +1</span></span>
+<span id="cb21-199"><a href="#cb21-199"></a>        f_data_line_num_start <span class="op">=</span> f_data_line_num_end <span class="op">+</span> <span class="dv">1</span> </span>
+<span id="cb21-200"><a href="#cb21-200"></a>        <span class="co"># ...new end_line_num = new start_line_num + num_data_lines of the current data chunk</span></span>
+<span id="cb21-201"><a href="#cb21-201"></a>        f_data_line_num_end <span class="op">=</span> f_data_line_num_start <span class="op">+</span> <span class="bu">int</span>(h_c) <span class="op">-</span> <span class="dv">1</span> </span>
+<span id="cb21-202"><a href="#cb21-202"></a></span>
+<span id="cb21-203"><a href="#cb21-203"></a>        headedr_items.extend([ </span>
+<span id="cb21-204"><a href="#cb21-204"></a>            h_a, </span>
+<span id="cb21-205"><a href="#cb21-205"></a>            h_b,</span>
+<span id="cb21-206"><a href="#cb21-206"></a>            h_c,</span>
+<span id="cb21-207"><a href="#cb21-207"></a>            h_d,</span>
+<span id="cb21-208"><a href="#cb21-208"></a>            h_e,</span>
+<span id="cb21-209"><a href="#cb21-209"></a>            h_f,</span>
+<span id="cb21-210"><a href="#cb21-210"></a>            h_g,</span>
+<span id="cb21-211"><a href="#cb21-211"></a>            h_h,</span>
+<span id="cb21-212"><a href="#cb21-212"></a>            h_i</span>
+<span id="cb21-213"><a href="#cb21-213"></a>        ])</span>
+<span id="cb21-214"><a href="#cb21-214"></a></span>
+<span id="cb21-215"><a href="#cb21-215"></a>        <span class="bu">print</span>(<span class="st">'header:'</span>, header_cnt, <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>, headedr_items)</span>
+<span id="cb21-216"><a href="#cb21-216"></a></span>
+<span id="cb21-217"><a href="#cb21-217"></a>        <span class="co"># read data file by the start and end line numbers</span></span>
+<span id="cb21-218"><a href="#cb21-218"></a>        f_data <span class="op">=</span> <span class="st">'./data/processed/data.txt'</span></span>
+<span id="cb21-219"><a href="#cb21-219"></a></span>
+<span id="cb21-220"><a href="#cb21-220"></a>        <span class="cf">with</span> <span class="bu">open</span>(f_data, <span class="st">'r'</span>) <span class="im">as</span> f_data:</span>
+<span id="cb21-221"><a href="#cb21-221"></a>            <span class="cf">for</span> idx, d_line <span class="kw">in</span> <span class="bu">enumerate</span>(f_data):</span>
+<span id="cb21-222"><a href="#cb21-222"></a>                record_items <span class="op">=</span> []</span>
+<span id="cb21-223"><a href="#cb21-223"></a></span>
+<span id="cb21-224"><a href="#cb21-224"></a>                <span class="cf">if</span> f_data_line_num_start <span class="op">&lt;=</span> idx <span class="op">&lt;=</span> f_data_line_num_end:</span>
+<span id="cb21-225"><a href="#cb21-225"></a>                    data_items <span class="op">=</span> []</span>
+<span id="cb21-226"><a href="#cb21-226"></a></span>
+<span id="cb21-227"><a href="#cb21-227"></a>                    d_a <span class="op">=</span> d_line[<span class="dv">0</span>:<span class="dv">8</span>].strip()</span>
+<span id="cb21-228"><a href="#cb21-228"></a>                    d_b <span class="op">=</span> d_line[<span class="dv">9</span>:<span class="dv">12</span>].strip()</span>
+<span id="cb21-229"><a href="#cb21-229"></a>                    d_c <span class="op">=</span> d_line[<span class="dv">13</span>:<span class="dv">14</span>].strip()</span>
+<span id="cb21-230"><a href="#cb21-230"></a>                    d_d <span class="op">=</span> d_line[<span class="dv">15</span>:<span class="dv">18</span>].strip()</span>
+<span id="cb21-231"><a href="#cb21-231"></a>                    d_e <span class="op">=</span> d_line[<span class="dv">19</span>:<span class="dv">23</span>].strip()</span>
+<span id="cb21-232"><a href="#cb21-232"></a>                    d_f <span class="op">=</span> d_line[<span class="dv">24</span>:<span class="dv">28</span>].strip()</span>
+<span id="cb21-233"><a href="#cb21-233"></a>                    d_g <span class="op">=</span> d_line[<span class="dv">33</span>:<span class="dv">36</span>].strip()</span>
+<span id="cb21-234"><a href="#cb21-234"></a>                    d_h <span class="op">=</span> d_line[<span class="dv">41</span>].strip()</span>
+<span id="cb21-235"><a href="#cb21-235"></a>                    d_i <span class="op">=</span> d_line[<span class="dv">42</span>:<span class="dv">46</span>].strip()</span>
+<span id="cb21-236"><a href="#cb21-236"></a>                    d_j <span class="op">=</span> d_line[<span class="dv">47</span>:<span class="dv">51</span>].strip()</span>
+<span id="cb21-237"><a href="#cb21-237"></a>                    d_k <span class="op">=</span> d_line[<span class="dv">52</span>].strip()</span>
+<span id="cb21-238"><a href="#cb21-238"></a>                    d_l <span class="op">=</span> d_line[<span class="dv">53</span>:<span class="dv">57</span>].strip()</span>
+<span id="cb21-239"><a href="#cb21-239"></a>                    d_m <span class="op">=</span> d_line[<span class="dv">58</span>:<span class="dv">62</span>].strip()</span>
+<span id="cb21-240"><a href="#cb21-240"></a>                    d_p <span class="op">=</span> d_line[<span class="dv">71</span>].strip()</span>
+<span id="cb21-241"><a href="#cb21-241"></a></span>
+<span id="cb21-242"><a href="#cb21-242"></a>                    data_items.extend([</span>
+<span id="cb21-243"><a href="#cb21-243"></a>                        d_a,</span>
+<span id="cb21-244"><a href="#cb21-244"></a>                        d_b,</span>
+<span id="cb21-245"><a href="#cb21-245"></a>                        d_c,</span>
+<span id="cb21-246"><a href="#cb21-246"></a>                        d_d,</span>
+<span id="cb21-247"><a href="#cb21-247"></a>                        d_e,</span>
+<span id="cb21-248"><a href="#cb21-248"></a>                        d_f,</span>
+<span id="cb21-249"><a href="#cb21-249"></a>                        d_g,</span>
+<span id="cb21-250"><a href="#cb21-250"></a>                        d_h,</span>
+<span id="cb21-251"><a href="#cb21-251"></a>                        d_i,</span>
+<span id="cb21-252"><a href="#cb21-252"></a>                        d_j,</span>
+<span id="cb21-253"><a href="#cb21-253"></a>                        d_k,</span>
+<span id="cb21-254"><a href="#cb21-254"></a>                        d_l,</span>
+<span id="cb21-255"><a href="#cb21-255"></a>                        d_m,</span>
+<span id="cb21-256"><a href="#cb21-256"></a>                        d_p</span>
+<span id="cb21-257"><a href="#cb21-257"></a>                    ])</span>
+<span id="cb21-258"><a href="#cb21-258"></a></span>
+<span id="cb21-259"><a href="#cb21-259"></a>                    <span class="co"># join the lists of header and data items</span></span>
+<span id="cb21-260"><a href="#cb21-260"></a>                    record_items <span class="op">=</span> headedr_items <span class="op">+</span> data_items</span>
+<span id="cb21-261"><a href="#cb21-261"></a></span>
+<span id="cb21-262"><a href="#cb21-262"></a>                    <span class="co"># stack the df created from the current record to df</span></span>
+<span id="cb21-263"><a href="#cb21-263"></a>                    <span class="co"># option 1:</span></span>
+<span id="cb21-264"><a href="#cb21-264"></a>                    <span class="co"># dict_record = dict(zip(list_col_names, record_items))</span></span>
+<span id="cb21-265"><a href="#cb21-265"></a>                    <span class="co"># df_to_stack = pl.DataFrame(dict_record)</span></span>
+<span id="cb21-266"><a href="#cb21-266"></a>                    <span class="co"># df = df.vstack(df_to_stack)</span></span>
+<span id="cb21-267"><a href="#cb21-267"></a>                    <span class="co"># option 2:</span></span>
+<span id="cb21-268"><a href="#cb21-268"></a>                    df <span class="op">=</span> vstack_df(list_col_names, record_items, df)</span>
+<span id="cb21-269"><a href="#cb21-269"></a></span>
+<span id="cb21-270"><a href="#cb21-270"></a>                    <span class="co"># # cherry-print a data line for verification</span></span>
+<span id="cb21-271"><a href="#cb21-271"></a>                    <span class="co"># if idx == 337:</span></span>
+<span id="cb21-272"><a href="#cb21-272"></a>                    <span class="co">#     print(record_items)</span></span>
+<span id="cb21-273"><a href="#cb21-273"></a></span>
+<span id="cb21-274"><a href="#cb21-274"></a>        header_cnt <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb21-275"><a href="#cb21-275"></a>df</span>
+<span id="cb21-276"><a href="#cb21-276"></a><span class="in">```</span></span>
+<span id="cb21-277"><a href="#cb21-277"></a></span>
+<span id="cb21-278"><a href="#cb21-278"></a><span class="fu"># replace empty string with 'null' </span></span>
+<span id="cb21-281"><a href="#cb21-281"></a><span class="in">```{python}</span></span>
+<span id="cb21-282"><a href="#cb21-282"></a>df <span class="op">=</span> df.select(</span>
+<span id="cb21-283"><a href="#cb21-283"></a>    <span class="co"># pl.when(pl.col(pl.Utf8).str.lengths()==0) # lengths() deprecated</span></span>
+<span id="cb21-284"><a href="#cb21-284"></a>    <span class="co">#   .then(None)</span></span>
+<span id="cb21-285"><a href="#cb21-285"></a>    <span class="co">#   .otherwise(pl.col(pl.Utf8))             # pl.Utf8 replaced by pl.String</span></span>
+<span id="cb21-286"><a href="#cb21-286"></a>    <span class="co">#   .keep_name()                            # .keep_name() deprecated</span></span>
+<span id="cb21-287"><a href="#cb21-287"></a></span>
+<span id="cb21-288"><a href="#cb21-288"></a>    pl.when(pl.col(pl.Utf8).<span class="bu">str</span>.len_bytes()<span class="op">==</span><span class="dv">0</span>)</span>
+<span id="cb21-289"><a href="#cb21-289"></a>      .then(<span class="va">None</span>)</span>
+<span id="cb21-290"><a href="#cb21-290"></a>      .otherwise(pl.col(pl.String))</span>
+<span id="cb21-291"><a href="#cb21-291"></a>      .name.keep()</span>
+<span id="cb21-292"><a href="#cb21-292"></a>)</span>
+<span id="cb21-293"><a href="#cb21-293"></a>df</span>
+<span id="cb21-294"><a href="#cb21-294"></a><span class="in">```</span></span>
+<span id="cb21-295"><a href="#cb21-295"></a></span>
+<span id="cb21-296"><a href="#cb21-296"></a></span>
+<span id="cb21-297"><a href="#cb21-297"></a><span class="fu"># cast data type for columns </span></span>
+<span id="cb21-300"><a href="#cb21-300"></a><span class="in">```{python}</span></span>
+<span id="cb21-301"><a href="#cb21-301"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb21-302"><a href="#cb21-302"></a>    pl.col(<span class="st">'h_a_indicator'</span>).cast(pl.Int32),</span>
+<span id="cb21-303"><a href="#cb21-303"></a>    pl.col(<span class="st">'h_b_int_num_id'</span>).cast(pl.Int16),</span>
+<span id="cb21-304"><a href="#cb21-304"></a>    pl.col(<span class="st">'h_c_num_data'</span>).cast(pl.Int16),</span>
+<span id="cb21-305"><a href="#cb21-305"></a>    pl.col(<span class="st">'h_d_tropical_cyclone_num_id'</span>).cast(pl.Int8),</span>
+<span id="cb21-306"><a href="#cb21-306"></a>    pl.col(<span class="st">'h_e_int_num_id'</span>).cast(pl.Int16),</span>
+<span id="cb21-307"><a href="#cb21-307"></a>    pl.col(<span class="st">'h_f_flag_last_data_line'</span>).cast(pl.Int8),</span>
+<span id="cb21-308"><a href="#cb21-308"></a>    pl.col(<span class="st">'h_g_diff_hour'</span>).cast(pl.Int8),</span>
+<span id="cb21-309"><a href="#cb21-309"></a>    pl.col(<span class="st">'d_b_indicator'</span>).cast(pl.Int8),</span>
+<span id="cb21-310"><a href="#cb21-310"></a>    pl.col(<span class="st">'d_c_grade'</span>).cast(pl.Int8),</span>
+<span id="cb21-311"><a href="#cb21-311"></a>    pl.col(<span class="st">'d_d_latitude'</span>).cast(pl.Float64),</span>
+<span id="cb21-312"><a href="#cb21-312"></a>    pl.col(<span class="st">'d_e_longitude'</span>).cast(pl.Float64),</span>
+<span id="cb21-313"><a href="#cb21-313"></a>    pl.col(<span class="st">'d_f_central_pressure_dPa'</span>).cast(pl.Int16),</span>
+<span id="cb21-314"><a href="#cb21-314"></a>    pl.col(<span class="st">'d_g_max_wind_speed_kt'</span>).cast(pl.Int16),</span>
+<span id="cb21-315"><a href="#cb21-315"></a>    pl.col(<span class="st">'d_h_dir_longest_r_50kt_wind'</span>).cast(pl.Int16),</span>
+<span id="cb21-316"><a href="#cb21-316"></a>    pl.col(<span class="st">'d_i_longest_r_50kt_wind_nm'</span>).cast(pl.Int16),</span>
+<span id="cb21-317"><a href="#cb21-317"></a>    pl.col(<span class="st">'d_j_shortest_r_50kt_wind_nm'</span>).cast(pl.Int16),</span>
+<span id="cb21-318"><a href="#cb21-318"></a>    pl.col(<span class="st">'d_k_dir_longest_r_30kt_wind'</span>).cast(pl.Int16),</span>
+<span id="cb21-319"><a href="#cb21-319"></a>    pl.col(<span class="st">'d_l_longest_r_30kt_wind_nm'</span>).cast(pl.Int16),</span>
+<span id="cb21-320"><a href="#cb21-320"></a>    pl.col(<span class="st">'d_m_shortest_r_30kt_wind_nm'</span>).cast(pl.Int16),</span>
+<span id="cb21-321"><a href="#cb21-321"></a>)</span>
+<span id="cb21-322"><a href="#cb21-322"></a>df</span>
+<span id="cb21-323"><a href="#cb21-323"></a><span class="in">```</span></span>
+<span id="cb21-324"><a href="#cb21-324"></a></span>
+<span id="cb21-325"><a href="#cb21-325"></a></span>
+<span id="cb21-326"><a href="#cb21-326"></a><span class="fu"># add 4 `0` @ end of each item in `d_a_date_time` column </span></span>
+<span id="cb21-329"><a href="#cb21-329"></a><span class="in">```{python}</span></span>
+<span id="cb21-330"><a href="#cb21-330"></a>df <span class="op">=</span>  df.with_columns(</span>
+<span id="cb21-331"><a href="#cb21-331"></a>    pl.col(<span class="st">'d_a_date_time'</span>).<span class="bu">str</span>.pad_end(<span class="dv">12</span>, <span class="st">"0"</span>)</span>
+<span id="cb21-332"><a href="#cb21-332"></a>)</span>
+<span id="cb21-333"><a href="#cb21-333"></a>df</span>
+<span id="cb21-334"><a href="#cb21-334"></a><span class="in">```</span></span>
+<span id="cb21-335"><a href="#cb21-335"></a></span>
+<span id="cb21-336"><a href="#cb21-336"></a></span>
+<span id="cb21-337"><a href="#cb21-337"></a><span class="fu"># add datetime column </span></span>
+<span id="cb21-340"><a href="#cb21-340"></a><span class="in">```{python}</span></span>
+<span id="cb21-341"><a href="#cb21-341"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb21-342"><a href="#cb21-342"></a>    <span class="co"># pl.col('h_i_date_last_rev')</span></span>
+<span id="cb21-343"><a href="#cb21-343"></a>    <span class="co">#   .str.strptime(pl.Date, format="%Y%m%d")</span></span>
+<span id="cb21-344"><a href="#cb21-344"></a>    <span class="co">#   .alias('date_last_rev'),</span></span>
+<span id="cb21-345"><a href="#cb21-345"></a>    pl.col(<span class="st">'d_a_date_time'</span>)</span>
+<span id="cb21-346"><a href="#cb21-346"></a>      .<span class="bu">str</span>.strptime(pl.Datetime, <span class="bu">format</span><span class="op">=</span><span class="st">"%y%m</span><span class="sc">%d</span><span class="st">%H%M%S"</span>)</span>
+<span id="cb21-347"><a href="#cb21-347"></a>      .alias(<span class="st">'date_time'</span>),</span>
+<span id="cb21-348"><a href="#cb21-348"></a>)</span>
+<span id="cb21-349"><a href="#cb21-349"></a>df</span>
+<span id="cb21-350"><a href="#cb21-350"></a><span class="in">```</span></span>
+<span id="cb21-351"><a href="#cb21-351"></a></span>
+<span id="cb21-352"><a href="#cb21-352"></a></span>
+<span id="cb21-353"><a href="#cb21-353"></a><span class="fu"># add 'year' column</span></span>
+<span id="cb21-356"><a href="#cb21-356"></a><span class="in">```{python}</span></span>
+<span id="cb21-357"><a href="#cb21-357"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb21-358"><a href="#cb21-358"></a>    pl.col(<span class="st">'date_time'</span>)</span>
+<span id="cb21-359"><a href="#cb21-359"></a>      .dt.year()</span>
+<span id="cb21-360"><a href="#cb21-360"></a>      .alias(<span class="st">'year'</span>)</span>
+<span id="cb21-361"><a href="#cb21-361"></a>)</span>
+<span id="cb21-362"><a href="#cb21-362"></a>df</span>
+<span id="cb21-363"><a href="#cb21-363"></a><span class="in">```</span></span>
+<span id="cb21-364"><a href="#cb21-364"></a></span>
+<span id="cb21-365"><a href="#cb21-365"></a><span class="fu"># scale lat and lon value</span></span>
+<span id="cb21-368"><a href="#cb21-368"></a><span class="in">```{python}</span></span>
+<span id="cb21-369"><a href="#cb21-369"></a>df <span class="op">=</span> df.with_columns(</span>
+<span id="cb21-370"><a href="#cb21-370"></a>    pl.col(<span class="st">"d_d_latitude"</span>).mul(<span class="fl">0.1</span>), </span>
+<span id="cb21-371"><a href="#cb21-371"></a>    pl.col(<span class="st">"d_e_longitude"</span>).mul(<span class="fl">0.1</span>)</span>
+<span id="cb21-372"><a href="#cb21-372"></a>)</span>
+<span id="cb21-373"><a href="#cb21-373"></a>df</span>
+<span id="cb21-374"><a href="#cb21-374"></a><span class="in">```</span></span>
+<span id="cb21-375"><a href="#cb21-375"></a></span>
+<span id="cb21-376"><a href="#cb21-376"></a></span>
+<span id="cb21-377"><a href="#cb21-377"></a><span class="fu"># check result </span></span>
+<span id="cb21-380"><a href="#cb21-380"></a><span class="in">```{python}</span></span>
+<span id="cb21-381"><a href="#cb21-381"></a><span class="co"># df.describe()</span></span>
+<span id="cb21-382"><a href="#cb21-382"></a><span class="in">```</span></span>
+<span id="cb21-383"><a href="#cb21-383"></a></span>
+<span id="cb21-384"><a href="#cb21-384"></a></span>
+<span id="cb21-385"><a href="#cb21-385"></a><span class="fu"># write df as parquet </span></span>
+<span id="cb21-388"><a href="#cb21-388"></a><span class="in">```{python}</span></span>
+<span id="cb21-389"><a href="#cb21-389"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df.parquet"</span></span>
+<span id="cb21-390"><a href="#cb21-390"></a></span>
+<span id="cb21-391"><a href="#cb21-391"></a><span class="co"># remove parquet file, if it exists</span></span>
+<span id="cb21-392"><a href="#cb21-392"></a><span class="cf">if</span> os.path.exists(df_parquet_f_path):</span>
+<span id="cb21-393"><a href="#cb21-393"></a>    os.remove(df_parquet_f_path)</span>
+<span id="cb21-394"><a href="#cb21-394"></a></span>
+<span id="cb21-395"><a href="#cb21-395"></a>df.write_parquet(df_parquet_f_path)</span>
+<span id="cb21-396"><a href="#cb21-396"></a><span class="bu">print</span>(<span class="st">'df written as parquet file'</span>)</span>
+<span id="cb21-397"><a href="#cb21-397"></a><span class="in">```</span></span>
+<span id="cb21-398"><a href="#cb21-398"></a></span>
+<span id="cb21-399"><a href="#cb21-399"></a></span>
+<span id="cb21-400"><a href="#cb21-400"></a><span class="fu"># create map </span></span>
+<span id="cb21-401"><a href="#cb21-401"></a><span class="in">```python</span></span>
+<span id="cb21-402"><a href="#cb21-402"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb21-403"><a href="#cb21-403"></a></span>
+<span id="cb21-404"><a href="#cb21-404"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
+<span id="cb21-405"><a href="#cb21-405"></a><span class="bu">print</span>(<span class="st">'read df as parquet'</span>)</span>
+<span id="cb21-406"><a href="#cb21-406"></a></span>
+<span id="cb21-407"><a href="#cb21-407"></a>fig <span class="op">=</span> px.line_mapbox(</span>
+<span id="cb21-408"><a href="#cb21-408"></a>    df,</span>
+<span id="cb21-409"><a href="#cb21-409"></a>    <span class="co"># lat=df["d_d_latitude"],</span></span>
+<span id="cb21-410"><a href="#cb21-410"></a>    <span class="co"># lon=df["d_e_longitude"],</span></span>
+<span id="cb21-411"><a href="#cb21-411"></a>    <span class="co"># color=df["h_b_int_num_id"],</span></span>
+<span id="cb21-412"><a href="#cb21-412"></a>    lat<span class="op">=</span><span class="st">"d_d_latitude"</span>,</span>
+<span id="cb21-413"><a href="#cb21-413"></a>    lon<span class="op">=</span><span class="st">"d_e_longitude"</span>,</span>
+<span id="cb21-414"><a href="#cb21-414"></a>    color<span class="op">=</span><span class="st">"h_b_int_num_id"</span>,</span>
+<span id="cb21-415"><a href="#cb21-415"></a>    zoom<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb21-416"><a href="#cb21-416"></a>    height<span class="op">=</span><span class="dv">1000</span>,</span>
+<span id="cb21-417"><a href="#cb21-417"></a>    <span class="co"># animation_frame="h_b_int_num_id"</span></span>
+<span id="cb21-418"><a href="#cb21-418"></a>)</span>
+<span id="cb21-419"><a href="#cb21-419"></a></span>
+<span id="cb21-420"><a href="#cb21-420"></a>fig.update_layout(</span>
+<span id="cb21-421"><a href="#cb21-421"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb21-422"><a href="#cb21-422"></a>    mapbox_style<span class="op">=</span><span class="st">"carto-darkmatter"</span>,</span>
+<span id="cb21-423"><a href="#cb21-423"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb21-424"><a href="#cb21-424"></a>    mapbox_center_lat<span class="op">=</span><span class="dv">36</span>,</span>
+<span id="cb21-425"><a href="#cb21-425"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb21-426"><a href="#cb21-426"></a>)</span>
+<span id="cb21-427"><a href="#cb21-427"></a></span>
+<span id="cb21-428"><a href="#cb21-428"></a>fig.show()</span>
+<span id="cb21-429"><a href="#cb21-429"></a><span class="in">```</span></span>
+<span id="cb21-430"><a href="#cb21-430"></a></span>
+<span id="cb21-431"><a href="#cb21-431"></a>:::</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

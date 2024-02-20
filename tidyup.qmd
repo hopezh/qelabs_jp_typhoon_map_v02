@@ -91,10 +91,11 @@ df
 
 # row data file path
 # data_file_path = './data/RSMC_Tokyo_Typhoon_1951-2023.txt'
-# data_file_path = './data/RSMC_Tokyo_Typhoon_2013-2023.txt'
-# data_file_path = './data/RSMC_Tokyo_Typhoon_2019-2023.txt'
-raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'
-# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2013-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2018-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2019-2023.txt'
+# raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2021-2023.txt'
+raw_data_file_path = './data/original/RSMC_Tokyo_Typhoon_2023.txt'
 
 # extracted header and data file paths
 extracted_header_f_path = './data/processed/header.txt'
@@ -329,7 +330,17 @@ df
 ```
 
 
-# adjust lat and lon value
+# add 'year' column
+```{python}
+df = df.with_columns(
+    pl.col('date_time')
+      .dt.year()
+      .alias('year')
+)
+df
+```
+
+# scale lat and lon value
 ```{python}
 df = df.with_columns(
     pl.col("d_d_latitude").mul(0.1), 

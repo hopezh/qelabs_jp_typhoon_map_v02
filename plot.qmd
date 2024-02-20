@@ -21,7 +21,7 @@ print('polars:', pl.__version__)
 ```{python}
 %time
 
-df_parquet_f_path = "./data/processed/df.parquet"
+df_parquet_f_path = "./data/processed/df_2018-2023.parquet"
 df = pl.read_parquet(df_parquet_f_path)
 print('read df as parquet')
 df
@@ -30,14 +30,14 @@ df
 
 # filter data by year range
 ```{python}
-year_range = [2022, 2023]
+year_range = [2018, 2023]
 
 df_filtered = df.filter(
     pl.col('date_time')
       .dt.year()
       .is_between(year_range[0], year_range[1])
 )
-print('df filtered by year range:')
+print('df filtered by year range:', year_range)
 df_filtered
 ```
 
@@ -53,7 +53,8 @@ fig = px.line_mapbox(
     color="h_b_int_num_id",
     zoom=3,
     height=1000,
-    # animation_frame="h_b_int_num_id"
+    # animation_frame="h_b_int_num_id",
+    animation_frame="year",
 )
 
 fig.update_layout(
