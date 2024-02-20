@@ -2,9 +2,6 @@
 title: "Map of Typhoons around Japan 2014-2023"
 ---
 
-- Tidy up Japan's typhoon data from 1951 to 2023.
-- Create interactive map.
-
 ::: {.column-screen}
 
 ```{python}
