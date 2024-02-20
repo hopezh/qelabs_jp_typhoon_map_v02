@@ -9,7 +9,11 @@ title: "Map of Typhoons around Japan 2014-2023"
 import polars as pl
 pl.Config.set_tbl_rows(7)   # limit num of lines for table preview
 import plotly.express as px
+import plotly.graph_objects as go 
 # print('polars:', pl.__version__)
+
+mapbox_token = open('./data/mapbox/.mapbox_token').read()
+
 
 # read df parquet --------------------------------------------------------------
 df_parquet_f_path = "./data/processed/df_2014-2023.parquet"
@@ -20,6 +24,7 @@ df_parquet_f_path = "./data/processed/df_2014-2023.parquet"
 df = pl.read_parquet(df_parquet_f_path)
 # print('read df as parquet')
 # df
+
 
 # filter data by year range ----------------------------------------------------
 year_range = [2014, 2023]
@@ -32,10 +37,9 @@ df_filtered = df.filter(
 # print('df filtered by year range:', year_range)
 # df_filtered
 
-# create map -------------------------------------------------------------------
-token = open('./data/mapbox/.mapbox_token').read()
 
-fig = px.line_mapbox(
+# create map -------------------------------------------------------------------
+fig_typhoon = px.line_mapbox(
     df_filtered,
     # lat=df_filtered["d_d_latitude"],
     # lon=df_filtered["d_e_longitude"],
@@ -50,8 +54,8 @@ fig = px.line_mapbox(
     # hover_name=['h_h_storm_name'],
 )
 
-fig.update_layout(
-    mapbox_accesstoken=token,
+fig_typhoon.update_layout(
+    mapbox_accesstoken=mapbox_token,
     mapbox_style="light",
     # mapbox_style="outdoors",
     # mapbox_style="basic",
@@ -73,9 +77,38 @@ fig.update_layout(
     # ),
 )
 
-fig.show()
-```
+fig_typhoon.show()
 
+
+# [wip] create map using go.Scattermapbox --------------------------------------------
+# fig_typhoon_go = go.Figure(
+#     go.Scattermapbox(
+#         mode='lines',
+#         lat=df_filtered['d_d_latitude'],
+#         lon=df_filtered['d_e_longitude'],
+#         # line_color=df_filtered['h_b_int_num_id'],
+#     )
+# )
+
+# fig_typhoon_go.update_layout(
+#     mapbox_accesstoken=mapbox_token,
+#     mapbox_style="light",
+#     # mapbox_style="outdoors",
+#     # mapbox_style="basic",
+#     # mapbox_style="dark",
+#
+#     # mapbox_style="open-street-map",
+#     # mapbox_style="carto-darkmatter",
+#     # mapbox_style="carto-positron",
+#     # mapbox_zoom=4,
+#     mapbox_center_lat=36.2048,
+#     mapbox_center_lon=138.2529,
+#     margin={"r":0,"t":0,"l":0,"b":0},
+#     showlegend = False,
+# )
+
+# fig_typhoon_go.show()
+```
 
 :::
 

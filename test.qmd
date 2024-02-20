@@ -3,16 +3,104 @@ title: "test code"
 ---
 
 
-# import modules
+::: {.column-screen}
 
+# import modules ---------------------------------------------------------------
 ```{python}
 import polars as pl
 print('polars version', pl.__version__)
+import plotly.express as px
+import plotly.graph_objects as go
 ```
 
 
-# test, create an empty dataframe with a list of column names
+# read solar farm csv ----------------------------------------------------------
+```{python}
+jp_solar_farms_f_path = "./data/jp_solar_farms/japan_solar_farms.csv"
 
+df_jp_solar = pl.read_csv(jp_solar_farms_f_path, separator=",")
+df_jp_solar
+```
+
+
+# create map using px.scatter_mapbox() -----------------------------------------
+```python
+token = open('./data/mapbox/.mapbox_token').read()
+
+fig = px.scatter_mapbox(
+    df_jp_solar,
+    lat="latitude",
+    lon="longitude",
+    size="capacity_mw",
+    hover_name="name_english",
+    # hover_data=["capacity_mw", "year_operation"],
+    # zoom=3,
+    # height=1000,
+    # animation_frame="h_b_int_num_id",
+    # animation_frame="year",
+    # hover_name=['h_h_storm_name'],
+)
+
+fig.update_layout(
+    mapbox_accesstoken=token,
+    mapbox_style="light",
+    # mapbox_style="outdoors",
+    # mapbox_style="basic",
+    # mapbox_style="dark",
+
+    # mapbox_style="open-street-map",
+    # mapbox_style="carto-darkmatter",
+    # mapbox_style="carto-positron",
+    # mapbox_zoom=4,
+    mapbox_center_lat=36.2048,
+    mapbox_center_lon=138.2529,
+    margin={"r":0,"t":0,"l":0,"b":0},
+    # showlegend=False,
+    # legend=dict(
+    #     xanchor="right",
+    #     yanchor="top",
+    #     x=0.07,
+    #     y=0.99,
+    # ),
+)
+
+fig.show()
+```
+
+
+# create map using go.scattermapbox() ------------------------------------------
+```python
+fig_solar = go.Figure(
+    go.Scattermapbox(
+        lat=df_jp_solar['latitude'],
+        lon=df_jp_solar['longitude'],
+        mode='markers',
+        marker=go.scattermapbox.Marker(
+            size=df_jp_solar['capacity_mw']/10
+        ),
+        text=df_jp_solar['name_english'],
+    )
+)
+
+fig_solar.update_layout(
+    mapbox=dict(
+        accesstoken=token,
+        center=go.layout.mapbox.Center(
+            lat=36.2048,
+            lon=138.2529
+        ),
+        zoom=3
+    )
+)
+
+# fig_solar.show()
+
+```
+
+:::
+
+
+# test, create an empty dataframe with a list of column names
 ```{python}
 keys = ['a', 'b', 'c']
 col_names = dict.fromkeys(keys)
