@@ -81,3 +81,15 @@ fig.show()
 
 
 :::
+
+---
+
+Source of data: 
+
+- [Japan Meteorological Agency (JMA)](https://www.jma.go.jp/jma/indexe.html)
+
+- [Regional Specialized Meteorological Center (RSMC) Tokyo Typhoon Center](https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/RSMC_HP.html)
+
+- [RSMC Best Track Data](https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/besttrack.html)
+
+

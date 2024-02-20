@@ -4,14 +4,22 @@ project:
 
 website:
   title: "Japan Typhoon Map"
+  search: true
   navbar:
+    title: false
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+    # logo: "./logo/qe labs logo - white bg.jpg"
+    logo: "./logo/QE-Labs Logo - Copy.png"
+    logo-alt: "Quantified Energy Labs (QE-Labs)"
+    logo-href: https://www.linkedin.com/company/qe-labs/?originalSubdomain=sg
+
   sidebar:
     tilte: "Contents"
     style: "floating"
+
     search: true
     contents:
       - section: "Production"
@@ -21,6 +29,9 @@ website:
       - section: "Test"
         contents:
           - test.qmd
+  page-footer:
+    center: © 2024 &middot; [Quantified Energy Labs (QE-Labs)](https://www.linkedin.com/company/qe-labs/?originalSubdomain=sg)
+
 
 format:
   html:

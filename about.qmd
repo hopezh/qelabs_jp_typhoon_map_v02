@@ -2,4 +2,14 @@
 title: "About"
 ---
 
-About this site
+Author: [Quantified Energy Labs (QE-Labs)](https://www.linkedin.com/company/qe-labs/?originalSubdomain=sg), Singapore.
+
+This is an interactive map showing the paths of all the typhoons around Japan in the last 10 years (2014 - 2023).
+
+Source of data: 
+
+- [Japan Meteorological Agency (JMA)](https://www.jma.go.jp/jma/indexe.html)
+
+- [Regional Specialized Meteorological Center (RSMC) Tokyo Typhoon Center](https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/RSMC_HP.html)
+
+- [RSMC Best Track Data](https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/besttrack.html)
