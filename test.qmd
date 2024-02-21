@@ -151,8 +151,6 @@ df2
 
 
 # convert str to yyyymmddhh
-
-
 ```{python}
 df_date = pl.DataFrame({
     'date_h_str': ['1987032516', '2021102309'],
@@ -201,4 +199,39 @@ df_test = df_test.with_columns(
 print(df_test)
 ```
 
+
+---
+
+# read parquet file
+```{python}
+import polars as pl
+pl.Config.set_tbl_rows(7)   # limit num of lines for table preview
+
+df_parquet_f_path = "./data/processed/df_2023.parquet"
+df = pl.read_parquet(df_parquet_f_path)
+df
+```
+
+---
+
+# get the first 14 and the last 16 rows from df 
+```{python}
+df_2307 = df.filter(pl.col('h_b_int_num_id') == 2307)
+df_2307 = df_2307[[12, 13, 14], :]
+df_2307 
+```
+
+```{python}
+df_2303 = df.filter(pl.col('h_b_int_num_id') == 2303)
+df_2303 = df_2303[[12, 13, 14], :]
+df_2303
+```
+
+---
+
+# merge the 2 df
+```{python}
+df_selected = pl.concat([df_2307, df_2303])
+df_selected
+```
 

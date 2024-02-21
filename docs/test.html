@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -159,7 +159,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="././logo/QE-Labs Logo - Copy.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -222,6 +227,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#use-df.vstack-to-stack-2-df" id="toc-use-df.vstack-to-stack-2-df" class="nav-link" data-scroll-target="#use-df.vstack-to-stack-2-df">use <code>df.vstack</code> to stack 2 df</a></li>
   <li><a href="#convert-str-to-yyyymmddhh" id="toc-convert-str-to-yyyymmddhh" class="nav-link" data-scroll-target="#convert-str-to-yyyymmddhh">convert str to yyyymmddhh</a></li>
   <li><a href="#create-test-df" id="toc-create-test-df" class="nav-link" data-scroll-target="#create-test-df">create test df —————————————————————</a></li>
+  <li><a href="#read-parquet-file" id="toc-read-parquet-file" class="nav-link" data-scroll-target="#read-parquet-file">read parquet file</a></li>
+  <li><a href="#get-the-first-14-and-the-last-16-rows-from-df" id="toc-get-the-first-14-and-the-last-16-rows-from-df" class="nav-link" data-scroll-target="#get-the-first-14-and-the-last-16-rows-from-df">get the first 14 and the last 16 rows from df</a></li>
+  <li><a href="#merge-the-2-df" id="toc-merge-the-2-df" class="nav-link" data-scroll-target="#merge-the-2-df">merge the 2 df</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="test.ipynb" download="test.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
     </div>
@@ -250,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="column-screen">
 <section id="import-modules" class="level1">
 <h1>import modules —————————————————————</h1>
-<div id="ad918be4" class="cell" data-execution_count="1">
+<div id="36f58deb" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
@@ -265,7 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="read-solar-farm-csv--" class="level1">
 <h1>read solar farm csv ———————————————————-</h1>
-<div id="abed3f75" class="cell" data-execution_count="2">
+<div id="cd5346bc" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>jp_solar_farms_f_path <span class="op">=</span> <span class="st">"./data/jp_solar_farms/japan_solar_farms.csv"</span></span>
@@ -273,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-3"><a href="#cb3-3"></a>df_jp_solar <span class="op">=</span> pl.read_csv(jp_solar_farms_f_path, separator<span class="op">=</span><span class="st">","</span>)</span>
 <span id="cb3-4"><a href="#cb3-4"></a>df_jp_solar</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="355">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -401,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="test-create-an-empty-dataframe-with-a-list-of-column-names" class="level1">
 <h1>test, create an empty dataframe with a list of column names</h1>
-<div id="28f3fea2" class="cell" data-execution_count="3">
+<div id="9b70aeb6" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>keys <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span>
@@ -409,7 +417,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-3"><a href="#cb6-3"></a>df <span class="op">=</span> pl.DataFrame(col_names)</span>
 <span id="cb6-4"><a href="#cb6-4"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="356">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -445,7 +453,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="create-a-pl-df-from-schema-data" class="level1">
 <h1>create a pl df from schema &amp; data</h1>
-<div id="b3e25a6b" class="cell" data-execution_count="4">
+<div id="669e4e48" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>df_schema <span class="op">=</span> {</span>
@@ -470,7 +478,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-20"><a href="#cb7-20"></a></span>
 <span id="cb7-21"><a href="#cb7-21"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="357">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -501,7 +509,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="use-df.vstack-to-stack-2-df" class="level1">
 <h1>use <code>df.vstack</code> to stack 2 df</h1>
-<div id="5b3408d0" class="cell" data-execution_count="5">
+<div id="d76bcb18" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>dict_df3_data <span class="op">=</span> {</span>
@@ -514,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8"></a>df2 <span class="op">=</span> df2.vstack(df3)</span>
 <span id="cb8-9"><a href="#cb8-9"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="358">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -555,7 +563,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="convert-str-to-yyyymmddhh" class="level1">
 <h1>convert str to yyyymmddhh</h1>
-<div id="bc0ade91" class="cell" data-execution_count="6">
+<div id="640f015e" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df_date <span class="op">=</span> pl.DataFrame({</span>
@@ -566,7 +574,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-6"><a href="#cb9-6"></a></span>
 <span id="cb9-7"><a href="#cb9-7"></a>df_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="359">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -604,7 +612,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="e2b7da67" class="cell" data-execution_count="7">
+<div id="a0dc7de6" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>df_date <span class="op">=</span> df_date.with_columns(</span>
@@ -621,7 +629,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-12"><a href="#cb10-12"></a></span>
 <span id="cb10-13"><a href="#cb10-13"></a>df_date</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div class="cell-output cell-output-display" data-execution_count="360">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -679,6 +687,849 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-3"><a href="#cb12-3"></a>    pl.col(<span class="st">"d_lon"</span>).mul(<span class="fl">0.1</span>)</span>
 <span id="cb12-4"><a href="#cb12-4"></a>)</span>
 <span id="cb12-5"><a href="#cb12-5"></a><span class="bu">print</span>(df_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="read-parquet-file" class="level1">
+<h1>read parquet file</h1>
+<div id="16476b89" class="cell" data-execution_count="8">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb13-2"><a href="#cb13-2"></a>pl.Config.set_tbl_rows(<span class="dv">7</span>)   <span class="co"># limit num of lines for table preview</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df_2023.parquet"</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
+<span id="cb13-6"><a href="#cb13-6"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="361">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (667, 25)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">h_a_indicator</th>
+<th data-quarto-table-cell-role="th">h_b_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_c_num_data</th>
+<th data-quarto-table-cell-role="th">h_d_tropical_cyclone_num_id</th>
+<th data-quarto-table-cell-role="th">h_e_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_f_flag_last_data_line</th>
+<th data-quarto-table-cell-role="th">h_g_diff_hour</th>
+<th data-quarto-table-cell-role="th">h_h_storm_name</th>
+<th data-quarto-table-cell-role="th">h_i_date_last_rev</th>
+<th data-quarto-table-cell-role="th">d_a_date_time</th>
+<th data-quarto-table-cell-role="th">d_b_indicator</th>
+<th data-quarto-table-cell-role="th">d_c_grade</th>
+<th data-quarto-table-cell-role="th">d_d_latitude</th>
+<th data-quarto-table-cell-role="th">d_e_longitude</th>
+<th data-quarto-table-cell-role="th">d_f_central_pressure_dPa</th>
+<th data-quarto-table-cell-role="th">d_g_max_wind_speed_kt</th>
+<th data-quarto-table-cell-role="th">d_h_dir_longest_r_50kt_wind</th>
+<th data-quarto-table-cell-role="th">d_i_longest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_j_shortest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_k_dir_longest_r_30kt_wind</th>
+<th data-quarto-table-cell-role="th">d_l_longest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_m_shortest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_p_landfall_or_passage</th>
+<th data-quarto-table-cell-role="th">date_time</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+<tr class="odd">
+<th>i32</th>
+<th>i16</th>
+<th>i16</th>
+<th>i8</th>
+<th>i16</th>
+<th>i8</th>
+<th>i8</th>
+<th>str</th>
+<th>str</th>
+<th>str</th>
+<th>i8</th>
+<th>i8</th>
+<th>f64</th>
+<th>f64</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>str</th>
+<th>datetime[μs]</th>
+<th>i32</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419000000"</td>
+<td>2</td>
+<td>2</td>
+<td>3.5</td>
+<td>159.6</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419060000"</td>
+<td>2</td>
+<td>2</td>
+<td>4.3</td>
+<td>159.1</td>
+<td>1004</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 06:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2301</td>
+<td>14</td>
+<td>3</td>
+<td>2301</td>
+<td>0</td>
+<td>6</td>
+<td>"SANVU"</td>
+<td>"20230704"</td>
+<td>"230419120000"</td>
+<td>2</td>
+<td>2</td>
+<td>5.3</td>
+<td>158.7</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-04-19 12:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2316</td>
+<td>13</td>
+<td>18</td>
+<td>2316</td>
+<td>0</td>
+<td>6</td>
+<td>"SANBA"</td>
+<td>"20240111"</td>
+<td>"231019180000"</td>
+<td>2</td>
+<td>3</td>
+<td>21.4</td>
+<td>109.5</td>
+<td>1002</td>
+<td>35</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>9</td>
+<td>150</td>
+<td>150</td>
+<td>null</td>
+<td>2023-10-19 18:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2316</td>
+<td>13</td>
+<td>18</td>
+<td>2316</td>
+<td>0</td>
+<td>6</td>
+<td>"SANBA"</td>
+<td>"20240111"</td>
+<td>"231020000000"</td>
+<td>2</td>
+<td>2</td>
+<td>21.4</td>
+<td>109.8</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-10-20 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2316</td>
+<td>13</td>
+<td>18</td>
+<td>2316</td>
+<td>0</td>
+<td>6</td>
+<td>"SANBA"</td>
+<td>"20240111"</td>
+<td>"231020060000"</td>
+<td>2</td>
+<td>2</td>
+<td>20.9</td>
+<td>109.7</td>
+<td>1008</td>
+<td>0</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>null</td>
+<td>2023-10-20 06:00:00</td>
+<td>2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="get-the-first-14-and-the-last-16-rows-from-df" class="level1">
+<h1>get the first 14 and the last 16 rows from df</h1>
+<div id="9d9f71dd" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>df_2307 <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'h_b_int_num_id'</span>) <span class="op">==</span> <span class="dv">2307</span>)</span>
+<span id="cb14-2"><a href="#cb14-2"></a>df_2307 <span class="op">=</span> df_2307[[<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>], :]</span>
+<span id="cb14-3"><a href="#cb14-3"></a>df_2307 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="362">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3, 25)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">h_a_indicator</th>
+<th data-quarto-table-cell-role="th">h_b_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_c_num_data</th>
+<th data-quarto-table-cell-role="th">h_d_tropical_cyclone_num_id</th>
+<th data-quarto-table-cell-role="th">h_e_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_f_flag_last_data_line</th>
+<th data-quarto-table-cell-role="th">h_g_diff_hour</th>
+<th data-quarto-table-cell-role="th">h_h_storm_name</th>
+<th data-quarto-table-cell-role="th">h_i_date_last_rev</th>
+<th data-quarto-table-cell-role="th">d_a_date_time</th>
+<th data-quarto-table-cell-role="th">d_b_indicator</th>
+<th data-quarto-table-cell-role="th">d_c_grade</th>
+<th data-quarto-table-cell-role="th">d_d_latitude</th>
+<th data-quarto-table-cell-role="th">d_e_longitude</th>
+<th data-quarto-table-cell-role="th">d_f_central_pressure_dPa</th>
+<th data-quarto-table-cell-role="th">d_g_max_wind_speed_kt</th>
+<th data-quarto-table-cell-role="th">d_h_dir_longest_r_50kt_wind</th>
+<th data-quarto-table-cell-role="th">d_i_longest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_j_shortest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_k_dir_longest_r_30kt_wind</th>
+<th data-quarto-table-cell-role="th">d_l_longest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_m_shortest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_p_landfall_or_passage</th>
+<th data-quarto-table-cell-role="th">date_time</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+<tr class="odd">
+<th>i32</th>
+<th>i16</th>
+<th>i16</th>
+<th>i8</th>
+<th>i16</th>
+<th>i8</th>
+<th>i8</th>
+<th>str</th>
+<th>str</th>
+<th>str</th>
+<th>i8</th>
+<th>i8</th>
+<th>f64</th>
+<th>f64</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>str</th>
+<th>datetime[μs]</th>
+<th>i32</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>66666</td>
+<td>2307</td>
+<td>61</td>
+<td>9</td>
+<td>2307</td>
+<td>0</td>
+<td>6</td>
+<td>"LAN"</td>
+<td>"20231108"</td>
+<td>"230810000000"</td>
+<td>2</td>
+<td>5</td>
+<td>25.2</td>
+<td>143.9</td>
+<td>970</td>
+<td>65</td>
+<td>9</td>
+<td>70</td>
+<td>70</td>
+<td>1</td>
+<td>180</td>
+<td>100</td>
+<td>null</td>
+<td>2023-08-10 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2307</td>
+<td>61</td>
+<td>9</td>
+<td>2307</td>
+<td>0</td>
+<td>6</td>
+<td>"LAN"</td>
+<td>"20231108"</td>
+<td>"230810060000"</td>
+<td>2</td>
+<td>5</td>
+<td>25.5</td>
+<td>143.5</td>
+<td>960</td>
+<td>75</td>
+<td>9</td>
+<td>70</td>
+<td>70</td>
+<td>1</td>
+<td>180</td>
+<td>100</td>
+<td>null</td>
+<td>2023-08-10 06:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2307</td>
+<td>61</td>
+<td>9</td>
+<td>2307</td>
+<td>0</td>
+<td>6</td>
+<td>"LAN"</td>
+<td>"20231108"</td>
+<td>"230810090000"</td>
+<td>2</td>
+<td>5</td>
+<td>25.8</td>
+<td>143.4</td>
+<td>955</td>
+<td>80</td>
+<td>9</td>
+<td>70</td>
+<td>70</td>
+<td>1</td>
+<td>180</td>
+<td>100</td>
+<td>null</td>
+<td>2023-08-10 09:00:00</td>
+<td>2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="09c94cb9" class="cell" data-execution_count="10">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>df_2303 <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'h_b_int_num_id'</span>) <span class="op">==</span> <span class="dv">2303</span>)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>df_2303 <span class="op">=</span> df_2303[[<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>], :]</span>
+<span id="cb15-3"><a href="#cb15-3"></a>df_2303</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="363">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (3, 25)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">h_a_indicator</th>
+<th data-quarto-table-cell-role="th">h_b_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_c_num_data</th>
+<th data-quarto-table-cell-role="th">h_d_tropical_cyclone_num_id</th>
+<th data-quarto-table-cell-role="th">h_e_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_f_flag_last_data_line</th>
+<th data-quarto-table-cell-role="th">h_g_diff_hour</th>
+<th data-quarto-table-cell-role="th">h_h_storm_name</th>
+<th data-quarto-table-cell-role="th">h_i_date_last_rev</th>
+<th data-quarto-table-cell-role="th">d_a_date_time</th>
+<th data-quarto-table-cell-role="th">d_b_indicator</th>
+<th data-quarto-table-cell-role="th">d_c_grade</th>
+<th data-quarto-table-cell-role="th">d_d_latitude</th>
+<th data-quarto-table-cell-role="th">d_e_longitude</th>
+<th data-quarto-table-cell-role="th">d_f_central_pressure_dPa</th>
+<th data-quarto-table-cell-role="th">d_g_max_wind_speed_kt</th>
+<th data-quarto-table-cell-role="th">d_h_dir_longest_r_50kt_wind</th>
+<th data-quarto-table-cell-role="th">d_i_longest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_j_shortest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_k_dir_longest_r_30kt_wind</th>
+<th data-quarto-table-cell-role="th">d_l_longest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_m_shortest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_p_landfall_or_passage</th>
+<th data-quarto-table-cell-role="th">date_time</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+<tr class="odd">
+<th>i32</th>
+<th>i16</th>
+<th>i16</th>
+<th>i8</th>
+<th>i16</th>
+<th>i8</th>
+<th>i8</th>
+<th>str</th>
+<th>str</th>
+<th>str</th>
+<th>i8</th>
+<th>i8</th>
+<th>f64</th>
+<th>f64</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>str</th>
+<th>datetime[μs]</th>
+<th>i32</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>66666</td>
+<td>2303</td>
+<td>44</td>
+<td>5</td>
+<td>2303</td>
+<td>1</td>
+<td>0</td>
+<td>"GUCHOL"</td>
+<td>"20230906"</td>
+<td>"230609000000"</td>
+<td>2</td>
+<td>5</td>
+<td>17.2</td>
+<td>130.4</td>
+<td>965</td>
+<td>75</td>
+<td>9</td>
+<td>60</td>
+<td>60</td>
+<td>1</td>
+<td>240</td>
+<td>210</td>
+<td>null</td>
+<td>2023-06-09 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2303</td>
+<td>44</td>
+<td>5</td>
+<td>2303</td>
+<td>1</td>
+<td>0</td>
+<td>"GUCHOL"</td>
+<td>"20230906"</td>
+<td>"230609060000"</td>
+<td>2</td>
+<td>5</td>
+<td>17.8</td>
+<td>130.1</td>
+<td>965</td>
+<td>75</td>
+<td>9</td>
+<td>60</td>
+<td>60</td>
+<td>1</td>
+<td>240</td>
+<td>210</td>
+<td>null</td>
+<td>2023-06-09 06:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2303</td>
+<td>44</td>
+<td>5</td>
+<td>2303</td>
+<td>1</td>
+<td>0</td>
+<td>"GUCHOL"</td>
+<td>"20230906"</td>
+<td>"230609120000"</td>
+<td>2</td>
+<td>5</td>
+<td>18.1</td>
+<td>129.9</td>
+<td>965</td>
+<td>75</td>
+<td>9</td>
+<td>60</td>
+<td>60</td>
+<td>1</td>
+<td>240</td>
+<td>210</td>
+<td>null</td>
+<td>2023-06-09 12:00:00</td>
+<td>2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="merge-the-2-df" class="level1">
+<h1>merge the 2 df</h1>
+<div id="dc67a1b5" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>df_selected <span class="op">=</span> pl.concat([df_2307, df_2303])</span>
+<span id="cb16-2"><a href="#cb16-2"></a>df_selected</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="364">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (6, 25)</small>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">h_a_indicator</th>
+<th data-quarto-table-cell-role="th">h_b_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_c_num_data</th>
+<th data-quarto-table-cell-role="th">h_d_tropical_cyclone_num_id</th>
+<th data-quarto-table-cell-role="th">h_e_int_num_id</th>
+<th data-quarto-table-cell-role="th">h_f_flag_last_data_line</th>
+<th data-quarto-table-cell-role="th">h_g_diff_hour</th>
+<th data-quarto-table-cell-role="th">h_h_storm_name</th>
+<th data-quarto-table-cell-role="th">h_i_date_last_rev</th>
+<th data-quarto-table-cell-role="th">d_a_date_time</th>
+<th data-quarto-table-cell-role="th">d_b_indicator</th>
+<th data-quarto-table-cell-role="th">d_c_grade</th>
+<th data-quarto-table-cell-role="th">d_d_latitude</th>
+<th data-quarto-table-cell-role="th">d_e_longitude</th>
+<th data-quarto-table-cell-role="th">d_f_central_pressure_dPa</th>
+<th data-quarto-table-cell-role="th">d_g_max_wind_speed_kt</th>
+<th data-quarto-table-cell-role="th">d_h_dir_longest_r_50kt_wind</th>
+<th data-quarto-table-cell-role="th">d_i_longest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_j_shortest_r_50kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_k_dir_longest_r_30kt_wind</th>
+<th data-quarto-table-cell-role="th">d_l_longest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_m_shortest_r_30kt_wind_nm</th>
+<th data-quarto-table-cell-role="th">d_p_landfall_or_passage</th>
+<th data-quarto-table-cell-role="th">date_time</th>
+<th data-quarto-table-cell-role="th">year</th>
+</tr>
+<tr class="odd">
+<th>i32</th>
+<th>i16</th>
+<th>i16</th>
+<th>i8</th>
+<th>i16</th>
+<th>i8</th>
+<th>i8</th>
+<th>str</th>
+<th>str</th>
+<th>str</th>
+<th>i8</th>
+<th>i8</th>
+<th>f64</th>
+<th>f64</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>i16</th>
+<th>str</th>
+<th>datetime[μs]</th>
+<th>i32</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>66666</td>
+<td>2307</td>
+<td>61</td>
+<td>9</td>
+<td>2307</td>
+<td>0</td>
+<td>6</td>
+<td>"LAN"</td>
+<td>"20231108"</td>
+<td>"230810000000"</td>
+<td>2</td>
+<td>5</td>
+<td>25.2</td>
+<td>143.9</td>
+<td>970</td>
+<td>65</td>
+<td>9</td>
+<td>70</td>
+<td>70</td>
+<td>1</td>
+<td>180</td>
+<td>100</td>
+<td>null</td>
+<td>2023-08-10 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2307</td>
+<td>61</td>
+<td>9</td>
+<td>2307</td>
+<td>0</td>
+<td>6</td>
+<td>"LAN"</td>
+<td>"20231108"</td>
+<td>"230810060000"</td>
+<td>2</td>
+<td>5</td>
+<td>25.5</td>
+<td>143.5</td>
+<td>960</td>
+<td>75</td>
+<td>9</td>
+<td>70</td>
+<td>70</td>
+<td>1</td>
+<td>180</td>
+<td>100</td>
+<td>null</td>
+<td>2023-08-10 06:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2307</td>
+<td>61</td>
+<td>9</td>
+<td>2307</td>
+<td>0</td>
+<td>6</td>
+<td>"LAN"</td>
+<td>"20231108"</td>
+<td>"230810090000"</td>
+<td>2</td>
+<td>5</td>
+<td>25.8</td>
+<td>143.4</td>
+<td>955</td>
+<td>80</td>
+<td>9</td>
+<td>70</td>
+<td>70</td>
+<td>1</td>
+<td>180</td>
+<td>100</td>
+<td>null</td>
+<td>2023-08-10 09:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2303</td>
+<td>44</td>
+<td>5</td>
+<td>2303</td>
+<td>1</td>
+<td>0</td>
+<td>"GUCHOL"</td>
+<td>"20230906"</td>
+<td>"230609000000"</td>
+<td>2</td>
+<td>5</td>
+<td>17.2</td>
+<td>130.4</td>
+<td>965</td>
+<td>75</td>
+<td>9</td>
+<td>60</td>
+<td>60</td>
+<td>1</td>
+<td>240</td>
+<td>210</td>
+<td>null</td>
+<td>2023-06-09 00:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="odd">
+<td>66666</td>
+<td>2303</td>
+<td>44</td>
+<td>5</td>
+<td>2303</td>
+<td>1</td>
+<td>0</td>
+<td>"GUCHOL"</td>
+<td>"20230906"</td>
+<td>"230609060000"</td>
+<td>2</td>
+<td>5</td>
+<td>17.8</td>
+<td>130.1</td>
+<td>965</td>
+<td>75</td>
+<td>9</td>
+<td>60</td>
+<td>60</td>
+<td>1</td>
+<td>240</td>
+<td>210</td>
+<td>null</td>
+<td>2023-06-09 06:00:00</td>
+<td>2023</td>
+</tr>
+<tr class="even">
+<td>66666</td>
+<td>2303</td>
+<td>44</td>
+<td>5</td>
+<td>2303</td>
+<td>1</td>
+<td>0</td>
+<td>"GUCHOL"</td>
+<td>"20230906"</td>
+<td>"230609120000"</td>
+<td>2</td>
+<td>5</td>
+<td>18.1</td>
+<td>129.9</td>
+<td>965</td>
+<td>75</td>
+<td>9</td>
+<td>60</td>
+<td>60</td>
+<td>1</td>
+<td>240</td>
+<td>210</td>
+<td>null</td>
+<td>2023-06-09 12:00:00</td>
+<td>2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 
 <!-- -->
@@ -1268,208 +2119,241 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="an">title:</span><span class="co"> "test code"</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="co">---</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a></span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a>::: {.column-screen}</span>
-<span id="cb13-7"><a href="#cb13-7"></a></span>
-<span id="cb13-8"><a href="#cb13-8"></a><span class="fu"># import modules ---------------------------------------------------------------</span></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="in">```{python}</span></span>
-<span id="cb13-12"><a href="#cb13-12"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb13-13"><a href="#cb13-13"></a><span class="bu">print</span>(<span class="st">'polars version'</span>, pl.__version__)</span>
-<span id="cb13-14"><a href="#cb13-14"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb13-15"><a href="#cb13-15"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
-<span id="cb13-16"><a href="#cb13-16"></a><span class="in">```</span></span>
-<span id="cb13-17"><a href="#cb13-17"></a></span>
-<span id="cb13-18"><a href="#cb13-18"></a></span>
-<span id="cb13-19"><a href="#cb13-19"></a><span class="fu"># read solar farm csv ----------------------------------------------------------</span></span>
-<span id="cb13-22"><a href="#cb13-22"></a><span class="in">```{python}</span></span>
-<span id="cb13-23"><a href="#cb13-23"></a>jp_solar_farms_f_path <span class="op">=</span> <span class="st">"./data/jp_solar_farms/japan_solar_farms.csv"</span></span>
-<span id="cb13-24"><a href="#cb13-24"></a></span>
-<span id="cb13-25"><a href="#cb13-25"></a>df_jp_solar <span class="op">=</span> pl.read_csv(jp_solar_farms_f_path, separator<span class="op">=</span><span class="st">","</span>)</span>
-<span id="cb13-26"><a href="#cb13-26"></a>df_jp_solar</span>
-<span id="cb13-27"><a href="#cb13-27"></a><span class="in">```</span></span>
-<span id="cb13-28"><a href="#cb13-28"></a></span>
-<span id="cb13-29"><a href="#cb13-29"></a></span>
-<span id="cb13-30"><a href="#cb13-30"></a><span class="fu"># create map using px.scatter_mapbox() -----------------------------------------</span></span>
-<span id="cb13-31"><a href="#cb13-31"></a><span class="in">```python</span></span>
-<span id="cb13-32"><a href="#cb13-32"></a>token <span class="op">=</span> <span class="bu">open</span>(<span class="st">'./data/mapbox/.mapbox_token'</span>).read()</span>
-<span id="cb13-33"><a href="#cb13-33"></a></span>
-<span id="cb13-34"><a href="#cb13-34"></a>fig <span class="op">=</span> px.scatter_mapbox(</span>
-<span id="cb13-35"><a href="#cb13-35"></a>    df_jp_solar,</span>
-<span id="cb13-36"><a href="#cb13-36"></a>    lat<span class="op">=</span><span class="st">"latitude"</span>,</span>
-<span id="cb13-37"><a href="#cb13-37"></a>    lon<span class="op">=</span><span class="st">"longitude"</span>,</span>
-<span id="cb13-38"><a href="#cb13-38"></a>    size<span class="op">=</span><span class="st">"capacity_mw"</span>,</span>
-<span id="cb13-39"><a href="#cb13-39"></a>    hover_name<span class="op">=</span><span class="st">"name_english"</span>,</span>
-<span id="cb13-40"><a href="#cb13-40"></a>    <span class="co"># hover_data=["capacity_mw", "year_operation"],</span></span>
-<span id="cb13-41"><a href="#cb13-41"></a>    <span class="co"># zoom=3,</span></span>
-<span id="cb13-42"><a href="#cb13-42"></a>    <span class="co"># height=1000,</span></span>
-<span id="cb13-43"><a href="#cb13-43"></a>    <span class="co"># animation_frame="h_b_int_num_id",</span></span>
-<span id="cb13-44"><a href="#cb13-44"></a>    <span class="co"># animation_frame="year",</span></span>
-<span id="cb13-45"><a href="#cb13-45"></a>    <span class="co"># hover_name=['h_h_storm_name'],</span></span>
-<span id="cb13-46"><a href="#cb13-46"></a>)</span>
-<span id="cb13-47"><a href="#cb13-47"></a></span>
-<span id="cb13-48"><a href="#cb13-48"></a>fig.update_layout(</span>
-<span id="cb13-49"><a href="#cb13-49"></a>    mapbox_accesstoken<span class="op">=</span>token,</span>
-<span id="cb13-50"><a href="#cb13-50"></a>    mapbox_style<span class="op">=</span><span class="st">"light"</span>,</span>
-<span id="cb13-51"><a href="#cb13-51"></a>    <span class="co"># mapbox_style="outdoors",</span></span>
-<span id="cb13-52"><a href="#cb13-52"></a>    <span class="co"># mapbox_style="basic",</span></span>
-<span id="cb13-53"><a href="#cb13-53"></a>    <span class="co"># mapbox_style="dark",</span></span>
-<span id="cb13-54"><a href="#cb13-54"></a></span>
-<span id="cb13-55"><a href="#cb13-55"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
-<span id="cb13-56"><a href="#cb13-56"></a>    <span class="co"># mapbox_style="carto-darkmatter",</span></span>
-<span id="cb13-57"><a href="#cb13-57"></a>    <span class="co"># mapbox_style="carto-positron",</span></span>
-<span id="cb13-58"><a href="#cb13-58"></a>    <span class="co"># mapbox_zoom=4,</span></span>
-<span id="cb13-59"><a href="#cb13-59"></a>    mapbox_center_lat<span class="op">=</span><span class="fl">36.2048</span>,</span>
-<span id="cb13-60"><a href="#cb13-60"></a>    mapbox_center_lon<span class="op">=</span><span class="fl">138.2529</span>,</span>
-<span id="cb13-61"><a href="#cb13-61"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
-<span id="cb13-62"><a href="#cb13-62"></a>    <span class="co"># showlegend=False,</span></span>
-<span id="cb13-63"><a href="#cb13-63"></a>    <span class="co"># legend=dict(</span></span>
-<span id="cb13-64"><a href="#cb13-64"></a>    <span class="co">#     xanchor="right",</span></span>
-<span id="cb13-65"><a href="#cb13-65"></a>    <span class="co">#     yanchor="top",</span></span>
-<span id="cb13-66"><a href="#cb13-66"></a>    <span class="co">#     x=0.07,</span></span>
-<span id="cb13-67"><a href="#cb13-67"></a>    <span class="co">#     y=0.99,</span></span>
-<span id="cb13-68"><a href="#cb13-68"></a>    <span class="co"># ),</span></span>
-<span id="cb13-69"><a href="#cb13-69"></a>)</span>
-<span id="cb13-70"><a href="#cb13-70"></a></span>
-<span id="cb13-71"><a href="#cb13-71"></a>fig.show()</span>
-<span id="cb13-72"><a href="#cb13-72"></a><span class="in">```</span></span>
-<span id="cb13-73"><a href="#cb13-73"></a></span>
-<span id="cb13-74"><a href="#cb13-74"></a></span>
-<span id="cb13-75"><a href="#cb13-75"></a><span class="fu"># create map using go.scattermapbox() ------------------------------------------</span></span>
-<span id="cb13-76"><a href="#cb13-76"></a><span class="in">```python</span></span>
-<span id="cb13-77"><a href="#cb13-77"></a>fig_solar <span class="op">=</span> go.Figure(</span>
-<span id="cb13-78"><a href="#cb13-78"></a>    go.Scattermapbox(</span>
-<span id="cb13-79"><a href="#cb13-79"></a>        lat<span class="op">=</span>df_jp_solar[<span class="st">'latitude'</span>],</span>
-<span id="cb13-80"><a href="#cb13-80"></a>        lon<span class="op">=</span>df_jp_solar[<span class="st">'longitude'</span>],</span>
-<span id="cb13-81"><a href="#cb13-81"></a>        mode<span class="op">=</span><span class="st">'markers'</span>,</span>
-<span id="cb13-82"><a href="#cb13-82"></a>        marker<span class="op">=</span>go.scattermapbox.Marker(</span>
-<span id="cb13-83"><a href="#cb13-83"></a>            size<span class="op">=</span>df_jp_solar[<span class="st">'capacity_mw'</span>]<span class="op">/</span><span class="dv">10</span></span>
-<span id="cb13-84"><a href="#cb13-84"></a>        ),</span>
-<span id="cb13-85"><a href="#cb13-85"></a>        text<span class="op">=</span>df_jp_solar[<span class="st">'name_english'</span>],</span>
-<span id="cb13-86"><a href="#cb13-86"></a>    )</span>
-<span id="cb13-87"><a href="#cb13-87"></a>)</span>
-<span id="cb13-88"><a href="#cb13-88"></a></span>
-<span id="cb13-89"><a href="#cb13-89"></a>fig_solar.update_layout(</span>
-<span id="cb13-90"><a href="#cb13-90"></a>    mapbox<span class="op">=</span><span class="bu">dict</span>(</span>
-<span id="cb13-91"><a href="#cb13-91"></a>        accesstoken<span class="op">=</span>token,</span>
-<span id="cb13-92"><a href="#cb13-92"></a>        center<span class="op">=</span>go.layout.mapbox.Center(</span>
-<span id="cb13-93"><a href="#cb13-93"></a>            lat<span class="op">=</span><span class="fl">36.2048</span>,</span>
-<span id="cb13-94"><a href="#cb13-94"></a>            lon<span class="op">=</span><span class="fl">138.2529</span></span>
-<span id="cb13-95"><a href="#cb13-95"></a>        ),</span>
-<span id="cb13-96"><a href="#cb13-96"></a>        zoom<span class="op">=</span><span class="dv">3</span></span>
-<span id="cb13-97"><a href="#cb13-97"></a>    )</span>
-<span id="cb13-98"><a href="#cb13-98"></a>)</span>
-<span id="cb13-99"><a href="#cb13-99"></a></span>
-<span id="cb13-100"><a href="#cb13-100"></a><span class="co"># fig_solar.show()</span></span>
-<span id="cb13-101"><a href="#cb13-101"></a></span>
-<span id="cb13-102"><a href="#cb13-102"></a><span class="in">```</span></span>
-<span id="cb13-103"><a href="#cb13-103"></a></span>
-<span id="cb13-104"><a href="#cb13-104"></a>:::</span>
-<span id="cb13-105"><a href="#cb13-105"></a></span>
-<span id="cb13-106"><a href="#cb13-106"></a></span>
-<span id="cb13-107"><a href="#cb13-107"></a><span class="fu"># test, create an empty dataframe with a list of column names</span></span>
-<span id="cb13-110"><a href="#cb13-110"></a><span class="in">```{python}</span></span>
-<span id="cb13-111"><a href="#cb13-111"></a>keys <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span>
-<span id="cb13-112"><a href="#cb13-112"></a>col_names <span class="op">=</span> <span class="bu">dict</span>.fromkeys(keys)</span>
-<span id="cb13-113"><a href="#cb13-113"></a>df <span class="op">=</span> pl.DataFrame(col_names)</span>
-<span id="cb13-114"><a href="#cb13-114"></a>df</span>
-<span id="cb13-115"><a href="#cb13-115"></a><span class="in">```</span></span>
-<span id="cb13-116"><a href="#cb13-116"></a></span>
-<span id="cb13-117"><a href="#cb13-117"></a></span>
-<span id="cb13-118"><a href="#cb13-118"></a><span class="fu"># create a pl df from schema &amp; data</span></span>
-<span id="cb13-119"><a href="#cb13-119"></a></span>
-<span id="cb13-122"><a href="#cb13-122"></a><span class="in">```{python}</span></span>
-<span id="cb13-123"><a href="#cb13-123"></a>df_schema <span class="op">=</span> {</span>
-<span id="cb13-124"><a href="#cb13-124"></a>    <span class="st">'a'</span>: pl.Int64,</span>
-<span id="cb13-125"><a href="#cb13-125"></a>    <span class="st">'b'</span>: pl.String,</span>
-<span id="cb13-126"><a href="#cb13-126"></a>    <span class="st">'c'</span>: pl.Float64,</span>
-<span id="cb13-127"><a href="#cb13-127"></a>}</span>
-<span id="cb13-128"><a href="#cb13-128"></a></span>
-<span id="cb13-129"><a href="#cb13-129"></a><span class="co"># data = {</span></span>
-<span id="cb13-130"><a href="#cb13-130"></a><span class="co">#     'a': 12345,</span></span>
-<span id="cb13-131"><a href="#cb13-131"></a><span class="co">#     'b': 'abc',</span></span>
-<span id="cb13-132"><a href="#cb13-132"></a><span class="co">#     'c': 123.45</span></span>
-<span id="cb13-133"><a href="#cb13-133"></a><span class="co"># }</span></span>
-<span id="cb13-134"><a href="#cb13-134"></a></span>
-<span id="cb13-135"><a href="#cb13-135"></a>data <span class="op">=</span> {</span>
-<span id="cb13-136"><a href="#cb13-136"></a>    <span class="st">'a'</span>: [],</span>
-<span id="cb13-137"><a href="#cb13-137"></a>    <span class="st">'b'</span>: [],</span>
-<span id="cb13-138"><a href="#cb13-138"></a>    <span class="st">'c'</span>: [],</span>
-<span id="cb13-139"><a href="#cb13-139"></a>}</span>
-<span id="cb13-140"><a href="#cb13-140"></a></span>
-<span id="cb13-141"><a href="#cb13-141"></a>df2 <span class="op">=</span> pl.DataFrame(data, schema<span class="op">=</span>df_schema)</span>
-<span id="cb13-142"><a href="#cb13-142"></a></span>
-<span id="cb13-143"><a href="#cb13-143"></a>df2</span>
-<span id="cb13-144"><a href="#cb13-144"></a><span class="in">```</span></span>
-<span id="cb13-145"><a href="#cb13-145"></a></span>
-<span id="cb13-146"><a href="#cb13-146"></a><span class="fu"># use `df.vstack` to stack 2 df</span></span>
-<span id="cb13-149"><a href="#cb13-149"></a><span class="in">```{python}</span></span>
-<span id="cb13-150"><a href="#cb13-150"></a>dict_df3_data <span class="op">=</span> {</span>
-<span id="cb13-151"><a href="#cb13-151"></a>    <span class="st">'a'</span>: [<span class="dv">6299</span>, <span class="dv">54321</span>],</span>
-<span id="cb13-152"><a href="#cb13-152"></a>    <span class="st">'b'</span>: [<span class="st">'agb'</span>, <span class="st">'bca'</span>],</span>
-<span id="cb13-153"><a href="#cb13-153"></a>    <span class="st">'c'</span>: [<span class="fl">123.45</span>, <span class="fl">43.213</span>]</span>
-<span id="cb13-154"><a href="#cb13-154"></a>}</span>
-<span id="cb13-155"><a href="#cb13-155"></a>df3 <span class="op">=</span> pl.DataFrame(dict_df3_data)</span>
-<span id="cb13-156"><a href="#cb13-156"></a></span>
-<span id="cb13-157"><a href="#cb13-157"></a>df2 <span class="op">=</span> df2.vstack(df3)</span>
-<span id="cb13-158"><a href="#cb13-158"></a>df2</span>
-<span id="cb13-159"><a href="#cb13-159"></a><span class="in">```</span></span>
-<span id="cb13-160"><a href="#cb13-160"></a></span>
-<span id="cb13-161"><a href="#cb13-161"></a></span>
-<span id="cb13-162"><a href="#cb13-162"></a><span class="fu"># convert str to yyyymmddhh</span></span>
-<span id="cb13-163"><a href="#cb13-163"></a></span>
-<span id="cb13-164"><a href="#cb13-164"></a></span>
-<span id="cb13-167"><a href="#cb13-167"></a><span class="in">```{python}</span></span>
-<span id="cb13-168"><a href="#cb13-168"></a>df_date <span class="op">=</span> pl.DataFrame({</span>
-<span id="cb13-169"><a href="#cb13-169"></a>    <span class="st">'date_h_str'</span>: [<span class="st">'1987032516'</span>, <span class="st">'2021102309'</span>],</span>
-<span id="cb13-170"><a href="#cb13-170"></a>    <span class="st">'date_str'</span>: [<span class="st">'19780312'</span>, <span class="st">'20120103'</span>],</span>
-<span id="cb13-171"><a href="#cb13-171"></a>    <span class="st">'speed'</span>: [<span class="dv">123</span>, <span class="dv">345</span>]</span>
-<span id="cb13-172"><a href="#cb13-172"></a>}) </span>
-<span id="cb13-173"><a href="#cb13-173"></a></span>
-<span id="cb13-174"><a href="#cb13-174"></a>df_date</span>
-<span id="cb13-175"><a href="#cb13-175"></a><span class="in">```</span></span>
-<span id="cb13-176"><a href="#cb13-176"></a></span>
-<span id="cb13-177"><a href="#cb13-177"></a></span>
-<span id="cb13-180"><a href="#cb13-180"></a><span class="in">```{python}</span></span>
-<span id="cb13-181"><a href="#cb13-181"></a>df_date <span class="op">=</span> df_date.with_columns(</span>
-<span id="cb13-182"><a href="#cb13-182"></a>    pl.col(<span class="st">'date_str'</span>)</span>
-<span id="cb13-183"><a href="#cb13-183"></a>      .<span class="bu">str</span>.strptime(pl.Date, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y%m</span><span class="sc">%d</span><span class="st">'</span>)</span>
-<span id="cb13-184"><a href="#cb13-184"></a>      .alias(<span class="st">'date'</span>)</span>
-<span id="cb13-185"><a href="#cb13-185"></a>)</span>
-<span id="cb13-186"><a href="#cb13-186"></a></span>
-<span id="cb13-187"><a href="#cb13-187"></a><span class="co"># df_date = df_date.with_columns(</span></span>
-<span id="cb13-188"><a href="#cb13-188"></a><span class="co">#     pl.col('date_h_str')</span></span>
-<span id="cb13-189"><a href="#cb13-189"></a><span class="co">#       .str.strptime(pl.Datetime, format='%Y%m%d%h%m%s')</span></span>
-<span id="cb13-190"><a href="#cb13-190"></a><span class="co">#       .alias('date_hour')</span></span>
-<span id="cb13-191"><a href="#cb13-191"></a><span class="co"># )</span></span>
-<span id="cb13-192"><a href="#cb13-192"></a></span>
-<span id="cb13-193"><a href="#cb13-193"></a>df_date</span>
-<span id="cb13-194"><a href="#cb13-194"></a><span class="in">```</span></span>
-<span id="cb13-195"><a href="#cb13-195"></a></span>
-<span id="cb13-196"><a href="#cb13-196"></a></span>
-<span id="cb13-197"><a href="#cb13-197"></a><span class="fu"># create test df ---------------------------------------------------------------</span></span>
-<span id="cb13-198"><a href="#cb13-198"></a><span class="in">```python</span></span>
-<span id="cb13-199"><a href="#cb13-199"></a>df_test <span class="op">=</span> pl.DataFrame(</span>
-<span id="cb13-200"><a href="#cb13-200"></a>    {</span>
-<span id="cb13-201"><a href="#cb13-201"></a>        <span class="st">'d_lat'</span>: [<span class="fl">35.0</span>,   <span class="fl">43.0</span>,   <span class="fl">53.0</span>,   <span class="fl">214.0</span>,  <span class="fl">215.0</span>,  <span class="fl">209.0</span>],</span>
-<span id="cb13-202"><a href="#cb13-202"></a>        <span class="st">'d_lon'</span>: [<span class="fl">1596.0</span>, <span class="fl">1591.0</span>, <span class="fl">1587.0</span>, <span class="fl">1095.0</span>, <span class="fl">1098.0</span>, <span class="fl">1097.0</span>],</span>
-<span id="cb13-203"><a href="#cb13-203"></a>        <span class="st">'d_idx'</span>: [<span class="dv">2301</span>,   <span class="dv">2301</span>,   <span class="dv">2301</span>,   <span class="dv">2316</span>,   <span class="dv">2316</span>,   <span class="dv">2316</span>]</span>
-<span id="cb13-204"><a href="#cb13-204"></a>    }</span>
-<span id="cb13-205"><a href="#cb13-205"></a>)</span>
-<span id="cb13-206"><a href="#cb13-206"></a><span class="bu">print</span>(df_test)</span>
-<span id="cb13-207"><a href="#cb13-207"></a><span class="in">```</span></span>
-<span id="cb13-208"><a href="#cb13-208"></a></span>
-<span id="cb13-209"><a href="#cb13-209"></a><span class="in">```python</span></span>
-<span id="cb13-210"><a href="#cb13-210"></a>df_test <span class="op">=</span> df_test.with_columns(</span>
-<span id="cb13-211"><a href="#cb13-211"></a>    pl.col(<span class="st">"d_lat"</span>).mul(<span class="fl">0.1</span>), </span>
-<span id="cb13-212"><a href="#cb13-212"></a>    pl.col(<span class="st">"d_lon"</span>).mul(<span class="fl">0.1</span>)</span>
-<span id="cb13-213"><a href="#cb13-213"></a>)</span>
-<span id="cb13-214"><a href="#cb13-214"></a><span class="bu">print</span>(df_test)</span>
-<span id="cb13-215"><a href="#cb13-215"></a><span class="in">```</span></span>
-<span id="cb13-216"><a href="#cb13-216"></a></span>
+<div class="sourceCode" id="cb17" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">---</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="an">title:</span><span class="co"> "test code"</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">---</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a></span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a>::: {.column-screen}</span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="fu"># import modules ---------------------------------------------------------------</span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="in">```{python}</span></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb17-13"><a href="#cb17-13"></a><span class="bu">print</span>(<span class="st">'polars version'</span>, pl.__version__)</span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb17-16"><a href="#cb17-16"></a><span class="in">```</span></span>
+<span id="cb17-17"><a href="#cb17-17"></a></span>
+<span id="cb17-18"><a href="#cb17-18"></a></span>
+<span id="cb17-19"><a href="#cb17-19"></a><span class="fu"># read solar farm csv ----------------------------------------------------------</span></span>
+<span id="cb17-22"><a href="#cb17-22"></a><span class="in">```{python}</span></span>
+<span id="cb17-23"><a href="#cb17-23"></a>jp_solar_farms_f_path <span class="op">=</span> <span class="st">"./data/jp_solar_farms/japan_solar_farms.csv"</span></span>
+<span id="cb17-24"><a href="#cb17-24"></a></span>
+<span id="cb17-25"><a href="#cb17-25"></a>df_jp_solar <span class="op">=</span> pl.read_csv(jp_solar_farms_f_path, separator<span class="op">=</span><span class="st">","</span>)</span>
+<span id="cb17-26"><a href="#cb17-26"></a>df_jp_solar</span>
+<span id="cb17-27"><a href="#cb17-27"></a><span class="in">```</span></span>
+<span id="cb17-28"><a href="#cb17-28"></a></span>
+<span id="cb17-29"><a href="#cb17-29"></a></span>
+<span id="cb17-30"><a href="#cb17-30"></a><span class="fu"># create map using px.scatter_mapbox() -----------------------------------------</span></span>
+<span id="cb17-31"><a href="#cb17-31"></a><span class="in">```python</span></span>
+<span id="cb17-32"><a href="#cb17-32"></a>token <span class="op">=</span> <span class="bu">open</span>(<span class="st">'./data/mapbox/.mapbox_token'</span>).read()</span>
+<span id="cb17-33"><a href="#cb17-33"></a></span>
+<span id="cb17-34"><a href="#cb17-34"></a>fig <span class="op">=</span> px.scatter_mapbox(</span>
+<span id="cb17-35"><a href="#cb17-35"></a>    df_jp_solar,</span>
+<span id="cb17-36"><a href="#cb17-36"></a>    lat<span class="op">=</span><span class="st">"latitude"</span>,</span>
+<span id="cb17-37"><a href="#cb17-37"></a>    lon<span class="op">=</span><span class="st">"longitude"</span>,</span>
+<span id="cb17-38"><a href="#cb17-38"></a>    size<span class="op">=</span><span class="st">"capacity_mw"</span>,</span>
+<span id="cb17-39"><a href="#cb17-39"></a>    hover_name<span class="op">=</span><span class="st">"name_english"</span>,</span>
+<span id="cb17-40"><a href="#cb17-40"></a>    <span class="co"># hover_data=["capacity_mw", "year_operation"],</span></span>
+<span id="cb17-41"><a href="#cb17-41"></a>    <span class="co"># zoom=3,</span></span>
+<span id="cb17-42"><a href="#cb17-42"></a>    <span class="co"># height=1000,</span></span>
+<span id="cb17-43"><a href="#cb17-43"></a>    <span class="co"># animation_frame="h_b_int_num_id",</span></span>
+<span id="cb17-44"><a href="#cb17-44"></a>    <span class="co"># animation_frame="year",</span></span>
+<span id="cb17-45"><a href="#cb17-45"></a>    <span class="co"># hover_name=['h_h_storm_name'],</span></span>
+<span id="cb17-46"><a href="#cb17-46"></a>)</span>
+<span id="cb17-47"><a href="#cb17-47"></a></span>
+<span id="cb17-48"><a href="#cb17-48"></a>fig.update_layout(</span>
+<span id="cb17-49"><a href="#cb17-49"></a>    mapbox_accesstoken<span class="op">=</span>token,</span>
+<span id="cb17-50"><a href="#cb17-50"></a>    mapbox_style<span class="op">=</span><span class="st">"light"</span>,</span>
+<span id="cb17-51"><a href="#cb17-51"></a>    <span class="co"># mapbox_style="outdoors",</span></span>
+<span id="cb17-52"><a href="#cb17-52"></a>    <span class="co"># mapbox_style="basic",</span></span>
+<span id="cb17-53"><a href="#cb17-53"></a>    <span class="co"># mapbox_style="dark",</span></span>
+<span id="cb17-54"><a href="#cb17-54"></a></span>
+<span id="cb17-55"><a href="#cb17-55"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb17-56"><a href="#cb17-56"></a>    <span class="co"># mapbox_style="carto-darkmatter",</span></span>
+<span id="cb17-57"><a href="#cb17-57"></a>    <span class="co"># mapbox_style="carto-positron",</span></span>
+<span id="cb17-58"><a href="#cb17-58"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb17-59"><a href="#cb17-59"></a>    mapbox_center_lat<span class="op">=</span><span class="fl">36.2048</span>,</span>
+<span id="cb17-60"><a href="#cb17-60"></a>    mapbox_center_lon<span class="op">=</span><span class="fl">138.2529</span>,</span>
+<span id="cb17-61"><a href="#cb17-61"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb17-62"><a href="#cb17-62"></a>    <span class="co"># showlegend=False,</span></span>
+<span id="cb17-63"><a href="#cb17-63"></a>    <span class="co"># legend=dict(</span></span>
+<span id="cb17-64"><a href="#cb17-64"></a>    <span class="co">#     xanchor="right",</span></span>
+<span id="cb17-65"><a href="#cb17-65"></a>    <span class="co">#     yanchor="top",</span></span>
+<span id="cb17-66"><a href="#cb17-66"></a>    <span class="co">#     x=0.07,</span></span>
+<span id="cb17-67"><a href="#cb17-67"></a>    <span class="co">#     y=0.99,</span></span>
+<span id="cb17-68"><a href="#cb17-68"></a>    <span class="co"># ),</span></span>
+<span id="cb17-69"><a href="#cb17-69"></a>)</span>
+<span id="cb17-70"><a href="#cb17-70"></a></span>
+<span id="cb17-71"><a href="#cb17-71"></a>fig.show()</span>
+<span id="cb17-72"><a href="#cb17-72"></a><span class="in">```</span></span>
+<span id="cb17-73"><a href="#cb17-73"></a></span>
+<span id="cb17-74"><a href="#cb17-74"></a></span>
+<span id="cb17-75"><a href="#cb17-75"></a><span class="fu"># create map using go.scattermapbox() ------------------------------------------</span></span>
+<span id="cb17-76"><a href="#cb17-76"></a><span class="in">```python</span></span>
+<span id="cb17-77"><a href="#cb17-77"></a>fig_solar <span class="op">=</span> go.Figure(</span>
+<span id="cb17-78"><a href="#cb17-78"></a>    go.Scattermapbox(</span>
+<span id="cb17-79"><a href="#cb17-79"></a>        lat<span class="op">=</span>df_jp_solar[<span class="st">'latitude'</span>],</span>
+<span id="cb17-80"><a href="#cb17-80"></a>        lon<span class="op">=</span>df_jp_solar[<span class="st">'longitude'</span>],</span>
+<span id="cb17-81"><a href="#cb17-81"></a>        mode<span class="op">=</span><span class="st">'markers'</span>,</span>
+<span id="cb17-82"><a href="#cb17-82"></a>        marker<span class="op">=</span>go.scattermapbox.Marker(</span>
+<span id="cb17-83"><a href="#cb17-83"></a>            size<span class="op">=</span>df_jp_solar[<span class="st">'capacity_mw'</span>]<span class="op">/</span><span class="dv">10</span></span>
+<span id="cb17-84"><a href="#cb17-84"></a>        ),</span>
+<span id="cb17-85"><a href="#cb17-85"></a>        text<span class="op">=</span>df_jp_solar[<span class="st">'name_english'</span>],</span>
+<span id="cb17-86"><a href="#cb17-86"></a>    )</span>
+<span id="cb17-87"><a href="#cb17-87"></a>)</span>
+<span id="cb17-88"><a href="#cb17-88"></a></span>
+<span id="cb17-89"><a href="#cb17-89"></a>fig_solar.update_layout(</span>
+<span id="cb17-90"><a href="#cb17-90"></a>    mapbox<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb17-91"><a href="#cb17-91"></a>        accesstoken<span class="op">=</span>token,</span>
+<span id="cb17-92"><a href="#cb17-92"></a>        center<span class="op">=</span>go.layout.mapbox.Center(</span>
+<span id="cb17-93"><a href="#cb17-93"></a>            lat<span class="op">=</span><span class="fl">36.2048</span>,</span>
+<span id="cb17-94"><a href="#cb17-94"></a>            lon<span class="op">=</span><span class="fl">138.2529</span></span>
+<span id="cb17-95"><a href="#cb17-95"></a>        ),</span>
+<span id="cb17-96"><a href="#cb17-96"></a>        zoom<span class="op">=</span><span class="dv">3</span></span>
+<span id="cb17-97"><a href="#cb17-97"></a>    )</span>
+<span id="cb17-98"><a href="#cb17-98"></a>)</span>
+<span id="cb17-99"><a href="#cb17-99"></a></span>
+<span id="cb17-100"><a href="#cb17-100"></a><span class="co"># fig_solar.show()</span></span>
+<span id="cb17-101"><a href="#cb17-101"></a></span>
+<span id="cb17-102"><a href="#cb17-102"></a><span class="in">```</span></span>
+<span id="cb17-103"><a href="#cb17-103"></a></span>
+<span id="cb17-104"><a href="#cb17-104"></a>:::</span>
+<span id="cb17-105"><a href="#cb17-105"></a></span>
+<span id="cb17-106"><a href="#cb17-106"></a></span>
+<span id="cb17-107"><a href="#cb17-107"></a><span class="fu"># test, create an empty dataframe with a list of column names</span></span>
+<span id="cb17-110"><a href="#cb17-110"></a><span class="in">```{python}</span></span>
+<span id="cb17-111"><a href="#cb17-111"></a>keys <span class="op">=</span> [<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]</span>
+<span id="cb17-112"><a href="#cb17-112"></a>col_names <span class="op">=</span> <span class="bu">dict</span>.fromkeys(keys)</span>
+<span id="cb17-113"><a href="#cb17-113"></a>df <span class="op">=</span> pl.DataFrame(col_names)</span>
+<span id="cb17-114"><a href="#cb17-114"></a>df</span>
+<span id="cb17-115"><a href="#cb17-115"></a><span class="in">```</span></span>
+<span id="cb17-116"><a href="#cb17-116"></a></span>
+<span id="cb17-117"><a href="#cb17-117"></a></span>
+<span id="cb17-118"><a href="#cb17-118"></a><span class="fu"># create a pl df from schema &amp; data</span></span>
+<span id="cb17-119"><a href="#cb17-119"></a></span>
+<span id="cb17-122"><a href="#cb17-122"></a><span class="in">```{python}</span></span>
+<span id="cb17-123"><a href="#cb17-123"></a>df_schema <span class="op">=</span> {</span>
+<span id="cb17-124"><a href="#cb17-124"></a>    <span class="st">'a'</span>: pl.Int64,</span>
+<span id="cb17-125"><a href="#cb17-125"></a>    <span class="st">'b'</span>: pl.String,</span>
+<span id="cb17-126"><a href="#cb17-126"></a>    <span class="st">'c'</span>: pl.Float64,</span>
+<span id="cb17-127"><a href="#cb17-127"></a>}</span>
+<span id="cb17-128"><a href="#cb17-128"></a></span>
+<span id="cb17-129"><a href="#cb17-129"></a><span class="co"># data = {</span></span>
+<span id="cb17-130"><a href="#cb17-130"></a><span class="co">#     'a': 12345,</span></span>
+<span id="cb17-131"><a href="#cb17-131"></a><span class="co">#     'b': 'abc',</span></span>
+<span id="cb17-132"><a href="#cb17-132"></a><span class="co">#     'c': 123.45</span></span>
+<span id="cb17-133"><a href="#cb17-133"></a><span class="co"># }</span></span>
+<span id="cb17-134"><a href="#cb17-134"></a></span>
+<span id="cb17-135"><a href="#cb17-135"></a>data <span class="op">=</span> {</span>
+<span id="cb17-136"><a href="#cb17-136"></a>    <span class="st">'a'</span>: [],</span>
+<span id="cb17-137"><a href="#cb17-137"></a>    <span class="st">'b'</span>: [],</span>
+<span id="cb17-138"><a href="#cb17-138"></a>    <span class="st">'c'</span>: [],</span>
+<span id="cb17-139"><a href="#cb17-139"></a>}</span>
+<span id="cb17-140"><a href="#cb17-140"></a></span>
+<span id="cb17-141"><a href="#cb17-141"></a>df2 <span class="op">=</span> pl.DataFrame(data, schema<span class="op">=</span>df_schema)</span>
+<span id="cb17-142"><a href="#cb17-142"></a></span>
+<span id="cb17-143"><a href="#cb17-143"></a>df2</span>
+<span id="cb17-144"><a href="#cb17-144"></a><span class="in">```</span></span>
+<span id="cb17-145"><a href="#cb17-145"></a></span>
+<span id="cb17-146"><a href="#cb17-146"></a><span class="fu"># use `df.vstack` to stack 2 df</span></span>
+<span id="cb17-149"><a href="#cb17-149"></a><span class="in">```{python}</span></span>
+<span id="cb17-150"><a href="#cb17-150"></a>dict_df3_data <span class="op">=</span> {</span>
+<span id="cb17-151"><a href="#cb17-151"></a>    <span class="st">'a'</span>: [<span class="dv">6299</span>, <span class="dv">54321</span>],</span>
+<span id="cb17-152"><a href="#cb17-152"></a>    <span class="st">'b'</span>: [<span class="st">'agb'</span>, <span class="st">'bca'</span>],</span>
+<span id="cb17-153"><a href="#cb17-153"></a>    <span class="st">'c'</span>: [<span class="fl">123.45</span>, <span class="fl">43.213</span>]</span>
+<span id="cb17-154"><a href="#cb17-154"></a>}</span>
+<span id="cb17-155"><a href="#cb17-155"></a>df3 <span class="op">=</span> pl.DataFrame(dict_df3_data)</span>
+<span id="cb17-156"><a href="#cb17-156"></a></span>
+<span id="cb17-157"><a href="#cb17-157"></a>df2 <span class="op">=</span> df2.vstack(df3)</span>
+<span id="cb17-158"><a href="#cb17-158"></a>df2</span>
+<span id="cb17-159"><a href="#cb17-159"></a><span class="in">```</span></span>
+<span id="cb17-160"><a href="#cb17-160"></a></span>
+<span id="cb17-161"><a href="#cb17-161"></a></span>
+<span id="cb17-162"><a href="#cb17-162"></a><span class="fu"># convert str to yyyymmddhh</span></span>
+<span id="cb17-165"><a href="#cb17-165"></a><span class="in">```{python}</span></span>
+<span id="cb17-166"><a href="#cb17-166"></a>df_date <span class="op">=</span> pl.DataFrame({</span>
+<span id="cb17-167"><a href="#cb17-167"></a>    <span class="st">'date_h_str'</span>: [<span class="st">'1987032516'</span>, <span class="st">'2021102309'</span>],</span>
+<span id="cb17-168"><a href="#cb17-168"></a>    <span class="st">'date_str'</span>: [<span class="st">'19780312'</span>, <span class="st">'20120103'</span>],</span>
+<span id="cb17-169"><a href="#cb17-169"></a>    <span class="st">'speed'</span>: [<span class="dv">123</span>, <span class="dv">345</span>]</span>
+<span id="cb17-170"><a href="#cb17-170"></a>}) </span>
+<span id="cb17-171"><a href="#cb17-171"></a></span>
+<span id="cb17-172"><a href="#cb17-172"></a>df_date</span>
+<span id="cb17-173"><a href="#cb17-173"></a><span class="in">```</span></span>
+<span id="cb17-174"><a href="#cb17-174"></a></span>
+<span id="cb17-175"><a href="#cb17-175"></a></span>
+<span id="cb17-178"><a href="#cb17-178"></a><span class="in">```{python}</span></span>
+<span id="cb17-179"><a href="#cb17-179"></a>df_date <span class="op">=</span> df_date.with_columns(</span>
+<span id="cb17-180"><a href="#cb17-180"></a>    pl.col(<span class="st">'date_str'</span>)</span>
+<span id="cb17-181"><a href="#cb17-181"></a>      .<span class="bu">str</span>.strptime(pl.Date, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y%m</span><span class="sc">%d</span><span class="st">'</span>)</span>
+<span id="cb17-182"><a href="#cb17-182"></a>      .alias(<span class="st">'date'</span>)</span>
+<span id="cb17-183"><a href="#cb17-183"></a>)</span>
+<span id="cb17-184"><a href="#cb17-184"></a></span>
+<span id="cb17-185"><a href="#cb17-185"></a><span class="co"># df_date = df_date.with_columns(</span></span>
+<span id="cb17-186"><a href="#cb17-186"></a><span class="co">#     pl.col('date_h_str')</span></span>
+<span id="cb17-187"><a href="#cb17-187"></a><span class="co">#       .str.strptime(pl.Datetime, format='%Y%m%d%h%m%s')</span></span>
+<span id="cb17-188"><a href="#cb17-188"></a><span class="co">#       .alias('date_hour')</span></span>
+<span id="cb17-189"><a href="#cb17-189"></a><span class="co"># )</span></span>
+<span id="cb17-190"><a href="#cb17-190"></a></span>
+<span id="cb17-191"><a href="#cb17-191"></a>df_date</span>
+<span id="cb17-192"><a href="#cb17-192"></a><span class="in">```</span></span>
+<span id="cb17-193"><a href="#cb17-193"></a></span>
+<span id="cb17-194"><a href="#cb17-194"></a></span>
+<span id="cb17-195"><a href="#cb17-195"></a><span class="fu"># create test df ---------------------------------------------------------------</span></span>
+<span id="cb17-196"><a href="#cb17-196"></a><span class="in">```python</span></span>
+<span id="cb17-197"><a href="#cb17-197"></a>df_test <span class="op">=</span> pl.DataFrame(</span>
+<span id="cb17-198"><a href="#cb17-198"></a>    {</span>
+<span id="cb17-199"><a href="#cb17-199"></a>        <span class="st">'d_lat'</span>: [<span class="fl">35.0</span>,   <span class="fl">43.0</span>,   <span class="fl">53.0</span>,   <span class="fl">214.0</span>,  <span class="fl">215.0</span>,  <span class="fl">209.0</span>],</span>
+<span id="cb17-200"><a href="#cb17-200"></a>        <span class="st">'d_lon'</span>: [<span class="fl">1596.0</span>, <span class="fl">1591.0</span>, <span class="fl">1587.0</span>, <span class="fl">1095.0</span>, <span class="fl">1098.0</span>, <span class="fl">1097.0</span>],</span>
+<span id="cb17-201"><a href="#cb17-201"></a>        <span class="st">'d_idx'</span>: [<span class="dv">2301</span>,   <span class="dv">2301</span>,   <span class="dv">2301</span>,   <span class="dv">2316</span>,   <span class="dv">2316</span>,   <span class="dv">2316</span>]</span>
+<span id="cb17-202"><a href="#cb17-202"></a>    }</span>
+<span id="cb17-203"><a href="#cb17-203"></a>)</span>
+<span id="cb17-204"><a href="#cb17-204"></a><span class="bu">print</span>(df_test)</span>
+<span id="cb17-205"><a href="#cb17-205"></a><span class="in">```</span></span>
+<span id="cb17-206"><a href="#cb17-206"></a></span>
+<span id="cb17-207"><a href="#cb17-207"></a><span class="in">```python</span></span>
+<span id="cb17-208"><a href="#cb17-208"></a>df_test <span class="op">=</span> df_test.with_columns(</span>
+<span id="cb17-209"><a href="#cb17-209"></a>    pl.col(<span class="st">"d_lat"</span>).mul(<span class="fl">0.1</span>), </span>
+<span id="cb17-210"><a href="#cb17-210"></a>    pl.col(<span class="st">"d_lon"</span>).mul(<span class="fl">0.1</span>)</span>
+<span id="cb17-211"><a href="#cb17-211"></a>)</span>
+<span id="cb17-212"><a href="#cb17-212"></a><span class="bu">print</span>(df_test)</span>
+<span id="cb17-213"><a href="#cb17-213"></a><span class="in">```</span></span>
+<span id="cb17-214"><a href="#cb17-214"></a></span>
+<span id="cb17-215"><a href="#cb17-215"></a></span>
+<span id="cb17-216"><a href="#cb17-216"></a>---</span>
+<span id="cb17-217"><a href="#cb17-217"></a></span>
+<span id="cb17-218"><a href="#cb17-218"></a><span class="fu"># read parquet file</span></span>
+<span id="cb17-221"><a href="#cb17-221"></a><span class="in">```{python}</span></span>
+<span id="cb17-222"><a href="#cb17-222"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb17-223"><a href="#cb17-223"></a>pl.Config.set_tbl_rows(<span class="dv">7</span>)   <span class="co"># limit num of lines for table preview</span></span>
+<span id="cb17-224"><a href="#cb17-224"></a></span>
+<span id="cb17-225"><a href="#cb17-225"></a>df_parquet_f_path <span class="op">=</span> <span class="st">"./data/processed/df_2023.parquet"</span></span>
+<span id="cb17-226"><a href="#cb17-226"></a>df <span class="op">=</span> pl.read_parquet(df_parquet_f_path)</span>
+<span id="cb17-227"><a href="#cb17-227"></a>df</span>
+<span id="cb17-228"><a href="#cb17-228"></a><span class="in">```</span></span>
+<span id="cb17-229"><a href="#cb17-229"></a></span>
+<span id="cb17-230"><a href="#cb17-230"></a>---</span>
+<span id="cb17-231"><a href="#cb17-231"></a></span>
+<span id="cb17-232"><a href="#cb17-232"></a><span class="fu"># get the first 14 and the last 16 rows from df </span></span>
+<span id="cb17-235"><a href="#cb17-235"></a><span class="in">```{python}</span></span>
+<span id="cb17-236"><a href="#cb17-236"></a>df_2307 <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'h_b_int_num_id'</span>) <span class="op">==</span> <span class="dv">2307</span>)</span>
+<span id="cb17-237"><a href="#cb17-237"></a>df_2307 <span class="op">=</span> df_2307[[<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>], :]</span>
+<span id="cb17-238"><a href="#cb17-238"></a>df_2307 </span>
+<span id="cb17-239"><a href="#cb17-239"></a><span class="in">```</span></span>
+<span id="cb17-240"><a href="#cb17-240"></a></span>
+<span id="cb17-243"><a href="#cb17-243"></a><span class="in">```{python}</span></span>
+<span id="cb17-244"><a href="#cb17-244"></a>df_2303 <span class="op">=</span> df.<span class="bu">filter</span>(pl.col(<span class="st">'h_b_int_num_id'</span>) <span class="op">==</span> <span class="dv">2303</span>)</span>
+<span id="cb17-245"><a href="#cb17-245"></a>df_2303 <span class="op">=</span> df_2303[[<span class="dv">12</span>, <span class="dv">13</span>, <span class="dv">14</span>], :]</span>
+<span id="cb17-246"><a href="#cb17-246"></a>df_2303</span>
+<span id="cb17-247"><a href="#cb17-247"></a><span class="in">```</span></span>
+<span id="cb17-248"><a href="#cb17-248"></a></span>
+<span id="cb17-249"><a href="#cb17-249"></a>---</span>
+<span id="cb17-250"><a href="#cb17-250"></a></span>
+<span id="cb17-251"><a href="#cb17-251"></a><span class="fu"># merge the 2 df</span></span>
+<span id="cb17-254"><a href="#cb17-254"></a><span class="in">```{python}</span></span>
+<span id="cb17-255"><a href="#cb17-255"></a>df_selected <span class="op">=</span> pl.concat([df_2307, df_2303])</span>
+<span id="cb17-256"><a href="#cb17-256"></a>df_selected</span>
+<span id="cb17-257"><a href="#cb17-257"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

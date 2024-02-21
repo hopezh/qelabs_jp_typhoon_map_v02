@@ -11,14 +11,15 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
-    # logo: "./logo/qe labs logo - white bg.jpg"
     logo: "./logo/QE-Labs Logo - Copy.png"
     logo-alt: "Quantified Energy Labs (QE-Labs)"
     logo-href: https://www.linkedin.com/company/qe-labs/?originalSubdomain=sg
 
   sidebar:
+    logo: "./logo/QE-Labs Logo - Copy.png"
     tilte: "Contents"
-    style: "floating"
+    # style: "floating"
+    style: "docked"
 
     search: true
     contents:
