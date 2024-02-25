@@ -1,0 +1,36 @@
+---
+title: "code snippets"
+---
+
+
+```python
+[wip] create map using go.Scattermapbox --------------------------------------------
+fig_typhoon_go = go.Figure(
+    go.Scattermapbox(
+        mode='lines',
+        lat=df_filtered['d_d_latitude'],
+        lon=df_filtered['d_e_longitude'],
+        # line_color=df_filtered['h_b_int_num_id'],
+    )
+)
+
+fig_typhoon_go.update_layout(
+    mapbox_accesstoken=mapbox_token,
+    mapbox_style="light",
+    # mapbox_style="outdoors",
+    # mapbox_style="basic",
+    # mapbox_style="dark",
+
+    # mapbox_style="open-street-map",
+    # mapbox_style="carto-darkmatter",
+    # mapbox_style="carto-positron",
+    # mapbox_zoom=4,
+    mapbox_center_lat=36.2048,
+    mapbox_center_lon=138.2529,
+    margin={"r":0,"t":0,"l":0,"b":0},
+    showlegend = False,
+)
+
+fig_typhoon_go.show()
+```
+
