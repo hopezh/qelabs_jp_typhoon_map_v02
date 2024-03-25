@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Japan Typhoon Map - About</title>
+<title>Japan Typhoon Map - code snippets</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,10 +104,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="https://www.linkedin.com/company/qe-labs/?originalSubdomain=sg" class="navbar-brand navbar-brand-logo">
-    <img src=".././logo/QE-Labs Logo - Copy.png" alt="Quantified Energy Labs (QE-Labs)" class="navbar-logo">
+    <img src="././logo/QE-Labs Logo - Copy.png" alt="Quantified Energy Labs (QE-Labs)" class="navbar-logo">
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -91,11 +125,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -110,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">About</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">code snippets</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -122,7 +156,12 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="././logo/QE-Labs Logo - Copy.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -141,13 +180,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tidyup.html" class="sidebar-item-text sidebar-link">
+  <a href="./tidyup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tidy-up Japan Typhoon Data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../plot.html" class="sidebar-item-text sidebar-link">
+  <a href="./plot.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">create map</span></a>
   </div>
 </li>
@@ -164,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../test.html" class="sidebar-item-text sidebar-link">
+  <a href="./test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">test code</span></a>
   </div>
 </li>
@@ -176,20 +215,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="about.out.ipynb" download="about.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
-    </div>
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="z_temp.ipynb" download="z_temp.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<div class="quarto-title-block"><div><h1 class="title">code snippets</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -206,19 +239,38 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="about" class="level1">
-<h1>About</h1>
-<p>Author: <a href="https://www.linkedin.com/company/qe-labs/?originalSubdomain=sg">Quantified Energy Labs (QE-Labs)</a>, Singapore.</p>
-<p>This is an interactive map showing the paths of all the typhoons around Japan in the last 10 years (2014 - 2023).</p>
-<p>Source of data:</p>
-<ul>
-<li><p><a href="https://www.jma.go.jp/jma/indexe.html">Japan Meteorological Agency (JMA)</a></p></li>
-<li><p><a href="https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/RSMC_HP.html">Regional Specialized Meteorological Center (RSMC) Tokyo Typhoon Center</a></p></li>
-<li><p><a href="https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/besttrack.html">RSMC Best Track Data</a></p></li>
-</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>[wip] create <span class="bu">map</span> using go.Scattermapbox <span class="op">--------------------------------------------</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>fig_typhoon_go <span class="op">=</span> go.Figure(</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    go.Scattermapbox(</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        mode<span class="op">=</span><span class="st">'lines'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        lat<span class="op">=</span>df_filtered[<span class="st">'d_d_latitude'</span>],</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        lon<span class="op">=</span>df_filtered[<span class="st">'d_e_longitude'</span>],</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="co"># line_color=df_filtered['h_b_int_num_id'],</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    )</span>
+<span id="cb1-9"><a href="#cb1-9"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a></span>
+<span id="cb1-11"><a href="#cb1-11"></a>fig_typhoon_go.update_layout(</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    mapbox_accesstoken<span class="op">=</span>mapbox_token,</span>
+<span id="cb1-13"><a href="#cb1-13"></a>    mapbox_style<span class="op">=</span><span class="st">"light"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14"></a>    <span class="co"># mapbox_style="outdoors",</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="co"># mapbox_style="basic",</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="co"># mapbox_style="dark",</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co"># mapbox_style="carto-darkmatter",</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="co"># mapbox_style="carto-positron",</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>    mapbox_center_lat<span class="op">=</span><span class="fl">36.2048</span>,</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    mapbox_center_lon<span class="op">=</span><span class="fl">138.2529</span>,</span>
+<span id="cb1-24"><a href="#cb1-24"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb1-25"><a href="#cb1-25"></a>    showlegend <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb1-26"><a href="#cb1-26"></a>)</span>
+<span id="cb1-27"><a href="#cb1-27"></a></span>
+<span id="cb1-28"><a href="#cb1-28"></a>fig_typhoon_go.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
-</section>
+<!-- -->
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -495,6 +547,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -529,7 +599,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -802,7 +876,43 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">---</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="an">title:</span><span class="co"> "code snippets"</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">---</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="in">```python</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>[wip] create <span class="bu">map</span> using go.Scattermapbox <span class="op">--------------------------------------------</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>fig_typhoon_go <span class="op">=</span> go.Figure(</span>
+<span id="cb2-9"><a href="#cb2-9"></a>    go.Scattermapbox(</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        mode<span class="op">=</span><span class="st">'lines'</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>        lat<span class="op">=</span>df_filtered[<span class="st">'d_d_latitude'</span>],</span>
+<span id="cb2-12"><a href="#cb2-12"></a>        lon<span class="op">=</span>df_filtered[<span class="st">'d_e_longitude'</span>],</span>
+<span id="cb2-13"><a href="#cb2-13"></a>        <span class="co"># line_color=df_filtered['h_b_int_num_id'],</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    )</span>
+<span id="cb2-15"><a href="#cb2-15"></a>)</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>fig_typhoon_go.update_layout(</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    mapbox_accesstoken<span class="op">=</span>mapbox_token,</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    mapbox_style<span class="op">=</span><span class="st">"light"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="co"># mapbox_style="outdoors",</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>    <span class="co"># mapbox_style="basic",</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="co"># mapbox_style="dark",</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a>    <span class="co"># mapbox_style="open-street-map",</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>    <span class="co"># mapbox_style="carto-darkmatter",</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>    <span class="co"># mapbox_style="carto-positron",</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>    <span class="co"># mapbox_zoom=4,</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>    mapbox_center_lat<span class="op">=</span><span class="fl">36.2048</span>,</span>
+<span id="cb2-29"><a href="#cb2-29"></a>    mapbox_center_lon<span class="op">=</span><span class="fl">138.2529</span>,</span>
+<span id="cb2-30"><a href="#cb2-30"></a>    margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">0</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>},</span>
+<span id="cb2-31"><a href="#cb2-31"></a>    showlegend <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb2-32"><a href="#cb2-32"></a>)</span>
+<span id="cb2-33"><a href="#cb2-33"></a></span>
+<span id="cb2-34"><a href="#cb2-34"></a>fig_typhoon_go.show()</span>
+<span id="cb2-35"><a href="#cb2-35"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
